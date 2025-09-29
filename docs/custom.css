@@ -1,0 +1,39 @@
+/* Barre d’édition Quarto (visual editor toolbar) */
+.qd-toolbar {
+    background-color: #2C3E50 !important;  /* couleur principale Flatly */
+    color: #FFFFFF !important;             /* texte blanc */
+    border-bottom: 1px solid #1A252F !important; /* légère bordure sombre */
+}
+
+/* Boutons dans la barre */
+.qd-toolbar button {
+    background-color: #18BC9C !important;  /* couleur des boutons Flatly */
+    color: #FFFFFF !important;
+    border: none !important;
+}
+
+/* Hover sur les boutons */
+.qd-toolbar button:hover {
+    background-color: #15A589 !important;  /* effet hover Flatly */
+}
+
+/* Icones et texte */
+.qd-toolbar .qd-toolbar-label,
+.qd-toolbar i {
+    color: #FFFFFF !important;
+}
+.card {
+  background-color: #F8F9FA; /* fond clair Flatly */
+  border: 1px solid #DEE2E6;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+}
+
+.card-title {
+  color: #2C3E50; /* couleur Flatly */
+}
+
+.btn-primary {
+  background-color: #18BC9C;
+  border-color: #18BC9C;
+}
