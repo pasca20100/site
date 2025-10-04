@@ -1,0 +1,11 @@
+---
+title: "Economie Contemporaine"
+author: ""
+date: 2025-09-28
+image: images/logo2.jpg
+format: html
+css: custom.css
+categories: [Économie, Actualités]
+---
+
+# 

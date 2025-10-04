@@ -1,0 +1,11 @@
+---
+title: ""
+format: html
+toc: true
+listing:
+  type: grid       # options possibles : default, table, grid, custom
+  sort: date       # trie les articles par date     
+---
+
+
+

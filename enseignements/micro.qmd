@@ -1,0 +1,261 @@
+---
+title: "Introduction à la microéconomie"
+always_allow_html: yes
+citeproc: true
+toc: true
+code-fold: true
+warning: false
+code-summary: "Show the code"
+theme: flatly
+css: custom.css
+editor: visual
+format:
+  html:
+    theme: flatly
+  beamer-pdf:
+    theme: Madrid
+    colortheme: dolphin
+    toc: false
+---
+
+# Qu'est-ce que la microéconomie ?
+
+# Le marché: Offre et Demande
+
+## La demande
+
+Elle représente la relation entre la quantité de biens qu'un consommateur est disposé à acheter pour un certain prix $Q_d=Q_d(P)$
+
+```{r}
+# Paramètres
+a_initial <- 100
+b <- 2
+a_income_rise <- 130
+
+# Plage de quantités Q
+Q <- seq(0, a_income_rise, by = 1)
+
+# Inversion de la fonction de demande pour P = f(Q)
+P_initial <- (a_initial - Q) / b
+P_shifted <- (a_income_rise - Q) / b
+
+# Tracé dans le plan (Q,P)
+plot(
+  Q, P_initial,
+  type = "l", lwd = 2,
+  xlab = "Quantité demandée (Q)",
+  ylab = "Prix (P)",
+  main = "Demande dans le plan (Q,P) et déplacement après hausse de revenu",
+  ylim = c(0, max(P_initial, P_shifted))
+)
+
+lines(Q, P_shifted, col = "blue", lwd = 2)
+
+text(30, (a_initial - 30)/b, "Demande initiale", pos = 3)
+text(30, (a_income_rise - 30)/b, "Après hausse de revenu", pos = 1, col = "blue")
+
+# Mention explicite de la pente négative
+mtext("La pente est négative : dP/dQ < 0", side = 3, line = 0.5)
+
+legend(
+  "topright",
+  legend = c("Demande initiale", "Après hausse de revenu"),
+  col = c("black", "blue"),
+  lwd = 2
+)
+
+
+
+```
+
+## L'offre
+
+$Q_s=Q_s(P)$
+
+## Surplus
+
+```{r}
+#| label: surplus-corrige
+#| fig-cap: "Surplus : aire sous la demande au-dessus de P* "
+#| warning: false
+library(ggplot2)
+
+# Paramètres (linéaires)
+a <- 100; b <- 2    # demande : P_d(Q) = (a - Q)/b
+c <- 10;  d <- 2    # offre   : P_s(Q) = (Q - c)/d
+
+# Fonctions prix en fonction de la quantité Q
+P_d <- function(Q) (a - Q) / b
+P_s <- function(Q) (Q - c) / d
+
+# Équilibre initial
+P_eq <- (a - c) / (b + d)
+Q_eq <- a - b * P_eq
+
+# Grille en Q (suffisamment fine pour l'approx intégrale)
+Q_max <- max(Q_eq * 1.5, 100)
+Q_all <- seq(0, Q_max, length.out = 2000)
+df_all <- data.frame(Q = Q_all,
+                     P_dem = P_d(Q_all),
+                     P_off = P_s(Q_all))
+
+# Partie utile pour les aires : de 0 à Q_eq
+Q_shade <- seq(0, Q_eq, length.out = 1000)
+df_shade <- data.frame(Q = Q_shade,
+                       P_dem = P_d(Q_shade),
+                       P_off = P_s(Q_shade))
+
+# Calcul numérique (trapèze) du surplus consommateur : ∫_0^{Q*} (P_d(Q) - P_eq) dQ
+dq <- diff(df_shade$Q)
+y_cs <- df_shade$P_dem - P_eq
+CS <- sum( (y_cs[-length(y_cs)] + y_cs[-1]) / 2 * dq )
+
+# Surplus producteur : ∫_0^{Q*} (P_eq - P_s(Q)) dQ
+y_ps <- P_eq - df_shade$P_off
+PS <- sum( (y_ps[-length(y_ps)] + y_ps[-1]) / 2 * dq )
+
+# Tracé
+ggplot(df_all, aes(x = Q)) +
+  geom_line(aes(y = P_dem), size = 1.1) +
+  geom_line(aes(y = P_off), size = 1.1) +
+  # Surplus consommateur : zone entre P_eq (ymin) et P_dem (ymax), pour Q∈[0,Q_eq]
+  geom_ribbon(data = df_shade, aes(x = Q, ymin = P_eq, ymax = P_dem),
+              fill = "blue", alpha = 0.25) +
+  # Surplus producteur : zone entre P_off (ymin) et P_eq (ymax), pour Q∈[0,Q_eq]
+  geom_ribbon(data = df_shade, aes(x = Q, ymin = P_off, ymax = P_eq),
+              fill = "red", alpha = 0.25) +
+  geom_hline(yintercept = P_eq, linetype = "dashed") +
+  geom_point(aes(x = Q_eq, y = P_eq), size = 3) +
+  annotate("text", x = Q_eq * 0.45, y = max(df_all$P_dem) * 0.9,
+           label = paste0("Surplus consommateur (SC) ≈ ", round(CS, 2))) +
+  annotate("text", x = Q_eq * 0.45, y = min(df_all$P_off) + (P_eq - min(df_all$P_off)) * 0.6,
+           label = paste0("Surplus producteur (SP) ≈ ", round(PS, 2))) +
+  labs(title = "Offre et Demande — Surplus",
+       x = "Quantité (Q)", y = "Prix (P)") +
+  coord_cartesian(xlim = c(0, Q_max),
+                  ylim = c(min(df_all$P_off, na.rm = TRUE), max(df_all$P_dem, na.rm = TRUE))) +
+  theme_minimal(base_size = 13)
+
+
+
+```
+
+# Le consommateur
+
+## La contrainte budgétaire
+
+La droite de budget correspond à l'ensemble des paniers de biens $(x,y)$ qui coûtent exatement $R$, le budget du consommateur. Soit:
+
+$R=p_x*x+p_y*y$ $<=> y= R/p_y-p_x/p_y*x$
+
+c'est l'équation d'une droite de pente $-p_x/p_y$, avec une ordonnée à l'origine égale à $R/p_y$
+
+Exemple:
+
+$R=100$; $p_x=10$; $p_y=20$
+
+```{r}
+#| label: contrainte-budget
+#| fig-cap: "Contrainte budgétaire dans le plan (x,y)"
+#| warning: false
+
+library(ggplot2)
+
+# Paramètres
+R  <- 100   # revenu
+px <- 10
+py <- 20
+
+# Intersections
+x_max <- R / px
+y_max <- R / py
+
+# Points pour tracer la droite budgétaire
+df_bc <- data.frame(
+  x = c(0, x_max),
+  y = c(y_max, 0)
+)
+
+ggplot(df_bc, aes(x = x, y = y)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(aes(x = 0, y = y_max), size = 3) +
+  geom_point(aes(x = x_max, y = 0), size = 3) +
+  annotate("text", x = x_max, y = -0.5,
+           label = paste0("x_max = ", x_max)) +
+  annotate("text", x = -0.5, y = y_max,
+           label = paste0("y_max = ", y_max)) +
+  labs(
+    title = "Contrainte budgétaire :  px·x + py·y = R",
+    subtitle = paste0(px, "·x + ", py, "·y = ", R),
+    x = "Bien x",
+    y = "Bien y"
+  ) +
+  coord_cartesian(xlim = c(0, x_max), ylim = c(0, y_max)) +
+  theme_minimal(base_size = 13)
+
+```
+
+## Des préférences du consommateur à la fonction d'utilité
+
+## Le panier Optimal
+
+```{r}
+#| label: tms-plot
+#| fig-cap: "TMS = pente de la tangente à la courbe d'indifférence"
+#| warning: false
+library(ggplot2)
+
+# Fonction d'utilité Cobb-Douglas U(x,y)=sqrt(xy)
+U  <- function(x, y) sqrt(x*y)
+
+# Niveau d'utilité de la courbe (modifiable)
+U0 <- 6   # alors xy = U0^2 = 36  => y = 36/x
+
+# Point illustratif sur la courbe (modifiable, doit vérifier x0*y0=36)
+x0 <- 4
+y0 <- (U0^2)/x0  # 9
+
+# TMS au point (x0,y0) : -MUx/MUy = -y/x
+TMS <- - y0/x0   # -2.25
+
+# Données pour la courbe d'indifférence U=U0  (hyperbole y=36/x)
+xs  <- seq(1.5, 20, length.out = 400)
+ys  <- (U0^2) / xs
+indif <- data.frame(x = xs, y = ys)
+
+# Droite tangente en (x0,y0): y = y0 + TMS*(x - x0)
+xt  <- seq(1.5, 20, length.out = 200)
+yt  <- y0 + TMS * (xt - x0)
+tangent <- data.frame(x = xt, y = yt)
+
+# Petite flèche montrant la pente (TMS)
+# On prend un court segment autour de x0
+seg_dx <- 1
+seg <- data.frame(
+  x  = c(x0, x0 + seg_dx),
+  y  = c(y0, y0 + TMS*seg_dx)
+)
+
+ggplot() +
+  # Courbe d'indifférence
+  geom_line(data = indif, aes(x, y), linewidth = 1.1) +
+  # Tangente au point choisi
+  geom_line(data = tangent, aes(x, y), linetype = "dashed") +
+  # Point (x0,y0)
+  geom_point(aes(x0, y0), size = 3) +
+  # Segment/flèche pour la pente (TMS)
+  geom_segment(data = seg, aes(x = x[1], y = y[1], xend = x[2], yend = y[2]),
+               arrow = arrow(length = unit(6, "pt"))) +
+  # Annotations
+  annotate("label", x = x0, y = y0 + 2,
+           label = paste0("Point (x0=", x0, ", y0=", round(y0,2), ")")) +
+  annotate("label", x = x0 + 4, y = y0 - 2,
+           label = paste0("Tangente : pente = TMS = -y0/x0 = ", round(TMS, 2))) +
+  labs(x = "Bien x", y = "Bien y",
+       title = "Taux marginal de substitution (TMS)",
+       subtitle = expression(paste("Courbe d'indifférence  ", U(x,y)==sqrt(xy),
+                                   "  avec  ", U==U[0], "  et  TMS== -y/x"))) +
+  coord_cartesian(ylim = c(0, max(ys, yt, na.rm = TRUE))) +
+  theme_minimal(base_size = 13)
+
+```

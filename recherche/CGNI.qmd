@@ -1,0 +1,2129 @@
+---
+title: "Vers une Mesure Continue de l'identité de Genre"
+always_allow_html: yes
+bibliography: references.bib
+citeproc: true
+toc: true
+code-fold: true
+warning: false
+code-summary: "Show the code"
+theme: flatly
+css: custom.css
+editor: visual
+format:
+  html:
+    theme: flatly
+---
+
+# Introduction
+
+Avec ses cheveux courts, lors de son élection, miss France 2024 a défrayé la chronique.
+
+Au vue des réactions épidermiques, la dunkerquoise Eve Gilles semblait transgresser là une norme de genre instituée.
+
+Avec cet exemple, qui peut sembler trivial, nous souhaitons aborder la question fondamentale de l'identité, et plus spécifiquement, de l'identité de genre.
+
+L'identité peut être définie comme le sentiment que l'on a de soi ("A person' sense of self") , c'est une notion multiple, protéiforme, difficile à appréhender et plus encore: à mesurer.
+
+Mais pourquoi les économistes devraient-ils s'intéresser à cette variable identité?
+
+Comment et pourquoi intègrent-ils cette notion dans leurs modèles?
+
+Si la nécessité de proposer des modèles intégrant cette variable nous semble pertinente, vient alors la question de la difficile mesure de ce concept fondamental.
+
+Enfin, quelles répercussions socio-économiques peut-on observer à travers la mise en lien de cette mesure de l'identité et des variables économiques?
+
+L'économie de l'identité est un courant récent de la discipline.
+
+Les travaux fondateurs d' Akerlof et Kranton (@akerlof_economics_2000 ) ont mis en lumière la nécessité d'intégrer dans les modèles économiques traditionnels cette notion fondamentale qu'est l'identité.
+
+## Utilité et Identité
+
+Pour un économiste, le concept d'utilité est central. Il s'agit d'une mesure de la satisfaction individuelle.
+
+Un individu, par exemple un consommateur, réalise ses choix en fonction du niveau de satisfaction qu'il peut retirer. C'est son objectif, modélisé sous forme de fonction.
+
+Dans les modèles traditionnels, l'utilité dépend de quelques variables objectives, qui ont l'intérêt d'être mesurables.
+
+Par exemple, pour un consommateur, $U=F(x,y)$ , où $x$ et $y$ sont les quantités de biens consommées.
+
+L'apport d'Akerlof et Kranton, est d'indiquer que les choix des individus sont influencés par le sentiment qu'ils ont d'eux même, leur identité.
+
+Enrichir les modèles traditionnels de cette nouvelle variable permettrait de mieux comprendre ce qui parfois échappe à la théorie classique.
+
+## Modèle avec Identité
+
+Reprenons ici le modèle proposé par Akerlof et Kranton,
+
+la fonction d'utilité d'un individu est la suivante:
+
+$U_j = U_j(a_j, a_j I_j)$
+
+où :
+
+-   $a_j$ représente les actions de l'individu $j$
+
+-   $a_j$ $I_j$ capture les intéractions entre les actions de $j$ et son identité $I_j$
+
+Cette fonction d'identite $I_j$ dépend elle même de plusieurs facteurs:
+
+$I_j = I_j(a_j, a_{-j}, c_j, E_j, P)$
+
+où :
+
+-   $a_j$ représente les actions de l'individu $j$,
+
+-   $a_{-j}$ repésente les actions des autres individus,
+
+-   $c_j$ est la catégorie sociale à laquelle appartien $j$,
+
+-   $E_j$ sont les caractéristiques données de $j$,
+
+-   $P$ sont les prescriptions (ou normes sociales) associées à la catégorie $c_j$.
+
+Ce modèle formalise cette tension qui peut exister pour les individus entre se conformer ou non aux normes de sa catégorie sociale assignée, en fonction de la distance qui peut exister entre ses propres caractéristiques et les prescriptions assignées.
+
+Il suppose aussi l'existence possible de sanctions de la part des pairs si les normes ne sont pas suivies (moqueries, mise à l'écart ou même violence)
+
+Par exemple, dans leur papier [@akerlof] complètent les théories traditionnelles de l'économie de l'éducation en expliquant le plus ou moins grand investissement scolaire des étudiants en fonction de leurs caractéristiques identitaires (les sportifs, les intellos et les rebelles)
+
+## Identité et choix des individus
+
+L'économie étudie comment les agents font leur choix (de consommation, de production...), ces choix dépendent de l'identité des individus.
+
+En effet, le sens que l'on a de soi, influence nos décisions, et ces décisions influencent notre identité en retour.
+
+Dans un premier temps, la catégorie sociale à laquelle j'appartiens peut influencer mes préférences (@chen_group_2009) ,mes comportements pro-sociaux (@charness_identities_2014) et donc mes décisions.
+
+Dans un second temps, l'individu arbitre entre ses propres caractéristiques et les prescriptions de sa catégorie sociale (ou les prescriptions supposées).
+
+Vais-je me conformer à ce qui est attendu? Mes propres caractéristiques sont-elles plus ou moins proches des normes en vigueur? Si je ne me conforme pas, quelle sera la réaction de mes pairs?
+
+Cet arbitrage et cette possibilité pour autrui de répondre à mes actions a été représenté sous forme d'arbre de décision par @akerlof_economics_2000-1
+
+![](tree.png){fig-align="center"}
+
+Cette friction entre adhérer ou non aux normes de ma catégorie sociale a conduit la recherche des économistes de l'identité vers les questions de conflits inter-groupes (@austen-smith_economic_2005, @chakravarty_religious_2015, @fryer_empirical_2010, @benabou_incentives_2004.)
+
+On s'interroge sur les normes, l'adhésion ou non à ces dernières et le rôle que peuvent jouer les politiques publiques sur ces prescriptions.
+
+Mais l'identité joue également un rôle fondamental sur les performances individuelles.
+
+## Identité et Performances
+
+Dans une étude particulièrement intéressante, @shih_domain-specific_2006 ont montré comment l'activation d'une identité particulière, ou tout du moins comment les stéréotypes associés à cette identité, pouvaient avoir un impact sur les performances individuelles.
+
+En réalisant une étude auprès d'étudiantes asiatiques aux Etats Unis, les chercheurs ont proposé l'expérience suivante:
+
+Un questionnaire était fourni aux participantes avant de réaliser un test de mathématiques.
+
+Une partie des participantes répondaient à un questionnaire dont les questions portaient sur leur identité asiatique, pour les autres participantes le questionnaire activait leur identité féminine, un groupe de contrôle était également implémanté.
+
+Ce simple questionnaire en préambule a eu des effets notables sur les performances aux tests de mathématiques réalisés ensuite, puisque en moyenne, les étudiantes dont l'identité asiatique avait été mise en évidence performaient significativement mieux aux tests de mathématiques que leurs homologues dont l'identité féminine avait été activée.
+
+Cette étude plaide donc pour la nécessité de s'interroger sur la notion d'identité, dès lors que cette variable peut significativement avoir des répercussions sur les résultats socio-économiques des individus.
+
+Cependant, les critiques apportées à ce nouveau courant sont notamment que ce concept fondamental d'identité est trop flou, comment intégrer dans les modèles ou bien encore dans les études empiriques cette dimension si polymorphe?
+
+La question de la mesure de l'identité se pose alors... \## Construction de l'indice
+
+L'indice que nous proposons repose donc sur la dernière approche présentée:
+
+Un indice de mesure continue de l'identité de genre, construit comme un indice composite à partir de dimensions non définies *a priori* comme genrées.
+
+Mais alors, quelles variables choisir pour représenter ces dimensions du genre?
+
+Notre choix s'est porté sur les pratiques culturelles des français (leurs loisirs culturels) car ces pratiques sont en effet particulièrement genrées (différenciées selon les sexes biologiques), il nous paraissait pertinent de s'appuyer sur ces dernières pour construire notre indice.
+
+### Pratiques culturelles et Genre ?
+
+En sociologie, la question de la culture et du Genre fait l'objet de travaux ayant montré combien les pratiques culturelles sont différenciées chez les hommes et les femmes (@octobre_loisirs_2008) , et ce, dès l'enfance.
+
+Cette différenciation nous permet d'envisager qu'il y ait des pratiques plus ou moins féminines ou masculines, dans la mesure où en moyenne elles sont plus pratiquées par des hommes ou par des femmes.
+
+Cela signifie qu'il existe des normes genrées dans la pratique ou non d'une activité culturelle: le tricot est essentiellement féminin, la chasse est une activité plutôt pratiquée par les hommes.
+
+Ces exemples sont tirés de l'analyse de nos données, en effet, nous avons utilisé la base de données *Enquête sur les pratiques culturelles des Français*, 2018.
+
+Cette base de données comprend des informations sur les pratiques culturelles des français (9234 individus interrogés) , ainsi que des données socio-démographiques et porte également une question qui va nous intéresser sur le degré de satisfaction en termes de temps libre.
+
+Cette dernière variable ("Vous arrive-t-il d'avoir le sentiment de manquer de temps libre pour faire tout ce dont vous avez envie?") a retenu notre attention car elle pourrait être une mesure de l'utilité (satisfaction) de l'individu.
+
+#### Statistiques descriptives de la base de données
+
+```{r}
+library(foreign)
+library(questionr) 
+library(ggplot2) 
+library(tidyverse) 
+library(ggmosaic)
+library(GGally) 
+library(dataMaid)
+library(dplyr) 
+library(GDAtools)
+library(FactoMineR)
+library(gtsummary) 
+library(factoextra)
+library(gtsummary) 
+library(kableExtra)
+library(RColorBrewer) 
+library(FactoMineR) 
+library(xtable) 
+library(explor)
+```
+
+```{r}
+data<-read.csv2("pc18_quetelet_octobre2023.csv")
+```
+
+```{r}
+data$Sex <- factor(data$SEXE, 
+                            levels = c(1, 2), 
+                            labels = c("Men", "Women"))
+my_data_frame <- data |> dplyr::rename( 
+  Knitting = A1001 , 
+  Cards_games = A1002,  
+  Gambling = A1003 , 
+  Cooking = A1004 , 
+  DIY = A1005  ,
+  Vegetable_garden = A1006 , 
+  Ornamental_garden = A1007,  
+  Fishing_hunting = A1008 , 
+  Collection = A1009  ,
+  Vehicle_custom = A1010 , 
+  No_Amateur=A1011,
+  Making_music = A1901  ,
+  Diary = A1902  ,
+  Writing = A1903,  
+  Painting = A1904,  
+  Montage = A1905 , 
+  Circus = A1906  ,
+  Pottery = A1907 , 
+  Theater = A1908 , 
+  Drawing = A1909 , 
+  Dancing = A1910,  
+  Photography = A1911  ,
+  Genealogy = A1912 , 
+  Science = A1913  ,
+  None = A1914  ,
+  Video_games = B1  ,
+  TV = C1  ,
+  Radio = E1  ,
+  Library = F1  ,
+  Museums = H112,  
+  Internet = I4 , 
+  Concert = G2413 )
+
+
+my_data_frame$Video_games <- ifelse(my_data_frame$Video_games == 1, 1, 0)
+my_data_frame$TV <- ifelse(my_data_frame$TV == 5, 0, 1)
+my_data_frame$Radio <- ifelse(my_data_frame$Radio == 5, 0, 1)
+my_data_frame$Library<- ifelse(my_data_frame$Radio == 1, 1, 0)
+my_data_frame$Museums<- ifelse(my_data_frame$Museums == 1, 0, 1)
+my_data_frame$Internet<- ifelse(my_data_frame$Internet == 5, 0, 1)
+my_data_frame$Concert<- ifelse(my_data_frame$Concert == 1, 0, 1)
+
+
+my_data_frame <- my_data_frame %>%
+  mutate(satisfaction = case_when(
+    A2 %in% 1 ~ "Low",      # 1 à 4 -> Low
+    A2 %in% 2 ~ "Medium",   # 5 à 7 -> Medium
+    A2 %in% 3 ~ "High",    # 8 à 10 -> High
+    TRUE ~ NA_character_              
+  ))  
+my_data_frame <- my_data_frame %>%
+  mutate(Income = case_when(
+    CRITREVENU %in% 1:4 ~ "Low",      # 1 à 4 -> Low
+    CRITREVENU %in% 5:7 ~ "Medium",   # 5 à 7 -> Medium
+    CRITREVENU %in% 8:10 ~ "High",    # 8 à 10 -> High
+    TRUE ~ NA_character_              
+  ))
+
+my_data_frame <- my_data_frame %>%
+  mutate(Health = case_when(
+    A15 %in% 1:2 ~ "Good",      # 1 à 4 -> Low
+    A15 %in% 3 ~ "Medium",   # 5 à 7 -> Medium
+    A15 %in% 4:5 ~ "Bad",    # 8 à 10 -> High
+    TRUE ~ NA_character_              
+  ))
+
+
+my_data_frame <- my_data_frame %>%
+  mutate(Couple = case_when(
+    VITENCOUPLE %in% 1:2 ~ "Yes",     
+    VITENCOUPLE %in% 3~ "No",  
+    
+    TRUE ~ NA_character_              
+  ))
+
+quartiles <- quantile(data$AGE, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)
+
+my_data_frame$age_group <- cut(
+  my_data_frame$AGE,
+  breaks = 4,  # Automatically divide into 4 slices
+  labels = c("[15-38[", "[38-54[", "[54-67[", "[67-97["),  # Labels optionnels
+  include.lowest = TRUE 
+)
+```
+
+```{r}
+stat_des_1 <- my_data_frame |>
+    tbl_summary(
+        include = c("AGE", "Income", "Couple", "CLASSIF", "satisfaction", "Health"),
+        by = "Sex",
+        statistic = list(
+            all_continuous() ~ "{min} - {max}"
+        )
+    ) |>
+    add_overall(last = TRUE) |>
+    add_p(
+        test.args = list(
+            all_continuous() ~ list(simulate.p.value = TRUE),
+            all_categorical() ~ list(simulate.p.value = TRUE)
+        )
+    )
+
+stat_des_1
+```
+
+Lecture: Parmi les individus de sexe masculin, 59% sont en couple. La différence avec les femmes est significative (p\<0,001)
+
+```{r}
+table <- my_data_frame |>
+  tbl_summary(
+    include = c(  "Knitting" , 
+                  "Cards_games",  
+                  "Gambling" , 
+                  "Cooking" , 
+                  "DIY"  ,
+                  "Vegetable_garden" , 
+                  "Ornamental_garden",  
+                  "Fishing_hunting" , 
+                  "Collection"  ,
+                  "Vehicle_custom", 
+                  "Making_music"   ,
+                  "Diary" ,
+                  "Writing" ,  
+                  "Painting",  
+                  "Montage"  , 
+                  "Circus"   ,
+                  "Pottery" , 
+                  "Theater" , 
+                  "Drawing" , 
+                  "Dancing",  
+                  "Photography"  ,
+                  "Genealogy" , 
+                  "Science"  ,
+                  "None"  ,
+                  "No_Amateur",
+                  "Video_games"  ,
+                  "TV" ,
+                  "Radio"  ,
+                  "Library"  ,
+                  "Museums",  
+                  "Internet", 
+                  "Concert"),
+    by = "Sex"
+  ) |>
+  add_overall(last = TRUE) |>
+  add_p()
+
+table
+```
+
+Lecture: Parmi les hommes, 1.8% déclarent pratiquer le tricot, contre 27% des femmes. Cette activité est pratiquée par 16% des répondants.
+
+Les p-value \<10% indiquent que les différences de participation aux pratiques culturelles sont significativement différentes selon le sexe biologique du répondant.
+
+::: callout-note
+Nous retiendrons pour la construction de notre indice les pratiques culturelles suivantes:
+
+"Knitting" , "Cards_games","Gambling" , "Cooking" , "DIY" , "Vegetable_garden" , "Fishing_hunting" , "Collection" , "Vehicle_custom", "Making_music" , "Diary" , "Writing" ,"Painting","Montage" , "Pottery" , "Theater" , "Drawing" , "Dancing",\
+"Photography" , "Genealogy" , "Science" , "None" , "Video_games" , "Library" , "Concert"
+:::
+
+### Construction de notre indice
+
+Afin de construire notre indice d'identité de genre, nous suivons la méthodologie proposée par @cipriani et réalisons une Analyse des Correspondances Multiples (ACM) sur nos variables "pratiques culturelles".
+
+::: callout-tip
+## Encadré Technique 1: Détails de la méthode ACM
+
+L'\*\*ACM\*\* est une extension de l'\*\*Analyse des Correspondances Simples (ACS)\*\* qui permet d'explorer les relations entre plusieurs variables qualitatives en projetant les individus et les modalités dans un espace de faible dimension. Elle est souvent utilisée pour analyser des \*\*questionnaires\*\* et des \*\*tableaux de contingence\*\* complexes.
+
+\### Principaux résultats d'une ACM
+
+1\. \*\*Inertie totale\*\*
+
+Mesure la dispersion des données et est donnée par :
+
+$I_{\text{total}} = \frac{q}{q-1} \sum_{k} \lambda_k$
+
+où $\lambda_k$ sont les valeurs propres et $q$ est le nombre total de modalités.
+
+2\. \*\*Valeurs propres $\lambda_k$\*\*
+
+Elles indiquent la variance expliquée par chaque axe factoriel. Plus une valeur propre est élevée, plus l'axe correspondant est important dans l'analyse.
+
+3\. \*\*Rapports de corrélation $\eta^2$\*\*
+
+Le \*\*rapport de corrélation\*\* $\eta^2$ mesure la liaison entre une variable et un axe factoriel :
+
+$\eta^2 = \frac{\sum_{i} f_i d_{i,k}^2}{\sum_{i} f_i d_{i}^2}$
+
+où \$ f_i \$ est la fréquence de l'individu/modalité \$i \$, et \$d\_{i,k} \$ est sa distance à l'axe $k$ .
+
+4\. \*\*Coordonnées des individus et modalités\*\*
+
+Elles sont obtenues à partir des vecteurs propres et permettent la représentation graphique des données :
+
+$C_{i,k} = \frac{v_{i,k}}{\sqrt{\lambda_k}}$
+
+où $v_{i,k}$ est le vecteur propre associé à l’axe $k$.
+
+5\. \*\*Cos² (Qualité de représentation)\*\*
+
+Indique dans quelle mesure un point est bien représenté sur un axe donné. Une valeur proche de \*\*1\*\* signifie que la projection sur cet axe est pertinente.
+
+6\. \*\*Contributions \*\*
+
+Elles mesurent l'importance d'une modalité ou d'un individu dans la construction d'un axe. Plus une contribution est élevée, plus l'élément joue un rôle important dans l’interprétation de l’axe.
+:::
+
+```{r}
+pratiques_cols_1 <- c( "Knitting" , 
+                     "Cards_games",  
+                     "Gambling" , 
+                     "Cooking" , 
+                     "DIY"  ,
+                     "Vegetable_garden" , 
+                     "Fishing_hunting" , 
+                     "Collection"  ,
+                     "Vehicle_custom",
+                     "Making_music"   ,
+                     "Diary" ,
+                     "Writing" ,  
+                     "Painting",  
+                     "Montage"  , 
+                     "Pottery" , 
+                     "Theater" , 
+                     "Drawing" , 
+                     "Dancing",  
+                     "Photography"  ,
+                     "Genealogy" , 
+                     "Science"  ,
+                     "None" ,
+                     "Video_games"  ,
+                     "Library"  ,
+                     "Concert"
+                            )
+
+
+#MCA
+
+# Add Sex Column to the selection
+cols_of_interest_1 <- c("Sex", "AGE", pratiques_cols_1)
+
+# Build a new dataframe with these columns
+data_pratiques <- my_data_frame[, cols_of_interest_1]
+data_pratiques$AGE <- cut(data_pratiques$AGE, 
+                          breaks = quantile(data_pratiques$AGE, probs = seq(0, 1, 0.25), na.rm = TRUE), 
+                          include.lowest = TRUE)
+ra_data <- na.omit(data_pratiques)
+
+cols_to_factor <- c(  "Knitting" , 
+                      "Cards_games",  
+                      "Gambling" , 
+                      "Cooking" , 
+                      "DIY"  ,
+                      "Vegetable_garden" , 
+                      "Fishing_hunting" , 
+                      "Collection"  ,
+                      "Vehicle_custom",
+                      "Making_music"   ,
+                      "Diary" ,
+                      "Writing" ,  
+                      "Painting",  
+                      "Montage"  , 
+                      "Pottery" , 
+                      "Theater" , 
+                      "Drawing" , 
+                      "Dancing",  
+                      "Photography"  ,
+                      "Genealogy" , 
+                      "Science"  ,
+                      "None"  ,
+                      "Video_games"  ,
+                      "Library"  ,
+                      "Concert")
+
+# apply as.factor to these columnns
+ra_data[cols_to_factor] <- lapply(ra_data[cols_to_factor], as.factor)
+
+# running MCA with FactoMiner
+acm2_fm <- ra_data |> 
+  FactoMineR::MCA(
+    ncp = Inf,
+    graph = TRUE,
+    quali.sup = 1:2
+  )
+
+```
+
+On remarque que la variable supplémentaire "Sexe" correspond à la dimension 2 de notre ACM. Cette dimension explique 6,06% de la variance totale.
+
+Une analyse plus poussée avec le package Explor nous permet de mesurer l'association de la variable supplémentaire Sexe avec cette dimension (dim2), en effet, l' $𝞰^2$ est de 0,14 , ce qui peut sembler peu mais indique bien que notre variable supplémentaire est liée à cet axe.
+
+Pour construire notre indice, nous utiliserons donc les coordonnées des variables pratiques culturelles le long de cet axe 2.
+
+```{r}
+# Extract modality names
+modalites_names <- rownames(acm2_fm$var$coord)
+
+# Check modality names
+head(modalites_names)
+# Extract coordinates for dimension 2
+coord_dim2_modalites <- acm2_fm$var$coord[, 2]
+
+# Create a table associating the modalities and their coordinates in dimension 2
+modalites_coord <- data.frame(Modalite = modalites_names, Coord_Dim2 = coord_dim2_modalites)
+
+
+
+# Keep only the two necessary columns
+modalites_coord_selected <- modalites_coord[, c("Modalite", "Coord_Dim2")]
+
+print(modalites_coord_selected)
+```
+
+Ce tableau indique les poids utilisés pour la construction de notre indice.
+
+```{r}
+# Initialize a vector to store the index of each individual
+ra_data$indice_culturel <- 0
+
+# Browse each individual
+for (i in 1:nrow(ra_data)) {
+  
+  # Initialize individual's index to 0
+  indice_individu <- 0
+  
+  # Browse each practice column (columns 3 to 27)
+  for (pratique in 3:27) {
+    
+    # Retrieve the individual's response for this practice (0 or 1)
+    reponse <- ra_data[i, pratique]
+    
+    # If the answer is 1, add the coordinate of the corresponding modality to the index.
+    if (reponse == 1) {
+      
+      # Create the modality name (e.g. “knitting_1” or “knitting_0”)
+      nom_modalite_1 <- paste0(names(ra_data)[pratique], "_1")
+      nom_modalite_0 <- paste0(names(ra_data)[pratique], "_0")
+      
+      # Find the coordinate associated with the corresponding modality
+      if (nom_modalite_1 %in% modalites_coord$Modalite) {
+        indice_individu <- indice_individu + modalites_coord$Coord_Dim2[modalites_coord$Modalite == nom_modalite_1]
+      }
+      if (nom_modalite_0 %in% modalites_coord$Modalite) {
+        indice_individu <- indice_individu + modalites_coord$Coord_Dim2[modalites_coord$Modalite == nom_modalite_0]
+      }
+    }
+  }
+  
+  # Assign the calculated index to the individual
+  ra_data$indice_culturel[i] <- indice_individu
+}
+####Normalisation
+
+# Calculate minimum and maximum index values
+min_indice <- min(ra_data$indice_culturel, na.rm = TRUE)
+max_indice <- max(ra_data$indice_culturel, na.rm = TRUE)
+
+# Normalize index
+ra_data$indice_culturel_normalise <- (ra_data$indice_culturel - min_indice) / (max_indice - min_indice)
+
+# Check results
+
+head(ra_data[, c("indice_culturel", "indice_culturel_normalise")])
+```
+
+Notre indice est donc construit de la façon suivante:
+
+$$I_{1j} = \sum_{k=1}^{Z} w_{1k} \cdot X_{k j}$$
+
+Dans cette expression, $I_{1j}$ désigne l'indice de l'individu $j$, tandis que $w_{1k}$ représente le poids associé à chaque variable culturelle $X_{kj}$. La somme englobe toutes les variables culturelles $Z$, ce qui nous permet de saisir l'engagement culturel global de l'individu.
+
+### Description de l'indice
+
+```{r}
+my_data_frame$identity<-ra_data$indice_culturel_normalise
+my_data_frame$indice<-ra_data$indice_culturel
+ggplot(my_data_frame, aes(x = identity, fill = Sex)) +
+  geom_density(alpha = 0.5) +
+  scale_fill_manual(values = c("blue", "pink")) + 
+  labs(title = "Density of The Normalized Cultural Index by Sexe",
+       x = "Normalized Cultural Index",
+       y = "Density",
+       fill = "Sexe") +
+  theme_minimal()
+
+
+stat_des_indice<-my_data_frame%>%
+  tbl_summary(include=c("identity"),by = "Sex",
+              statistic = list(
+            all_continuous() ~ "{min} - {max}"
+        )) %>%
+  add_overall(last = TRUE) %>%
+  add_p()
+stat_des_indice
+```
+
+L'indice normalisé est compris entre 0 et 1. Plus il est proche de zéro plus les individus sont proches de la norme féminine (en termes de pratiques culturelles).
+
+L'indice est significativement différent selon le sexe biologique des interrogés.
+
+```{r}
+reg<- lm(identity~Sex, my_data_frame)
+summary(reg)
+```
+
+Le sexe biologique est très significatif, les valeurs plus faibles de l'indice sont associées au sexe féminin.
+
+### Robustesse
+
+```{r}
+
+
+data$identity<- my_data_frame$identity
+my_data_frame$identity<-data$identity
+# List of cultural activities
+cultural_activities <- c(
+   "Knitting" , 
+                      "Cards_games",  
+                      "Gambling" , 
+                      "Cooking" , 
+                      "DIY"  ,
+                      "Vegetable_garden" , 
+                      "Fishing_hunting" , 
+                      "Collection"  ,
+                      "Vehicle_custom",
+                      "Making_music"   ,
+                      "Diary" ,
+                      "Writing" ,  
+                      "Painting",  
+                      "Montage"  , 
+                      "Pottery" , 
+                      "Theater" , 
+                      "Drawing" , 
+                      "Dancing",  
+                      "Photography"  ,
+                      "Genealogy" , 
+                      "Science"  ,
+                      "None"  ,
+                      "Video_games"  ,
+                      "Library"  ,
+                      "Concert"
+)
+
+# Create a data frame to store the results
+result_table <- data.frame(Activity = character(0), Accuracy = numeric(0))
+
+for (activity in cultural_activities) {
+  # Perform a Probit regression for the current cultural activity
+  model_formula <- as.formula(paste(activity, "~ identity"))
+  model <- glm(model_formula, data = my_data_frame, family = binomial(link = "probit"))
+ 
+  # Calculate predictions
+  predicted <- ifelse(predict(model, type = "response") >= 0.5, 1, 0)
+ 
+  # Calculate the accuracy
+  correct_predictions <- sum(predicted == my_data_frame[[activity]])
+  total_predictions <- nrow(my_data_frame)
+  accuracy <- (correct_predictions / total_predictions) * 100
+ 
+  # Add the result to the data frame
+  result_table <- rbind(result_table, data.frame(Activity = activity, Accuracy = accuracy))
+}
+result_table
+```
+
+Nous réalisons une série de régressions Probit sur les différentes pratiques culturelles, avec pour unique régresseur notre indice d'identité, afin de mesurer le pouvoir prédictif (ou accuracy) de ce dernier.
+
+### Comparaisons avec d'autres mesures ?
+
+Comparons l'indice obtenu avec d'autres mesures, et plus particulièrement avec les indices échelle d'identité.
+
+Pour cela, nous allons diviser notre indice en 7 catégories, allant du plus féminin au plus masculin.
+
+```{r}
+my_data_frame$identity_scale <- cut(
+  my_data_frame$identity,
+  breaks = 7,  # Automatically divide into 7 slices
+  labels = c("Very Feminine", "1", "2", "3", "4", "5", "Very Masculine"), 
+  include.lowest = TRUE  
+)
+table1 <-
+  my_data_frame |> 
+  tbl_summary(include = c(identity_scale),
+  by=Sex ,)|> 
+    add_p()
+table1
+```
+
+Ce tableau est à mettre en perspective avec les données de @trachman_tres_2022.
+
+Tout d'abord non remarquons que, comme dans l'enquête de @trachman_tres_2022, les individus "hors norme" sont peu nombreux (d'après notre indice, moins de 0,1% des femmes ont des pratiques culturelles très masculines; 0,2% des hommes ont des pratiques très féminines) , de même que les individus dont les pratiques culturelles seraient complètement conformes à leur sexe biologique ne sont pas la majorité (4,3% des femmes sont classées comme très féminines, 0,5% des hommes comme très masculins.)
+
+Cela plaide encore une fois pour l'intérêt d'une mesure continue.
+
+Nous allons ensuite explorer plus en détails les variables socio-démographiques qui peuvent influencer notre indice (revenu, âge, catégorie socio-professionnelle ...)
+
+## Variables socio-économiques et identité de genre
+
+Dans cette partie, nous allons analyser les implications socio-économiques de l'identité de genre.
+
+Pour commencer, nous allons regarder les différents profils des individus selon leur indice d'identité.
+
+Puis nous analyserons les liens entre distance à la norme et l'utilité des individus (leur degré de satisfaction.)
+
+```{r}
+stat_des_2 <- my_data_frame |>  
+  tbl_summary(        
+    include = c("AGE", "Income", "Couple", "CLASSIF"),         by = "identity_scale") |>  
+  
+  add_overall(last = TRUE) |> 
+  add_p(       
+    test.args = list(           
+      all_continuous() ~ list(simulate.p.value = TRUE),             all_categorical() ~ list(simulate.p.value = TRUE)      
+      )    
+    )  
+
+
+stat_des_2
+```
+
+Lecture: Parmi les individus catégorisés comme très féminins selon notre indice, 44% ont des revenus élevés. Les variables étudiées sont significativement différentes selon les degrés d'identité.
+
+Il semble, d'après cette première table descriptive, que l'âge, les niveaux de revenus ainsi que les professions (CLASSIF) jouent un rôle dans l'identité de genre. Tout comme dans l'étude de @trachman2022, les facteurs socio-économiques influencent les variations du genre.
+
+| CLASSIF |   |
+|----|----|
+| 1 | Manoeuvre ou ouvrier spécialisé |
+| 2 | Ouvrier qualifié ou hautement qualifié/ technicien(ne) d'atelier |
+| 3 | Technicien(ne) |
+| 4 | Agent de maîtrise, maîtrise administrative ou commerciale, VRP (non cadre) |
+| 5 | Ingénieur, Cadre |
+| 6 | Employé(e) de bureau, Employé(e) de commerce, Personnel de services |
+| 7 | Directeur général, Adjoint direct |
+| 8 | NSP |
+| 9 | REF |
+
+On peut regarder si les effets sont différents selon le sexe biologique:
+
+```{r}
+
+stat_des <- my_data_frame |>
+    tbl_strata(
+        strata = Sex,  # Stratification par sexe
+        .tbl_fun = ~ .x |>
+            tbl_summary(
+                include = c("AGE", "Income", "Couple", "CLASSIF"),
+                by = "identity_scale"  # Stratification supplémentaire par 'identity_scale'
+            ) |>
+            add_overall(last = TRUE) |>
+            add_p(
+                test.args = list(
+                    all_continuous() ~ list(simulate.p.value = TRUE),
+                    all_categorical() ~ list(simulate.p.value = TRUE)
+                )
+            )
+    )
+
+stat_des
+
+```
+
+Lecture: Parmi les hommes classés comme très féminins, 27% appartiennent à la catégorie socio-professionnelle 5 (ingénieur, cadre)
+
+### Distance à la norme
+
+Nous l'évoquions au début de ce document, ce qui nous intéresse en proposant une mesure continue des variations du genre c'est de pouvoir analyser les distances prises avec les normes de son groupe de référence.
+
+Pour cela, nous allons construire la variable "Distance à la norme"
+
+```{r}
+
+mean_gender <- tapply(my_data_frame$identity, my_data_frame$Sex, mean)
+sd_gender <- tapply(my_data_frame$identity, my_data_frame$Sex, sd)
+
+my_data_frame$distance<- (my_data_frame$identity - mean_gender[my_data_frame$Sex]) / sd_gender[my_data_frame$Sex]
+
+ggplot(my_data_frame, aes(x = distance, color = Sex, fill = Sex)) +
+  geom_density(alpha = 0.4) +
+  labs(title = "Density of Distance to the Norm, by Sex", 
+       x = "Distance to the Norm (Z-score)", y = "Density") +
+  scale_fill_manual(values = c("blue", "pink")) +
+  scale_color_manual(values = c("blue", "pink")) +
+  theme_minimal()
+```
+
+```{r}
+#Ou en valeur absolue: 
+mean_gender <- tapply(my_data_frame$identity, my_data_frame$Sex, mean)
+sd_gender <- tapply(my_data_frame$identity, my_data_frame$Sex, sd)
+
+my_data_frame$distance_abs<- abs((my_data_frame$identity - mean_gender[my_data_frame$Sex]) / sd_gender[my_data_frame$Sex])
+
+ggplot(my_data_frame, aes(x = distance_abs, color = Sex, fill = Sex)) +
+  geom_density(alpha = 0.4) +
+  labs(title = "Density of Distance to the Norm, by Sex", 
+       x = "Distance to the Norm (Z-score)", y = "Density") +
+  scale_fill_manual(values = c("blue", "pink")) +
+  scale_color_manual(values = c("blue", "pink")) +
+  theme_minimal()
+```
+
+```{r}
+# Catégorisation par quartiles
+my_data_frame$categories <- cut(my_data_frame$distance, breaks = 4, include.lowest = TRUE,labels = c("very Feminine","Feminine", "Masculine", "very masculine" ))
+
+#my_data_frame$categories <- cut(my_data_frame$distance,                         breaks = quantile(my_data_frame$distance, probs = c(0, 0.25, 0.75, 1), na.rm = TRUE),                         labels = c("Feminine Norms", "Medium", "Masculine Norms"),                         include.lowest = TRUE)
+```
+
+### Distance aux normes et satisfaction
+
+```{r}
+library(MASS)
+my_data_frame$satisfaction<-as.factor((my_data_frame$satisfaction))
+# Ordinal logistic regression model fitting
+ordinal_model <- polr(satisfaction ~ distance, data = my_data_frame, Hess = TRUE)
+
+
+# 1. Predict the probabilities for each category
+distance_vals <- seq(min(my_data_frame$distance), max(my_data_frame$distance))
+new_data <- data.frame(distance = distance_vals)
+
+predicted_probs <- predict(ordinal_model, newdata = new_data, type = "probs")
+
+# 3. Convert results to dataframe
+predicted_probs_df <- as.data.frame(predicted_probs)
+predicted_probs_df$distance <- distance_vals
+
+# 4. Transform data into long format for ggplot2
+predicted_probs_long <- pivot_longer(predicted_probs_df, 
+                                     cols = -distance, 
+                                     names_to = "satisfaction", 
+                                     values_to = "probabilite")
+
+# 5. Visualize predicted probabilities
+ggplot(predicted_probs_long, aes(x = distance, y = probabilite, color = satisfaction)) +
+  geom_line(size = 1.2) +
+  labs(title = "Probability of satisfaction as a function of deviation from Norms",
+       x = "Distance to the Norm",
+       y = "Probability") +
+  
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+    axis.title.x = element_text(size = 12),
+    axis.title.y = element_text(size = 12)
+  )
+
+
+
+```
+
+La satisfaction est mesurée comme étant la réponse à la question "Vous arrive-t-il d'avoir le sentiment de manquer de temps libre pour faire tout ce dont vous avez envie ?"
+
+Ce graphique semble indiquer que la satisfaction en termes de temps libre croît avec la distance à sa norme de genre.
+
+Cet effet est-il vérifié pour les différents niveaux de revenus et le sexe biologique?
+
+```{r}
+# Graph with only lines and no scatter points
+ggplot(my_data_frame, aes(x = distance, y = as.numeric(satisfaction), color = as.factor(Income))) +
+  geom_smooth(method = "lm", aes(linetype = as.factor(Income)), se = FALSE) + # Regression curves without confidence intervals and different line types                              # Gray scale palette
+  scale_linetype_manual(values = c("Low" = "solid", "Medium" = "dashed", "High" = "twodash")) +  # Line types: solid, dashed, and twodash for the 3rd
+  labs(
+    title = "Interaction between Distance to the Norm and Income Groups",
+    x = "Distance to the Norm (z-score)",
+    y = "Satisfaction (ordinal)",
+    color = "Income (grouped)",
+    linetype = "Line Type"
+  ) +
+  theme_minimal() +                                                      # Minimalist theme
+  theme(
+    text = element_text(size = 12),                                       # Text size
+    panel.grid = element_blank(),                                          # Remove gridlines
+    panel.border = element_blank(),                                        # Remove borders around the plot
+    plot.background = element_blank(),                                     # Remove gray background
+    legend.position = "top",                                              # Place legend at the top
+    axis.title = element_text(color = "black"),                            # Axis titles in black
+    axis.text = element_text(color = "black")                              # Axis text in black
+  )
+```
+
+L'effet semble s'inverser pour les bas revenus, s'écarter de la norme s'accompagne d'une baisse de la satisfaction ressentie.
+
+Qu'en est-il si on regarde ces effets par sexe?
+
+```{r}
+base_femmes <- my_data_frame %>%
+  filter(Sex == "Women")
+
+# Creating a table without NA
+femmes_categories <- base_femmes %>%
+  tbl_summary(
+    include = c(Income, LNAIS, Couple,satisfaction, Health, age_group),
+    by = categories,
+    statistic = ~ "{p}%",
+    percent = "row",
+    missing = "no"  
+  ) %>%
+  add_p()
+femmes_categories
+
+
+
+base_hommes <- my_data_frame %>%
+  filter(Sex == "Men")
+
+
+hommes_categories <- base_hommes %>%
+  tbl_summary(
+    include = c(Income, LNAIS, Couple, satisfaction, Health, age_group),
+    by = categories,
+    statistic = ~ "{p}%",
+    percent = "row",
+    missing = "no"  
+  ) %>%
+  add_p()
+hommes_categories
+
+# Fit ordinal logistic regression model including SEX
+ordinal_model2 <- polr(satisfaction ~ distance * Sex, data = my_data_frame, Hess = TRUE)
+
+# Create a sequence of values for conformity
+conformity_vals <- seq(min(my_data_frame$distance), max(my_data_frame$distance))
+
+# Create a new dataset with all combinations of conformity and SEX
+new_data <- expand.grid(distance = distance_vals, Sex = c("Men", "Women"))
+
+# Predict probabilities for each combination of conformity and SEXE
+predicted_probs <- predict(ordinal_model2, newdata = new_data, type = "probs")
+
+# Convert results to dataframe
+predicted_probs_df <- as.data.frame(predicted_probs)
+predicted_probs_df$distance <- new_data$distance
+predicted_probs_df$Sex <- new_data$Sex
+
+# Correctly name probability columns for satisfaction levels 1, 2 and 3
+colnames(predicted_probs_df)[1:3] <- c("satisfaction_1", "satisfaction_2", "satisfaction_3")
+
+# Transformation to long format for easier viewing with ggplot2
+predicted_probs_long <- pivot_longer(predicted_probs_df, 
+                                     cols = starts_with("satisfaction"),  # Selects columns satisfaction_1, 2 and 3
+                                     names_to = "satisfaction", 
+                                     values_to = "probabilite")
+
+# Modify names for simple labels
+predicted_probs_long$satisfaction <- factor(predicted_probs_long$satisfaction, 
+                                            levels = c("satisfaction_1", "satisfaction_2", "satisfaction_3"),
+                                            labels = c("Low", "Medium", "High"))
+
+# Visualize predicted probabilities for each gender
+ggplot(predicted_probs_long, aes(x = distance, y = probabilite, color = satisfaction, linetype = Sex)) +
+  geom_line(size = 1.2) +
+  labs(title = "Predicted Probabilities of Satisfaction Based on Distance to the Norm",
+       x = "Distance to the Norm",
+       y = "Probability") +
+  scale_color_manual(values = c("#87CEEB", "#4682B4", "#1E90FF")) +  # 
+  scale_linetype_manual(values = c("solid", "dashed")) +  # Differentiates between men and women
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+    axis.title.x = element_text(size = 12),
+    axis.title.y = element_text(size = 12)
+  )
+```
+
+Ce graphique montre des différences significatives entre hommes et femmes, chez les femmes l'éloignement aux normes semble augmenter l'insatisfaction, cet effet n'est pas aussi net chez les hommes.
+
+```{r}
+rego <- MASS::polr(
+  satisfaction ~ Sex + Income + age_group + categories,
+  data = my_data_frame
+)
+
+theme_gtsummary_language("en", decimal.mark = ",")
+rego |> 
+  tbl_regression(
+    exponentiate = TRUE,
+    tidy_fun = broom.helpers::tidy_parameters
+  ) |> 
+  bold_labels() |> 
+  add_global_p(keep = TRUE) |> 
+  as_kable_extra(format = "latex", booktabs = TRUE) |> 
+  kable_styling(latex_options = c("hold_position", "scale_down"), full_width = FALSE)
+rego |> 
+  ggstats::ggcoef_table(
+    exponentiate = TRUE,
+    tidy_fun = broom.helpers::tidy_parameters
+  )
+
+rego |> 
+  broom.helpers::plot_marginal_predictions() |> 
+  patchwork::wrap_plots(ncol = 1) &
+  scale_y_continuous(labels = scales::percent) &
+  coord_flip()
+```
+
+```{r}
+#Contrôle par le temps passé au travail et distance absolue
+
+# Catégorisation par quartiles
+my_data_frame$categories_abs <- cut(my_data_frame$distance_abs,                         breaks = 4, na.rm = TRUE ,                         labels = c("Low Distance", "Medium_low", "Medium_high", "High Distance"),                         include.lowest = TRUE)
+rego3 <- MASS::polr(
+  satisfaction ~ Sex + Income + age_group + categories_abs,
+  data = my_data_frame
+)
+
+theme_gtsummary_language("en", decimal.mark = ",")
+rego3 |> 
+  tbl_regression(
+    exponentiate = TRUE,
+    tidy_fun = broom.helpers::tidy_parameters
+  ) |> 
+  bold_labels() |> 
+  add_global_p(keep = TRUE) |> 
+  as_kable_extra(format = "latex", booktabs = TRUE) |> 
+  kable_styling(latex_options = c("hold_position", "scale_down"), full_width = FALSE)
+rego3 |> 
+  ggstats::ggcoef_table(
+    exponentiate = TRUE,
+    tidy_fun = broom.helpers::tidy_parameters
+  )
+
+rego3 |> 
+  broom.helpers::plot_marginal_predictions() |> 
+  patchwork::wrap_plots(ncol = 1) &
+  scale_y_continuous(labels = scales::percent) &
+  coord_flip()
+```
+
+En utilisant une autre variable proxy de l'utilité: l'état de santé déclaré.
+
+```{r}
+
+#Une autre mesure de l'utilité: l'état de santé déclaré
+
+my_data_frame$Health<-as.factor(my_data_frame$Health)
+rego4 <- MASS::polr(
+  Health ~ Sex + Income + age_group + categories_abs,
+  data = my_data_frame
+)
+
+theme_gtsummary_language("en", decimal.mark = ",")
+rego4 |> 
+  tbl_regression(
+    exponentiate = TRUE,
+    tidy_fun = broom.helpers::tidy_parameters
+  ) |> 
+  bold_labels() |> 
+  add_global_p(keep = TRUE) |> 
+  as_kable_extra(format = "latex", booktabs = TRUE) |> 
+  kable_styling(latex_options = c("hold_position", "scale_down"), full_width = FALSE)
+rego4 |> 
+  ggstats::ggcoef_table(
+    exponentiate = TRUE,
+    tidy_fun = broom.helpers::tidy_parameters
+  )
+
+rego4 |> 
+  broom.helpers::plot_marginal_predictions() |> 
+  patchwork::wrap_plots(ncol = 1) &
+  scale_y_continuous(labels = scales::percent) &
+  coord_flip()
+```
+
+## Indice Alternatif
+
+```{r}
+summary(my_data_frame$Library)
+my_data_frame$SEXE<-as.factor(my_data_frame$SEXE)
+reg_lm<- lm(Sex~ Knitting+ 
+                  Cards_games+  
+                  Gambling+ 
+                  Cooking+ 
+                  DIY+
+                  Vegetable_garden+ 
+                  Ornamental_garden+  
+                  Fishing_hunting+ 
+                  Collection+
+                  Vehicle_custom + 
+                  Making_music +
+                  Diary +
+                  Writing +  
+                  Painting +  
+                  Montage + 
+                  Circus +
+                  Pottery + 
+                  Theater + 
+                  Drawing + 
+                  Dancing +  
+                  Photography +
+                  Genealogy + 
+                  Science +
+                  None +
+                  No_Amateur +
+                  Video_games +
+                  TV +
+                  Radio+
+                  Library+
+                  Museums +  
+                  Internet + 
+                  Concert, data=my_data_frame)
+
+
+
+n <- nrow(my_data_frame)
+
+# Indices pour la division (2/3 pour l'entraînement, 1/3 pour le test)
+train_index <- sample(1:n, size = 2 * n / 3)  # 2/3 des indices pour l'entraînement
+
+# Créer l'ensemble d'entraînement et l'ensemble de test
+train_data <- my_data_frame[train_index, ]  # Enregistrement d'entraînement
+test_data <- my_data_frame[-train_index, ]  # Enregistrement de test
+
+# Vérifier les tailles
+cat("Nombre d'observations dans l'ensemble d'entraînement :", nrow(train_data), "\n")
+cat("Nombre d'observations dans l'ensemble de test :", nrow(test_data), "\n")
+
+
+# Charger les bibliothèques nécessaires
+library(glmnet)
+library(pROC)
+
+# Définir la matrice X pour l'entraînement
+x <- model.matrix(SEXE ~ Knitting + Cards_games + Gambling + Cooking + DIY +
+                  Vegetable_garden + Ornamental_garden + Fishing_hunting + 
+                  Collection + Vehicle_custom + Making_music + Diary + Writing + 
+                  Painting + Montage + Circus + Pottery + Theater + Drawing + 
+                  Dancing + Photography + Genealogy + Science + None + No_Amateur +
+                  Video_games + TV + Radio + Library + Museums + Internet + Concert,
+                  train_data)[, -1]
+
+# Variable cible y pour l'entraînement
+y <- train_data$SEXE
+
+# Ajuster le modèle LASSO avec validation croisée
+cv_lasso <- cv.glmnet(x, y, alpha = 1, family = "binomial")
+best_lambda <- cv_lasso$lambda.min  # Lambda optimal
+
+# Vérifie les coefficients pour le lambda optimal
+print(coef(cv_lasso, s = "lambda.min"))
+print(best_lambda)
+
+# Préparer X_test (même traitement que pour l'entraînement)
+x_test <- model.matrix(SEXE ~ Knitting + Cards_games + Gambling + Cooking + DIY +
+                       Vegetable_garden + Ornamental_garden + Fishing_hunting + 
+                       Collection + Vehicle_custom + Making_music + Diary + Writing + 
+                       Painting + Montage + Circus + Pottery + Theater + Drawing + 
+                       Dancing + Photography + Genealogy + Science + None + No_Amateur +
+                       Video_games + TV + Radio + Library + Museums + Internet + Concert,
+                       test_data)[, -1]
+
+# Prédire les probabilités sur les données de test avec le meilleur lambda
+preds <- predict(cv_lasso, newx = x_test, s = "lambda.min", type = "response")
+
+# Variable cible y_test pour l'ensemble de test
+y_test <- test_data$SEXE
+
+# Calcul de l'AUC avec pROC
+roc_curve <- roc(y_test, preds)
+auc_value <- auc(roc_curve)
+print(paste("AUC:", auc_value))
+
+# Calculer la courbe ROC
+roc_curve <- roc(y_test, preds)
+
+# Afficher la courbe ROC
+plot(roc_curve, main = "Courbe ROC", col = "blue", lwd = 2)
+
+# Optionnel : Ajouter la ligne de base (diagonale)
+abline(a = 0, b = 1, col = "red", lty = 2)
+
+
+# Afficher les coefficients pour le meilleur lambda
+coefficients <- coef(cv_lasso, s = "lambda.min")
+
+# Convertir en data.frame pour une meilleure lisibilité
+coefficients_df <- as.data.frame(as.matrix(coefficients))
+colnames(coefficients_df) <- "Coefficient"
+coefficients_df$Variable <- rownames(coefficients_df)
+
+# Filtrer pour ne garder que les variables avec des coefficients non nuls
+coefficients_non_zero <- coefficients_df[coefficients_df$Coefficient != 0, ]
+
+# Afficher les variables gardées et leurs coefficients
+print(coefficients_non_zero)
+
+
+
+
+
+###CREATION INDICE
+
+# Récupérer les coefficients du modèle pour le meilleur lambda
+coefficients <- coef(cv_lasso, s = "lambda.min")
+
+# Convertir en data.frame et filtrer les variables non nulles
+coefficients_df <- as.data.frame(as.matrix(coefficients))
+colnames(coefficients_df) <- "Coefficient"
+coefficients_df$Variable <- rownames(coefficients_df)
+coefficients_non_zero <- coefficients_df[coefficients_df$Coefficient != 0, ]
+
+# Préparer la matrice X des pratiques pour l'ensemble de test (ou d'entraînement si nécessaire)
+x_test <- model.matrix(SEXE ~ Knitting + Cards_games + Gambling + Cooking + DIY +
+                       Vegetable_garden + Ornamental_garden + Fishing_hunting + 
+                       Collection + Vehicle_custom + Making_music + Diary + Writing + 
+                       Painting + Montage + Circus + Pottery + Theater + Drawing + 
+                       Dancing + Photography + Genealogy + Science + None + No_Amateur +
+                       Video_games + TV + Radio + Library + Museums + Internet + Concert,
+                       test_data)[, -1]  # Assurez-vous d'enlever l'intercept avec [, -1]
+
+# Sélectionner les variables pertinentes
+matched_vars <- intersect(rownames(coefficients_non_zero), colnames(x_test))
+x_test <- x_test[, matched_vars, drop = FALSE]
+coef_vector <- coefficients_non_zero$Coefficient[matched_vars]  # Associer les coefficients
+
+print(paste("Dimension de x_test :", dim(x_test)[1], "x", dim(x_test)[2]))
+print(paste("Longueur de coef_vector :", length(coef_vector)))
+print(paste("Nombre de valeurs NA dans x_test :", sum(is.na(x_test))))
+print(paste("Nombre de valeurs NA dans coef_vector :", sum(is.na(coef_vector))))
+
+print("Variables dans coefficients_non_zero :")
+print(coefficients_non_zero$Variable)
+
+print("Colonnes de x_test :")
+print(colnames(x_test))
+
+
+# Exclure "(Intercept)" des coefficients
+coefficients_filtered <- coefficients_non_zero[coefficients_non_zero$Variable != "(Intercept)", ]
+
+# Aligner les coefficients sur x_test
+coef_vector <- coefficients_filtered$Coefficient[match(colnames(x_test), coefficients_filtered$Variable)]
+
+
+
+# Calcul des scores
+test_data$score <- x_test %*% coef_vector
+
+# Normalisation des scores
+min_score <- min(test_data$score, na.rm = TRUE)
+max_score <- max(test_data$score, na.rm = TRUE)
+
+if (max_score > min_score) {
+  test_data$score_normalise <- (test_data$score - min_score) / (max_score - min_score)
+} else {
+  test_data$score_normalise <- 0
+}
+
+# Visualisation avec ggplot2
+library(ggplot2)
+ggplot(test_data, aes(x = score_normalise, color = SEXE, fill = SEXE)) +
+  geom_density(alpha = 0.4) + 
+  labs(title = "Densité du Score Normalisé", x = "Score Normalisé", y = "Densité") +
+  scale_fill_manual(values = c("blue", "pink")) +
+  scale_color_manual(values = c("blue", "pink")) +
+  theme_minimal()
+
+```
+
+```{r}
+# Préparer la matrice X pour l'ensemble complet (train + test)
+x_full <- model.matrix(SEXE ~ Knitting + Cards_games + Gambling + Cooking + DIY +
+                       Vegetable_garden + Ornamental_garden + Fishing_hunting + 
+                       Collection + Vehicle_custom + Making_music + Diary + Writing + 
+                       Painting + Montage + Circus + Pottery + Theater + Drawing + 
+                       Dancing + Photography + Genealogy + Science + None + No_Amateur +
+                       Video_games + TV + Radio + Library + Museums + Internet + Concert,
+                       my_data_frame)[, -1]  # Exclure l'intercept
+
+# Sélectionner les variables pertinentes (identiques à celles du modèle LASSO)
+matched_vars <- intersect(rownames(coefficients_non_zero), colnames(x_full))
+x_full <- x_full[, matched_vars, drop = FALSE]  # Garder uniquement les variables sélectionnées
+# Aligner les coefficients sur x_full
+coef_vector_full <- coefficients_filtered$Coefficient[match(colnames(x_full), coefficients_filtered$Variable)]
+
+# Calcul des scores pour l'ensemble complet
+my_data_frame$score <- x_full %*% coef_vector_full
+# Normalisation des scores
+min_score_full <- min(my_data_frame$score, na.rm = TRUE)
+max_score_full <- max(my_data_frame$score, na.rm = TRUE)
+
+if (max_score_full > min_score_full) {
+  my_data_frame$score_normalise <- (my_data_frame$score - min_score_full) / (max_score_full - min_score_full)
+} else {
+  my_data_frame$score_normalise <- 0
+}
+# Visualisation du score normalisé pour l'ensemble complet avec ggplot2
+library(ggplot2)
+ggplot(my_data_frame, aes(x = score_normalise, color = SEXE, fill = SEXE)) +
+  geom_density(alpha = 0.4) + 
+  labs(title = "Densité du Score Normalisé (Ensemble Complet)", x = "Score Normalisé", y = "Densité") +
+  scale_fill_manual(values = c("blue", "pink")) +
+  scale_color_manual(values = c("blue", "pink")) +
+  theme_minimal()
+
+```
+
+```{r}
+# Calculer la corrélation entre indice_normalise et score_normalise
+correlation_value <- cor(my_data_frame$identity, my_data_frame$score_normalise, use = "complete.obs")
+print(paste("Corrélation entre indice_normalise et score_normalise :", correlation_value))
+
+
+# Visualiser la relation entre indice_normalise et score_normalise
+library(ggplot2)
+ggplot(my_data_frame, aes(x = identity, y = score_normalise)) +
+  geom_point(alpha = 0.5) +
+  labs(title = "Relation entre indice_normalise et score_normalise", 
+       x = "Indice Normalisé", 
+       y = "Score Normalisé") +
+  theme_minimal() +
+  geom_smooth(method = "lm", col = "red", se = FALSE)  # Ajouter une droite de régression linéaire
+
+
+```
+
+```{r}
+# Create a data frame to store the results
+result_table_score <- data.frame(Activity = character(0), Accuracy = numeric(0))
+
+for (activity in cultural_activities) {
+  # Perform a Probit regression for the current cultural activity
+  model_formula <- as.formula(paste(activity, "~ score_normalise"))
+  model <- glm(model_formula, data = my_data_frame, family = binomial(link = "probit"))
+ 
+  # Calculate predictions
+  predicted <- ifelse(predict(model, type = "response") >= 0.5, 1, 0)
+ 
+  # Calculate the accuracy
+  correct_predictions <- sum(predicted == my_data_frame[[activity]])
+  total_predictions <- nrow(my_data_frame)
+  accuracy <- (correct_predictions / total_predictions) * 100
+ 
+  # Add the result to the data frame
+  result_table_score <- rbind(result_table, data.frame(Activity = activity, Accuracy = accuracy))
+}
+result_table_score
+```
+
+```{r}
+my_data_frame$score_scale <- cut(
+  my_data_frame$score_normalise,
+  breaks = 7,  # Automatically divide into 7 slices
+  labels = c("Very Masculine", "1", "2", "3", "4", "5", "Very Feminine"), 
+  include.lowest = TRUE  
+)
+table1 <-
+  my_data_frame |> 
+  tbl_summary(include = c(score_scale),
+  by=Sex ,)|> 
+    add_p()
+table1
+```
+
+rappel des données de Trachman:
+
+La majorité des femmes se disent plutôt féminines et la majorité des hommes plutôt masculins. Ceci suggère un sentiment de "normalité" du point de vue du genre
+
+Cependant, l'intensité de ces positionnements diffère selon le sexe. Un tiers des hommes se disent très masculins, tandis que moins d'un quart des femmes se disent très féminines
+
+De plus, un peu plus de 9 % des femmes se considèrent « pas très féminines », contre seulement 2 % des hommes qui se disent « pas très masculins »
+
+## Score-Distance à la norme
+
+```{r}
+# Calculer la moyenne des scores normalisés pour chaque genre
+mean_scores_by_gender <- my_data_frame %>%
+  group_by(SEXE) %>%
+  summarise(mean_score_by_gender = mean(score_normalise, na.rm = TRUE))
+
+# Afficher les moyennes par genre
+print(mean_scores_by_gender)
+# Fusionner les données avec la moyenne par genre
+my_data_frame <- my_data_frame %>%
+  left_join(mean_scores_by_gender, by = "SEXE")
+
+# Calculer la distance entre le score normalisé de chaque individu et la moyenne de son genre
+my_data_frame$distance_to_mean_gender <- abs(my_data_frame$score_normalise - my_data_frame$mean_score_by_gender)
+
+
+ggplot(my_data_frame, aes(x = distance_to_mean_gender, color = Sex, fill = Sex)) +
+  geom_density(alpha = 0.4) +
+  labs(title = "Density of Distance to the Norm, by Sex", 
+       x = "Distance to the Norm (Z-score)", y = "Density") +
+  scale_fill_manual(values = c("blue", "pink")) +
+  scale_color_manual(values = c("blue", "pink")) +
+  theme_minimal()
+
+```
+
+```{r}
+library(MASS)
+library(tidyr)
+library(ggplot2)
+
+# Assurez-vous que 'distance_to_mean_gender' est bien numérique
+my_data_frame$distance_to_mean_gender <- as.numeric(my_data_frame$distance_to_mean_gender)
+
+# Vérification du type de la variable
+print(paste("Type de distance_to_mean_gender :", class(my_data_frame$distance_to_mean_gender)))
+
+# Ordinal logistic regression model fitting
+my_data_frame$satisfaction <- as.factor(my_data_frame$satisfaction)  # Assurez-vous que satisfaction est bien un facteur ordinal
+
+# Ajuster le modèle
+ordinal_model <- polr(satisfaction ~ distance_to_mean_gender, data = my_data_frame, Hess = TRUE)
+
+# 1. Créer les valeurs de distance pour la prédiction
+distance_vals <- seq(min(my_data_frame$distance_to_mean_gender, na.rm = TRUE), 
+                     max(my_data_frame$distance_to_mean_gender, na.rm = TRUE), length.out = 100)
+
+# 2. Créer un nouveau data frame pour les prédictions
+new_data <- data.frame(distance_to_mean_gender = distance_vals)
+
+# 3. Prédire les probabilités pour chaque catégorie
+predicted_probs <- predict(ordinal_model, newdata = new_data, type = "probs")
+
+# 4. Convertir les résultats en data frame
+predicted_probs_df <- as.data.frame(predicted_probs)
+predicted_probs_df$distance_to_mean_gender <- distance_vals
+
+# 5. Transformer les données en format long pour ggplot2
+predicted_probs_long <- pivot_longer(predicted_probs_df, 
+                                     cols = -distance_to_mean_gender, 
+                                     names_to = "satisfaction", 
+                                     values_to = "probabilite")
+
+# 6. Visualiser les probabilités prédites
+ggplot(predicted_probs_long, aes(x = distance_to_mean_gender, y = probabilite, color = satisfaction)) +
+  geom_line(size = 1.2) +
+  labs(title = "Probability of satisfaction as a function of deviation from Norms",
+       x = "Distance to the Norm",
+       y = "Probability") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+    axis.title.x = element_text(size = 12),
+    axis.title.y = element_text(size = 12)
+  )
+
+
+```
+
+## LASSO 2
+
+```{r}
+n_2 <- nrow(my_data_frame)
+
+# Indices pour la division (2/3 pour l'entraînement, 1/3 pour le test)
+train_index <- sample(1:n_2, size = 2 * n_2 / 3)  # 2/3 des indices pour l'entraînement
+
+# Créer l'ensemble d'entraînement et l'ensemble de test
+train_data <- my_data_frame[train_index, ]  # Enregistrement d'entraînement
+test_data <- my_data_frame[-train_index, ]  # Enregistrement de test
+
+# Vérifier les tailles
+cat("Nombre d'observations dans l'ensemble d'entraînement :", nrow(train_data), "\n")
+cat("Nombre d'observations dans l'ensemble de test :", nrow(test_data), "\n")
+
+
+# Charger les bibliothèques nécessaires
+library(glmnet)
+library(pROC)
+
+# Définir la matrice X pour l'entraînement
+x_2 <- model.matrix(SEXE ~ Knitting + Cards_games + Gambling + Cooking + DIY +
+                  Vegetable_garden + Fishing_hunting + 
+                  Collection + Vehicle_custom + Making_music + Diary + Writing + 
+                  Painting + Montage +  Pottery + Theater + Drawing + 
+                  Dancing + Photography + Genealogy + Science + None + 
+                  Video_games + Library +  Concert,
+                  train_data)[, -1]
+
+# Variable cible y pour l'entraînement
+y_2 <- train_data$SEXE
+
+# Ajuster le modèle LASSO avec validation croisée
+cv_lasso_2 <- cv.glmnet(x_2, y_2, alpha = 1, family = "binomial")
+best_lambda_2 <- cv_lasso_2$lambda.min  # Lambda optimal
+
+# Vérifie les coefficients pour le lambda optimal
+print(coef(cv_lasso_2, s = "lambda.min"))
+print(best_lambda_2)
+
+# Préparer X_test (même traitement que pour l'entraînement)
+x_test_2 <- model.matrix(SEXE ~ Knitting + Cards_games + Gambling + Cooking + DIY +
+                  Vegetable_garden + Fishing_hunting + 
+                  Collection + Vehicle_custom + Making_music + Diary + Writing + 
+                  Painting + Montage +  Pottery + Theater + Drawing + 
+                  Dancing + Photography + Genealogy + Science + None + 
+                  Video_games + Library +  Concert,
+                       test_data)[, -1]
+
+# Prédire les probabilités sur les données de test avec le meilleur lambda
+preds_2 <- predict(cv_lasso_2, newx = x_test_2, s = "lambda.min", type = "response")
+
+# Variable cible y_test pour l'ensemble de test
+y_test_2 <- test_data$SEXE
+
+# Calcul de l'AUC avec pROC
+roc_curve_2 <- roc(y_test_2, preds_2)
+auc_value_2 <- auc(roc_curve_2)
+print(paste("AUC:", auc_value_2))
+
+# Calculer la courbe ROC
+roc_curve_2 <- roc(y_test_2, preds_2)
+
+# Afficher la courbe ROC
+plot(roc_curve_2, main = "Courbe ROC 2", col = "blue", lwd = 2)
+
+# Optionnel : Ajouter la ligne de base (diagonale)
+abline(a = 0, b = 1, col = "red", lty = 2)
+
+
+# Afficher les coefficients pour le meilleur lambda
+coefficients_2 <- coef(cv_lasso_2, s = "lambda.min")
+
+# Convertir en data.frame pour une meilleure lisibilité
+coefficients_df_2 <- as.data.frame(as.matrix(coefficients_2))
+colnames(coefficients_df_2) <- "Coefficient"
+coefficients_df_2$Variable <- rownames(coefficients_df_2)
+
+# Filtrer pour ne garder que les variables avec des coefficients non nuls
+coefficients_non_zero_2 <- coefficients_df_2[coefficients_df_2$Coefficient != 0, ]
+
+# Afficher les variables gardées et leurs coefficients
+print(coefficients_non_zero_2)
+
+
+
+
+
+###CREATION INDICE
+
+# Récupérer les coefficients du modèle pour le meilleur lambda
+coefficients_2 <- coef(cv_lasso_2, s = "lambda.min")
+
+# Convertir en data.frame et filtrer les variables non nulles
+coefficients_df_2 <- as.data.frame(as.matrix(coefficients_2))
+colnames(coefficients_df_2) <- "Coefficient"
+coefficients_df_2$Variable <- rownames(coefficients_df_2)
+coefficients_non_zero_2 <- coefficients_df_2[coefficients_df_2$Coefficient != 0, ]
+
+# Préparer la matrice X des pratiques pour l'ensemble de test (ou d'entraînement si nécessaire)
+x_test_2 <- model.matrix(SEXE ~ Knitting + Cards_games + Gambling + Cooking + DIY +
+                  Vegetable_garden + Fishing_hunting + 
+                  Collection + Vehicle_custom + Making_music + Diary + Writing + 
+                  Painting + Montage +  Pottery + Theater + Drawing + 
+                  Dancing + Photography + Genealogy + Science + None + 
+                  Video_games + Library +  Concert,
+                       test_data)[, -1]  # Assurez-vous d'enlever l'intercept avec [, -1]
+
+# Sélectionner les variables pertinentes
+matched_vars_2 <- intersect(rownames(coefficients_non_zero_2), colnames(x_test_2))
+x_test_2 <- x_test_2[, matched_vars_2, drop = FALSE]
+coef_vector_2 <- coefficients_non_zero_2$Coefficient[matched_vars_2]  # Associer les coefficients
+
+#print(paste("Dimension de x_test :", dim(x_test)[1], "x", dim(x_test)[2]))
+#print(paste("Longueur de coef_vector :", length(coef_vector)))
+#print(paste("Nombre de valeurs NA dans x_test :", sum(is.na(x_test))))
+#print(paste("Nombre de valeurs NA dans coef_vector :", sum(is.na(coef_vector))))
+
+#print("Variables dans coefficients_non_zero :")
+#print(coefficients_non_zero$Variable)
+
+#print("Colonnes de x_test :")
+#print(colnames(x_test))
+
+
+# Exclure "(Intercept)" des coefficients
+coefficients_filtered_2 <- coefficients_non_zero_2[coefficients_non_zero_2$Variable != "(Intercept)", ]
+
+# Aligner les coefficients sur x_test
+coef_vector_2 <- coefficients_filtered_2$Coefficient[match(colnames(x_test_2), coefficients_filtered_2$Variable)]
+
+
+
+# Calcul des scores
+test_data$score_2 <- x_test_2 %*% coef_vector_2
+
+# Normalisation des scores
+min_score_2 <- min(test_data$score_2, na.rm = TRUE)
+max_score_2 <- max(test_data$score_2, na.rm = TRUE)
+
+if (max_score_2 > min_score_2) {
+  test_data$score_normalise_2 <- (test_data$score_2 - min_score_2) / (max_score_2 - min_score_2)
+} else {
+  test_data$score_normalise_2 <- 0
+}
+
+# Visualisation avec ggplot2
+library(ggplot2)
+ggplot(test_data, aes(x = score_normalise_2, color = SEXE, fill = SEXE)) +
+  geom_density(alpha = 0.4) + 
+  labs(title = "Densité du Score Normalisé 2", x = "Score Normalisé 2", y = "Densité") +
+  scale_fill_manual(values = c("blue", "pink")) +
+  scale_color_manual(values = c("blue", "pink")) +
+  theme_minimal()
+
+# Préparer la matrice X pour l'ensemble complet (train + test)
+x_full_2 <- model.matrix(SEXE ~ Knitting + Cards_games + Gambling + Cooking + DIY +
+                  Vegetable_garden + Fishing_hunting + 
+                  Collection + Vehicle_custom + Making_music + Diary + Writing + 
+                  Painting + Montage +  Pottery + Theater + Drawing + 
+                  Dancing + Photography + Genealogy + Science + None + 
+                  Video_games + Library +  Concert,
+                       my_data_frame)[, -1]  # Exclure l'intercept
+
+# Sélectionner les variables pertinentes (identiques à celles du modèle LASSO)
+matched_vars_2 <- intersect(rownames(coefficients_non_zero_2), colnames(x_full_2))
+x_full_2 <- x_full_2[, matched_vars_2, drop = FALSE]  # Garder uniquement les variables sélectionnées
+# Aligner les coefficients sur x_full
+coef_vector_full_2 <- coefficients_filtered_2$Coefficient[match(colnames(x_full_2), coefficients_filtered_2$Variable)]
+
+# Calcul des scores pour l'ensemble complet
+my_data_frame$score_2 <- x_full_2 %*% coef_vector_full_2
+# Normalisation des scores
+min_score_full_2 <- min(my_data_frame$score_2, na.rm = TRUE)
+max_score_full_2 <- max(my_data_frame$score_2, na.rm = TRUE)
+
+if (max_score_full_2 > min_score_full_2) {
+  my_data_frame$score_normalise_2 <- (my_data_frame$score_2 - min_score_full_2) / (max_score_full_2 - min_score_full_2)
+} else {
+  my_data_frame$score_normalise_2 <- 0
+}
+# Visualisation du score normalisé pour l'ensemble complet avec ggplot2
+library(ggplot2)
+ggplot(my_data_frame, aes(x = score_normalise_2, color = SEXE, fill = SEXE)) +
+  geom_density(alpha = 0.4) + 
+  labs(title = "Densité du Score Normalisé 2(Ensemble Complet)", x = "Score Normalisé", y = "Densité") +
+  scale_fill_manual(values = c("blue", "pink")) +
+  scale_color_manual(values = c("blue", "pink")) +
+  theme_minimal()
+
+
+# Calculer la corrélation entre indice_normalise et score_normalise
+correlation_value_2 <- cor(my_data_frame$identity, my_data_frame$score_normalise_2, use = "complete.obs")
+print(paste("Corrélation entre indice_normalise et score_normalise 2:", correlation_value))
+
+
+# Visualiser la relation entre indice_normalise et score_normalise
+library(ggplot2)
+ggplot(my_data_frame, aes(x = identity, y = score_normalise_2)) +
+  geom_point(alpha = 0.5) +
+  labs(title = "Relation entre indice_normalise et score_normalise 2", 
+       x = "Indice Normalisé", 
+       y = "Score Normalisé") +
+  theme_minimal() +
+  geom_smooth(method = "lm", col = "red", se = FALSE)  # Ajouter une droite de régression linéaire
+
+
+# Créer un data frame pour stocker les résultats
+result_table_score_2 <- data.frame(Activity_2 = character(0), Accuracy_2 = numeric(0))
+
+cultural_activities_2 <- c(
+   "Knitting", "Cards_games", "Gambling", "Cooking", "DIY",
+   "Vegetable_garden", "Fishing_hunting", "Collection", "Vehicle_custom",
+   "Making_music", "Diary", "Writing", "Painting", "Montage",
+   "Pottery", "Theater", "Drawing", "Dancing", "Photography",
+   "Genealogy", "Science", "None", "Video_games", "Library", "Concert"
+)
+
+for (activity_2 in cultural_activities_2) {
+  # Effectuer une régression Probit pour l'activité culturelle actuelle
+  model_formula_2 <- as.formula(paste(activity_2, "~ score_normalise_2"))
+  model_2 <- glm(model_formula_2, data = my_data_frame, family = binomial(link = "probit"))
+ 
+  # Calculer les prédictions
+  predicted_2 <- ifelse(predict(model_2, type = "response") >= 0.5, 1, 0)
+ 
+  # Calculer la précision
+  correct_predictions_2 <- sum(predicted_2 == my_data_frame[[activity_2]])
+  total_predictions_2 <- nrow(my_data_frame)
+  accuracy_2 <- (correct_predictions_2 / total_predictions_2) * 100
+ 
+  # Ajouter le résultat au data frame
+  result_table_score_2 <- rbind(result_table_score_2, data.frame(Activity_2 = activity_2, Accuracy_2 = accuracy_2))
+}
+
+# Afficher le tableau des résultats
+print(result_table_score_2)
+
+```
+
+```{r}
+options(repos = c(CRAN = "https://cran.rstudio.com/"))
+# Charger les bibliothèques
+library(MASS)
+library(ggplot2)
+library(tidyr)
+library(ggeffects)
+
+# Vérifier et convertir la variable dépendante en facteur ordonné
+my_data_frame$satisfaction <- as.ordered(my_data_frame$satisfaction)
+
+# Ajuster le modèle avec la méthode logistique
+model_ordinal <- polr(satisfaction ~ distance_to_mean_gender, 
+                       data = my_data_frame, method = "logistic")
+
+# Résumé du modèle
+summary(model_ordinal)
+
+library(lmtest)
+
+# Calculer les p-values
+coeftest(model_ordinal)
+
+# Calculer les odds ratios
+exp(coef(model_ordinal))
+# Générer une séquence de valeurs pour distance_to_mean_gender_2
+new_data <- data.frame(distance_to_mean_gender = seq(
+  min(my_data_frame$distance_to_mean_gender, na.rm = TRUE),
+  max(my_data_frame$distance_to_mean_gender, na.rm = TRUE),
+  length.out = 100
+))
+
+# Vérifier que les types sont corrects
+str(new_data)
+
+# Prédictions des probabilités
+pred_probs <- predict(model_ordinal, newdata = new_data, type = "probs")
+
+# Transformer les probabilités en data.frame
+pred_probs_df <- as.data.frame(pred_probs)
+
+# Ajouter la variable explicative
+pred_probs_df$distance_to_mean_gender <- new_data$distance_to_mean_gender
+
+# Restructurer les données pour ggplot
+pred_probs_long <- pivot_longer(pred_probs_df, cols = -distance_to_mean_gender, 
+                                names_to = "Satisfaction", values_to = "Probability")
+
+# Visualiser les effets
+ggplot(pred_probs_long, aes(x = distance_to_mean_gender, y = Probability, color = Satisfaction)) +
+  geom_line(size = 1) +
+  labs(title = "Probabilités prédites de satisfaction en fonction de la distance au score moyen",
+       x = "Distance au score moyen de genre",
+       y = "Probabilité prédite") +
+  theme_minimal()
+# Calcul des effets marginaux
+effects_plot <- ggpredict(model_ordinal, terms = "distance_to_mean_gender")
+
+# Visualisation des effets marginaux
+plot(effects_plot) + 
+  ggtitle("Effet marginal de distance_to_mean_gender sur la satisfaction")
+
+
+# Vérifier et forcer la variable explicative à être numérique
+my_data_frame$distance_to_mean_gender <- as.numeric(my_data_frame$distance_to_mean_gender) 
+```
+
+```{r}
+# Charger les bibliothèques nécessaires
+library(MASS)
+library(ggplot2)
+library(tidyr)
+library(ggeffects)
+library(lmtest)
+
+# Vérifier et convertir la variable dépendante en facteur ordonné
+my_data_frame$satisfaction <- as.ordered(my_data_frame$satisfaction)
+
+# Vérifier et forcer la variable explicative à être numérique
+my_data_frame$distance_to_mean_gender <- as.numeric(my_data_frame$distance_to_mean_gender)
+
+# Ajuster le modèle avec la méthode logistique, incluant l'interaction avec Sex
+model_ordinal_sex <- polr(satisfaction ~ distance_to_mean_gender * Sex, 
+                          data = my_data_frame, method = "logistic")
+
+# Résumé du modèle
+summary(model_ordinal_sex)
+
+# Calculer les p-values
+coeftest(model_ordinal_sex)
+
+# Calculer les odds ratios
+exp(coef(model_ordinal_sex))
+
+# Générer une séquence de valeurs pour distance_to_mean_gender
+new_data_sex_men <- data.frame(distance_to_mean_gender = seq(
+  min(my_data_frame$distance_to_mean_gender, na.rm = TRUE),
+  max(my_data_frame$distance_to_mean_gender, na.rm = TRUE),
+  length.out = 100
+))
+new_data_sex_men$Sex <- "Men"  # Spécifier que c'est pour les hommes
+
+new_data_sex_women <- data.frame(distance_to_mean_gender = seq(
+  min(my_data_frame$distance_to_mean_gender, na.rm = TRUE),
+  max(my_data_frame$distance_to_mean_gender, na.rm = TRUE),
+  length.out = 100
+))
+new_data_sex_women$Sex <- "Women"  # Spécifier que c'est pour les femmes
+
+# Combiner les données pour hommes et femmes
+new_data_sex <- rbind(new_data_sex_men, new_data_sex_women)
+
+# Prédictions des probabilités pour chaque catégorie de satisfaction
+pred_probs_sex <- predict(model_ordinal_sex, newdata = new_data_sex, type = "probs")
+
+# Transformer les probabilités en data.frame
+pred_probs_df_sex <- as.data.frame(pred_probs_sex)
+
+# Ajouter la variable explicative (distance_to_mean_gender) et Sex
+pred_probs_df_sex$distance_to_mean_gender <- new_data_sex$distance_to_mean_gender
+pred_probs_df_sex$Sex <- new_data_sex$Sex
+
+# Restructurer les données pour ggplot
+pred_probs_long_sex <- pivot_longer(pred_probs_df_sex, cols = -c(distance_to_mean_gender, Sex), 
+                                    names_to = "Satisfaction", values_to = "Probability")
+
+# Visualiser les effets selon le sexe
+ggplot(pred_probs_long_sex, aes(x = distance_to_mean_gender, y = Probability, color = Satisfaction, linetype = Sex)) +
+  geom_line(size = 1) +
+  labs(title = "Probabilités prédites de satisfaction en fonction de la distance au score moyen, par sexe",
+       x = "Distance au score moyen de genre",
+       y = "Probabilité prédite") +
+  theme_minimal()
+
+# Calcul des effets marginaux pour chaque sexe
+effects_plot_sex <- ggpredict(model_ordinal_sex, terms = c("distance_to_mean_gender", "Sex"))
+
+# Visualisation des effets marginaux par sexe
+plot(effects_plot_sex) + 
+  ggtitle("Effet marginal de distance_to_mean_gender sur la satisfaction, par sexe") +
+  theme_minimal()
+
+
+```
+
+```{r}
+# Charger les bibliothèques nécessaires
+library(MASS)
+library(ggplot2)
+library(tidyr)
+library(ggeffects)
+library(lmtest)
+
+# Vérifier et convertir la variable dépendante en facteur ordonné
+my_data_frame$satisfaction <- as.ordered(my_data_frame$satisfaction)
+
+# Vérifier et forcer la variable explicative à être numérique
+my_data_frame$distance_abs <- as.numeric(my_data_frame$distance_abs)
+
+# Ajuster le modèle avec la méthode logistique, incluant l'interaction avec Sex
+model_ordinal_sex_abs <- polr(satisfaction ~ distance_abs * Sex, 
+                              data = my_data_frame, method = "logistic")
+
+# Résumé du modèle
+summary(model_ordinal_sex_abs)
+
+# Calculer les p-values
+coeftest(model_ordinal_sex_abs)
+
+# Calculer les odds ratios
+exp(coef(model_ordinal_sex_abs))
+
+# Générer une séquence de valeurs pour distance_abs
+new_data_sex_men_abs <- data.frame(distance_abs = seq(
+  min(my_data_frame$distance_abs, na.rm = TRUE),
+  max(my_data_frame$distance_abs, na.rm = TRUE),
+  length.out = 100
+))
+new_data_sex_men_abs$Sex <- "Men"  # Spécifier que c'est pour les hommes
+
+new_data_sex_women_abs <- data.frame(distance_abs = seq(
+  min(my_data_frame$distance_abs, na.rm = TRUE),
+  max(my_data_frame$distance_abs, na.rm = TRUE),
+  length.out = 100
+))
+new_data_sex_women_abs$Sex <- "Women"  # Spécifier que c'est pour les femmes
+
+# Combiner les données pour hommes et femmes
+new_data_sex_abs <- rbind(new_data_sex_men_abs, new_data_sex_women_abs)
+
+# Prédictions des probabilités pour chaque catégorie de satisfaction
+pred_probs_sex_abs <- predict(model_ordinal_sex_abs, newdata = new_data_sex_abs, type = "probs")
+
+# Transformer les probabilités en data.frame
+pred_probs_df_sex_abs <- as.data.frame(pred_probs_sex_abs)
+
+# Ajouter la variable explicative (distance_abs) et Sex
+pred_probs_df_sex_abs$distance_abs <- new_data_sex_abs$distance_abs
+pred_probs_df_sex_abs$Sex <- new_data_sex_abs$Sex
+
+# Restructurer les données pour ggplot
+pred_probs_long_sex_abs <- pivot_longer(pred_probs_df_sex_abs, cols = -c(distance_abs, Sex), 
+                                         names_to = "Satisfaction", values_to = "Probability")
+
+# Visualiser les effets selon le sexe
+ggplot(pred_probs_long_sex_abs, aes(x = distance_abs, y = Probability, color = Satisfaction, linetype = Sex)) +
+  geom_line(size = 1) +
+  labs(title = "Probabilités prédites de satisfaction en fonction de la distance absolue au score moyen, par sexe",
+       x = "Distance absolue au score moyen de genre",
+       y = "Probabilité prédite") +
+  theme_minimal()
+
+# Calcul des effets marginaux pour chaque sexe
+effects_plot_sex_abs <- ggpredict(model_ordinal_sex_abs, terms = c("distance_abs", "Sex"))
+
+# Visualisation des effets marginaux par sexe
+plot(effects_plot_sex_abs) + 
+  ggtitle("Effet marginal de distance_abs sur la satisfaction, par sexe") +
+  theme_minimal()
+
+```
+
+```{r}
+# Charger les bibliothèques nécessaires
+library(MASS)
+library(ggplot2)
+library(tidyr)
+library(ggeffects)
+library(lmtest)
+
+# Vérifier et convertir la variable dépendante en facteur ordonné
+my_data_frame$Health <- as.ordered(my_data_frame$Health)
+
+# Vérifier et forcer la variable explicative à être numérique
+my_data_frame$distance_to_mean_gender <- as.numeric(my_data_frame$distance_to_mean_gender)
+
+# Ajuster le modèle avec la méthode logistique, incluant l'interaction avec Sex
+model_ordinal_sex <- polr(Health ~ distance_to_mean_gender * Sex, 
+                          data = my_data_frame, method = "logistic")
+
+# Résumé du modèle
+summary(model_ordinal_sex)
+
+# Calculer les p-values
+coeftest(model_ordinal_sex)
+
+# Calculer les odds ratios
+exp(coef(model_ordinal_sex))
+
+# Générer une séquence de valeurs pour distance_to_mean_gender
+new_data_sex_men <- data.frame(distance_to_mean_gender = seq(
+  min(my_data_frame$distance_to_mean_gender, na.rm = TRUE),
+  max(my_data_frame$distance_to_mean_gender, na.rm = TRUE),
+  length.out = 100
+))
+new_data_sex_men$Sex <- "Men"  # Spécifier que c'est pour les hommes
+
+new_data_sex_women <- data.frame(distance_to_mean_gender = seq(
+  min(my_data_frame$distance_to_mean_gender, na.rm = TRUE),
+  max(my_data_frame$distance_to_mean_gender, na.rm = TRUE),
+  length.out = 100
+))
+new_data_sex_women$Sex <- "Women"  # Spécifier que c'est pour les femmes
+
+# Combiner les données pour hommes et femmes
+new_data_sex <- rbind(new_data_sex_men, new_data_sex_women)
+
+# Prédictions des probabilités pour chaque catégorie de satisfaction
+pred_probs_sex <- predict(model_ordinal_sex, newdata = new_data_sex, type = "probs")
+
+# Transformer les probabilités en data.frame
+pred_probs_df_sex <- as.data.frame(pred_probs_sex)
+
+# Ajouter la variable explicative (distance_to_mean_gender) et Sex
+pred_probs_df_sex$distance_to_mean_gender <- new_data_sex$distance_to_mean_gender
+pred_probs_df_sex$Sex <- new_data_sex$Sex
+
+# Restructurer les données pour ggplot
+pred_probs_long_sex <- pivot_longer(pred_probs_df_sex, cols = -c(distance_to_mean_gender, Sex), 
+                                    names_to = "Health", values_to = "Probability")
+
+# Visualiser les effets selon le sexe
+ggplot(pred_probs_long_sex, aes(x = distance_to_mean_gender, y = Probability, color = Health, linetype = Sex)) +
+  geom_line(size = 1) +
+  labs(title = "Probabilités prédites de santé en fonction de la distance au score moyen, par sexe",
+       x = "Distance au score moyen de genre",
+       y = "Probabilité prédite") +
+  theme_minimal()
+
+# Calcul des effets marginaux pour chaque sexe
+effects_plot_sex <- ggpredict(model_ordinal_sex, terms = c("distance_to_mean_gender", "Sex"))
+
+# Visualisation des effets marginaux par sexe
+plot(effects_plot_sex) + 
+  ggtitle("Effet marginal de distance_to_mean_gender sur la satisfaction, par sexe") +
+  theme_minimal()
+```
+
+```{r}
+
+ggplot(my_data_frame, aes(x = distance_to_mean_gender, fill = satisfaction)) +
+  geom_bar(position = "fill") +
+  labs(title = "Répartition de la satisfaction par distance_to_mean_gender",
+       x = "Distance au score moyen de genre",
+       y = "Proportion") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set3")
+
+ggplot(my_data_frame, aes(x = satisfaction, y = distance_to_mean_gender, fill = satisfaction)) +
+  geom_violin(trim = FALSE) +
+  labs(title = "Distribution de distance_to_mean_gender par satisfaction",
+       x = "Satisfaction",
+       y = "Distance au score moyen de genre") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set3")
+
+```
+
+```{r}
+# Calculer la distance absolue par rapport à la moyenne et à l'écart-type pour chaque sexe
+mean_gender_score <- tapply(my_data_frame$distance_to_mean_gender, my_data_frame$Sex, mean)
+sd_gender <- tapply(my_data_frame$distance_to_mean_gender, my_data_frame$Sex, sd)
+
+# Calculer la distance absolue par rapport à la moyenne et l'écart-type
+my_data_frame$distance_abs_score <- abs((my_data_frame$distance_to_mean_gender - mean_gender_score[my_data_frame$Sex]) / sd_gender[my_data_frame$Sex])
+
+# Créer une colonne norm_status pour identifier les individus "hors normes" (distance_abs_score > 2 par exemple)
+my_data_frame$norm_status <- ifelse(my_data_frame$distance_abs_score > 2, "Hors normes", "Normaux")
+
+# Vérifier que la colonne a bien été ajoutée
+head(my_data_frame)
+
+# Calculer la proportion de "hors normes"
+total_individuals <- nrow(my_data_frame)
+hors_normes <- sum(my_data_frame$norm_status == "Hors normes")
+
+proportion_hors_normes <- hors_normes / total_individuals
+proportion_hors_normes
+
+
+# Calculer la répartition des individus "hors normes" par niveau de satisfaction
+table_satisfaction_hors_normes <- table(my_data_frame$norm_status, my_data_frame$satisfaction)
+
+# Convertir en pourcentage
+table_satisfaction_hors_normes_percent <- prop.table(table_satisfaction_hors_normes, 1) * 100
+table_satisfaction_hors_normes_percent
+
+# Visualisation de la proportion d'individus "hors normes"
+ggplot(data = data.frame(Status = c("Normaux", "Hors normes"), 
+                         Proportion = c(1 - proportion_hors_normes, proportion_hors_normes)),
+       aes(x = Status, y = Proportion, fill = Status)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  geom_text(aes(label = scales::percent(Proportion)), vjust = -0.5, size = 5) +
+  scale_fill_manual(values = c("blue", "red")) +
+  labs(title = "Proportion d'individus Hors Normes vs Normaux",
+       x = "Statut", y = "Proportion") +
+  theme_minimal()
+
+
+```
+
+```{r}
+# Visualisation avec boxplot pour la distance à la moyenne par niveau de satisfaction
+ggplot(my_data_frame, aes(x = satisfaction, y = distance_abs_score, fill = norm_status)) +
+  geom_boxplot(outlier.colour = "red", outlier.size = 3, alpha = 0.6) +
+  scale_fill_manual(values = c("Normaux" = "blue", "Hors normes" = "red")) +
+  labs(title = "Boxplot de la distance à la moyenne par niveau de satisfaction",
+       x = "Satisfaction", y = "Distance à la moyenne (Distance absolue)") +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+
+```
+
+```{r}
+# Proportions de 'score_scale' par genre
+table_score_gender <- table(my_data_frame$score_scale, my_data_frame$Sex)
+table_score_gender_percent <- prop.table(table_score_gender, 2) * 100  # Calcul par genre
+table_score_gender_percent
+
+# Proportions de 'satisfaction' par genre
+table_satisfaction_gender <- table(my_data_frame$satisfaction, my_data_frame$Sex)
+table_satisfaction_gender_percent <- prop.table(table_satisfaction_gender, 2) * 100  # Calcul par genre
+table_satisfaction_gender_percent
+
+# Visualisation de la répartition des scores par genre
+ggplot(as.data.frame(table_score_gender_percent), 
+       aes(x = Var1, y = Freq, fill = Var2)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_manual(values = c("blue", "pink")) +
+  labs(title = "Répartition des scores par genre",
+       x = "Score (1-7)", y = "Proportion (%)") +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +
+  theme_minimal() +
+  theme(legend.title = element_blank()) +
+  geom_text(aes(label = scales::percent(Freq / 100)), 
+            position = position_dodge(width = 0.8), vjust = -0.5)
+
+
+```
+
+```{r}
+# Tableau croisé des proportions de satisfaction par score_scale et genre
+table_satisfaction_score_gender <- table(my_data_frame$satisfaction, my_data_frame$score_scale, my_data_frame$Sex)
+
+# Calculer les proportions par genre et score_scale
+table_satisfaction_score_gender_percent <- prop.table(table_satisfaction_score_gender, c(2, 3)) * 100
+table_satisfaction_score_gender_percent
+
+```
+
+```{r}
+# Visualisation avec un graphique à barres empilées
+ggplot(as.data.frame(table_satisfaction_score_gender_percent), 
+       aes(x = Var2, y = Freq, fill = Var1)) +
+  geom_bar(stat = "identity", position = "stack") +  # Barres empilées
+  scale_fill_manual(values = c("1" = "red", "2" = "orange", "3" = "green")) +  # Couleurs pour chaque niveau de satisfaction
+  labs(title = "Répartition de la satisfaction par score et genre",
+       x = "Score (1-7)", y = "Proportion (%)") +
+  facet_wrap(~ Var3) +  # Facette par genre
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +  # Format de pourcentage
+  theme_minimal() +
+  theme(legend.title = element_blank()) +
+  geom_text(aes(label = scales::percent(Freq / 100)), 
+            position = position_stack(vjust = 0.5))  # Positionner les étiquettes au centre des barres
+
+summary(my_data_frame$score_scale)
+```
+
+```{r}
+# Calcul des proportions de satisfaction par score_scale et genre
+table_satisfaction_score_gender <- table(my_data_frame$satisfaction, my_data_frame$score_scale, my_data_frame$Sex)
+
+# Calcul des proportions par score_scale et genre
+table_satisfaction_score_gender_percent <- prop.table(table_satisfaction_score_gender, c(2, 3)) * 100
+
+print(table_satisfaction_score_gender_percent)
+
+# Convertir la table de proportions en dataframe
+table_satisfaction_score_gender_df <- as.data.frame(table_satisfaction_score_gender_percent)
+
+# Renommer les colonnes pour plus de clarté
+names(table_satisfaction_score_gender_df) <- c("Satisfaction", "Score", "Sex", "Proportion")
+
+
+# Convertir la table de proportions en dataframe
+table_satisfaction_score_gender_df <- as.data.frame(table_satisfaction_score_gender_percent)
+
+# Renommer les colonnes pour plus de clarté
+names(table_satisfaction_score_gender_df) <- c("Satisfaction", "Score", "Sex", "Proportion")
+
+# Visualisation simple avec ggplot
+ggplot(table_satisfaction_score_gender_df, aes(x = factor(Score), y = Proportion, fill = factor(Satisfaction))) +
+  geom_bar(stat = "identity", position = "stack") +  # Barres empilées
+  labs(title = "Satisfaction par Score et Genre", 
+       x = "Score", y = "Proportion (%)") +
+  facet_wrap(~ Sex)  # Facette par sexe
+
+save(my_data_frame, file = "my_data_frame.RData")
+
+```
