@@ -599,14 +599,14 @@
     "href": "blog/index.html",
     "title": "Pascaline Vincent",
     "section": "",
-    "text": "Economie Contemporaine\n\n\n\n\n\n\n\n\n\nSep 19, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nEconomie Contemporaine\n\n\n\n\n\n\n\n\n\nSep 28, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon premier article\n\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Economie Contemporaine\n\n\n\n\n\n\n\n\n\nSep 19, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nEconomie Contemporaine\n\n\n\n\n\n\n\n\n\nSep 28, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/article_1.html",
     "href": "blog/article_1.html",
     "title": "Economie Contemporaine",
     "section": "",
-    "text": "Test des actualités"
+    "text": "Mots clés\n\n\n\nIntervention économique de l’Etat - Déficit - Dette"
   },
   {
     "objectID": "blog/article_2.html",
@@ -1601,5 +1601,96 @@
     "title": "Economie Contemporaine",
     "section": "La productivité du travail",
     "text": "La productivité du travail"
+  },
+  {
+    "objectID": "blog/article_1.html#les-trois-fonctions-de-letat",
+    "href": "blog/article_1.html#les-trois-fonctions-de-letat",
+    "title": "Economie Contemporaine",
+    "section": "Les trois fonctions de l’Etat:",
+    "text": "Les trois fonctions de l’Etat:\n\nAllocation des ressources: l’Etat réalise des dépenses pour entretenir son administration et financer les biens collectifs (défense, infrastructures …)\nRedistribution: Vers l’égalité d’accès des citoyens à certaines ressources\nRégulation: Soutenir l’activité économique"
+  },
+  {
+    "objectID": "blog/article_1.html#les-objectifs-de-la-politique-économique-de-letat",
+    "href": "blog/article_1.html#les-objectifs-de-la-politique-économique-de-letat",
+    "title": "Economie Contemporaine",
+    "section": "Les objectifs de la politique économique de l’Etat:",
+    "text": "Les objectifs de la politique économique de l’Etat:\n\n\nCode\n# Étape 1 : Préparer les données \ndata_france &lt;- data.frame( periode = c(\"2000\", \"2005\", \"2010\", \"2015\", \"2020\"), \ncroissance = c(3.0, 2.5, 1.2, 1.8, -0.5),  # Croissance économique (%)  \nemploi = c(93, 91, 89, 87, 85),           # Taux d'emploi (%)\nprix = c(1.5, 2.0, 1.8, 1.6, 0.5),        # Inflation (%) \ncommerce = c(0.2, -0.5, -1.0, -1.5, -2.0))\n# Balance commerciale (% du PIB) ) \n# Étape 2 : Normaliser les données\nnormalize &lt;- function(x) \n  {   (x - min(x)) / (max(x) - min(x)) } \ndata_normalized &lt;- data_france \ndata_normalized[, -1] &lt;- as.data.frame(lapply(data_france[, -1], normalize))  # Étape 3 : Préparer les données pour le graphique radar # Installer et charger le package fmsb si nécessaire  \nlibrary(fmsb)  \nradar_data &lt;- rbind(   rep(1, 4),  # Valeurs maximales après normalisation \nrep(0, 4),  # Valeurs minimales après normalisation \ndata_normalized[, -1] ) # Données normalisées ) \n# Nommer les colonnes pour le graphique radar \ncolnames(radar_data) &lt;- c(\"Croissance\", \"Emploi\", \"Prix\", \"Commerce\")\nrownames(radar_data) &lt;- c(\"Max\", \"Min\", data_france$periode)  # Étape 4 : Tracer le carré magique \nradarchart(   radar_data,   axistype = 1,   pcol = rainbow(nrow(data_france)),  # Couleurs pour chaque période  \n              pfcol = rainbow(nrow(data_france), alpha = 0.4),  # Couleurs remplies  \n              plwd = 2,  # Épaisseur des lignes  \n              cglcol = \"grey\", cglty = 1, axislabcol = \"black\", caxislabels = seq(0, 1, 0.2),   title = \"Carré magique de Kaldor - France à différentes périodes\" )  # Ajouter une légende \nlegend(\"topright\",   \n        legend = data_france$periode, \n        col = rainbow(nrow(data_france)),  \n        lty = 1, lwd = 2 )"
+  },
+  {
+    "objectID": "blog/article_1.html#justifications-de-letat-minimal-les-classiques",
+    "href": "blog/article_1.html#justifications-de-letat-minimal-les-classiques",
+    "title": "Economie Contemporaine",
+    "section": "Justifications de l’Etat minimal : les Classiques",
+    "text": "Justifications de l’Etat minimal : les Classiques\nLes Classiques prônent une intervention minimale de l’Etat dans l’économie (Sabéran 2008)"
+  },
+  {
+    "objectID": "blog/article_1.html#citation",
+    "href": "blog/article_1.html#citation",
+    "title": "Economie Contemporaine",
+    "section": "Citation",
+    "text": "Citation\n« Le troisième et dernier devoir du souverain ou de la république est celui d’élever et d’entretenir ces ouvrages et ces établissements publics dont une grande société retire d’immense avantages, mais qui sont néanmoins de nature à ne pouvoir être entrepris ou entretenus par un ou par quelques particuliers, attendu que pour ceux-ci, le profit ne saurait jamais leur en rembourser la dépense. Ce devoir exige aussi, pour le remplir, des dépenses dont l’étendue varie selon les divers degrés de la société. Après les travaux et les établissements publics nécessaires pour la défense de la société et pour l’administration de la justice, deux objets dont nous avons parlé, les autres travaux et établissements de ce genre sont principalement ceux pour faciliter le commerce de la société, et ceux destinés à étendre l’instruction parmi le peuple ».\nA Smith « Recherches sur la nature et les causes de la richesse des nations », 1776, livre V, chapitre I."
+  },
+  {
+    "objectID": "blog/article_1.html#remédier-aux-défaillances-de-marché",
+    "href": "blog/article_1.html#remédier-aux-défaillances-de-marché",
+    "title": "Economie Contemporaine",
+    "section": "Remédier aux défaillances de marché",
+    "text": "Remédier aux défaillances de marché\n\nLes Externalités\nDéfinition: Situation dans laquelle la consommation ou la production d’un agent influe positivement ou négativement sur l’utilité d’un autre agent, sans que cette intéraction ne transite par le marché, c’est à dire par le mécanisme des prix.\nL’origine des externalités réside dans l’imperfection des droits de propriété.\nDans le cas d’une externalité négative, le coût marginal privé est inférier au coût marginal social ."
+  },
+  {
+    "objectID": "blog/article_1.html#les-biens-publics",
+    "href": "blog/article_1.html#les-biens-publics",
+    "title": "Economie Contemporaine",
+    "section": "Les Biens Publics",
+    "text": "Les Biens Publics\n\n\n\n\n\n\n\n\n\nExcluabilité\nNon Excluabilité\n\n\n\n\nRivalité\nBiens Privatifs (ex: aliments, vêtements …)\nBiens Communs (ex: Ressources marines…)\n\n\nNon Rivalité\nBiens de Club (ex: autoroute)\nBiens Collectifs (ex: Radio, défense nationale …)"
+  },
+  {
+    "objectID": "blog/article_1.html#biens-collectifs-et-comportements-de-free-rider",
+    "href": "blog/article_1.html#biens-collectifs-et-comportements-de-free-rider",
+    "title": "Economie Contemporaine",
+    "section": "Biens collectifs et comportements de Free Rider",
+    "text": "Biens collectifs et comportements de Free Rider\nUn des problèmes des biens collectifs est que le libre jeu du marché peut conduire à une situation non-optimale car les individus sont tentés de se comporter en Free Rider.\n\nBien collectif et dilemme du prisonnier\n\n\n\npayer\nne pas payer\n\n\npayer\n(10, 10)\n(2,15)\n\n\nne pas payer\n(15,2)\n(5,5)"
+  },
+  {
+    "objectID": "blog/article_1.html#justifications-dune-intervention-prononcée-de-letat-lanalyse-keynésienne",
+    "href": "blog/article_1.html#justifications-dune-intervention-prononcée-de-letat-lanalyse-keynésienne",
+    "title": "Economie Contemporaine",
+    "section": "Justifications d’une intervention prononcée de l’Etat: l’analyse keynésienne",
+    "text": "Justifications d’une intervention prononcée de l’Etat: l’analyse keynésienne"
+  },
+  {
+    "objectID": "blog/article_1.html#le-modèle-is-lm",
+    "href": "blog/article_1.html#le-modèle-is-lm",
+    "title": "Economie Contemporaine",
+    "section": "Le modèle IS-LM",
+    "text": "Le modèle IS-LM"
+  },
+  {
+    "objectID": "blog/article_1.html#le-budget-de-letat",
+    "href": "blog/article_1.html#le-budget-de-letat",
+    "title": "Economie Contemporaine",
+    "section": "Le budget de l’Etat",
+    "text": "Le budget de l’Etat\nPour présenter le budget de l’Etat, nous nous référons au site suivant"
+  },
+  {
+    "objectID": "blog/article_1.html#capacités-ou-besoin-de-financement-des-administrations-publiques-en-2024",
+    "href": "blog/article_1.html#capacités-ou-besoin-de-financement-des-administrations-publiques-en-2024",
+    "title": "Economie Contemporaine",
+    "section": "Capacités ou besoin de financement des Administrations Publiques en 2024",
+    "text": "Capacités ou besoin de financement des Administrations Publiques en 2024\n\n\nLes recettes\nLes impôts et les taxes (dont TVA)\n\n\nCode\n# Charger les bibliothèques  \nlibrary(readxl)   \nlibrary(ggplot2) \nlibrary(plotly)   \ndonnees &lt;- read_excel(\"donnees.xls\")   \ndonnees &lt;- donnees[-1,]  \ndonnees$Valeur&lt;- donnees$`Évaluations 2024 révisées`  # Ajouter une colonne pour le pourcentage  \ndonnees$Pourcentage &lt;- round(donnees$Valeur / sum(donnees$Valeur) * 100, 1)  \np_interactif &lt;- plot_ly(donnees, labels = ~Recette, values = ~Valeur, type = \"pie\",                         textinfo = \"label+percent\", hoverinfo = \"label+percent+value\",                         marker = list(line = list(color = \"#FFFFFF\", width = 1))) %&gt;%   layout(title = \"Répartition des Recettes\")   \np_interactif\n\n\n\n\n\n\nSource: Ministère de l’Economie, des Finances et de l’Industrie, projet de loi de finances 2025\n\n\nLes Dépenses\n\n\nCode\nlibrary(readxl) \nlibrary(plotly) \ndepenses &lt;- read_excel(\"depenses.xlsx\") \ndepenses$depenses&lt;-depenses$`Dépenses publiques`   # Création du camembert interactif avec plotly\np_interactif2 &lt;- plot_ly(depenses, labels = ~Structure, values = ~depenses, type = \"pie\",textinfo = \"label+percent\", hoverinfo = \"label+percent+value\",  marker = list(line = list(color = \"#FFFFFF\", width = 1))) %&gt;%     layout(title = \"Répartition des Dépenses\")  # Afficher le graphique interactif p_interactif2 \np_interactif2\n\n\n\n\n\n\nSource: Insee, comptes nationaux - base 2020.\n\n\nEvolution du solde budgétaire\n\n\nCode\ndette &lt;- read_excel(\"dette.xls\") \ndette$year&lt;-dette$Année \ndette$deficit&lt;-dette$`Déficit public notifié` \nggplot(dette, aes(x =year, y = deficit)) +   geom_line(color = \"blue\", size = 1) +  geom_hline(yintercept = -3, linetype = \"dashed\", color = \"orange\", size = 1) +     scale_y_continuous(limits = c(-10, 2), name = \"en % du PIB\") +    labs(title = \"Solde des finances Publiques\",        x = \"Année\") +   theme_minimal()  \n\n\n\n\n\n\n\n\n\nSource: Insee, Comptes nationaux, base 2020\n\n\nEvolution des dépenses et recettes\n\n\nCode\nrecettes &lt;- read_excel(\"recettes.xls\") # Création du graphique avec ggplot2  \nggplot(recettes, aes(x = year)) +    geom_line(aes(y = Depenses, color = \"Dépenses Publiques\"), size = 1.2) +    geom_line(aes(y = Recettes, color = \"Recettes\"), size = 1.2) +     scale_color_manual(values = c(\"Dépenses Publiques\" = \"blue\", \"Recettes\" = \"orange\")) +   labs(title = \"Évolution des Dépenses et Recettes Publiques\",        x = \"Année\",        y = \"Valeurs (% du PIB)\",        color = \"Légende\") +   theme_minimal() +    theme(text = element_text(size = 12))\n\n\n\n\n\n\n\n\n\nSource: Insee comptes nationaux -base 2020\n\n\nCode\nlibrary(readxl)\n\ndeficit_europe &lt;-read_excel(\"deficit_europe.xls\") \ndeficit_europe$deficit &lt;- deficit_europe$`Solde des finances publiques\n(en % du PIB)`  \n\nlibrary(ggplot2)\nggplot(deficit_europe, aes(x = reorder(Pays, deficit), y = deficit)) +   \n  geom_bar(stat = \"identity\", fill = \"steelblue\") +    coord_flip() +    \n  labs(title = \"Déficit par pays\", x = \"Pays\", y = \"Déficit (% du PIB)\") +   \n  theme_minimal()\n\n\n\n\n\n\n\n\n\nSource: Banque centrale européenne ; Eurostat"
+  },
+  {
+    "objectID": "blog/article_1.html#les-règles-qui-régissent-le-budget-de-letat",
+    "href": "blog/article_1.html#les-règles-qui-régissent-le-budget-de-letat",
+    "title": "Economie Contemporaine",
+    "section": "Les règles qui régissent le budget de l’Etat",
+    "text": "Les règles qui régissent le budget de l’Etat\n\nLes principes budgétaires\nle budget doit répondre à plusieurs principes budgétaires comme l’universalité, l’unité, la spécialité et l’annualité.\n\nL’universalité budgétaire de l’État, signifie que, normalement — sauf pour quelques exceptions —, toutes les recettes doivent alimenter le budget de l’État sans être affectées à une dépense précise. C’est un grand pot commun qui permet d’alimenter toutes les politiques publiques sans distinction.\nLe budget de l’État doit aussi être présenté dans un document unique avec toutes les dépenses et toutes les recettes. Ce document doit être le plus exhaustif possible. C’est un enjeu de lisibilité et de transparence pour les citoyens et pour permettre au Parlement, qui va ensuite voter ce texte, de travailler efficacement.\nLe budget doit également détailler l’autorisation des crédits par destination, c’est-à-dire qu’une dépense va être prévue dans un but défini, c’est le principe de spécialité.\nLe dernier principe, c’est l’annualité. Chaque année, on détermine les recettes et les dépenses pour une année. Le budget tient compte, bien sûr, du fait que certaines politiques publiques sont pluriannuelles. Mais on fait en sorte que chaque année, on puisse faire de la justification au premier euro, c’est-à-dire que chaque dépense puisse être justifiée annuellement.\n\n\n\nLes règles européennes\nLe traité de Maastricht prévoit deux critères de convergence:\n\nUne limitation du déficit public &lt; 3% du PIB\nUn plafonnement de la dette publique, qui ne doit pas excéder 60% du PIB"
+  },
+  {
+    "objectID": "blog/article_1.html#débat",
+    "href": "blog/article_1.html#débat",
+    "title": "Economie Contemporaine",
+    "section": "Débat",
+    "text": "Débat\nDonnez des arguments Pour et Contre une discipline budgétaire suivant ces critères définis."
   }
 ]
