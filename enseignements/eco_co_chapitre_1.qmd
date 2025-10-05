@@ -19,319 +19,57 @@ format:
     toc: false
 ---
 
-::: slide
-## Introduction
+#### 1. Objectifs du cours
 
-Plus ou moins d'Etat? Celui-ci doit-il intervenir dans l'économie? Si oui, comment? Quels sont ses objectifs et ses outils? Que nous dit la théorie économique?
+Développer la capacité d’analyse critique des étudiants sur les enjeux de croissance, d’emploi, de finances, de monnaie et de politiques publiques.
 
-Ce chapitre s'appuie sur le Précis d'économie d'Emmanuel Combe [@noauthor_precis_nodate]
-:::
+#### 2. Description du cours
 
-::: slide
-## Les trois fonctions de l'Etat:
+Ce cours est complémentaire aux différents cours dispensés en L1 EG, il traite de l'actualité économique et présente les grands débats sur la croissance et l'emploi, sur les finances et la monnaie ainsi que sur les politiques publiques\
+\
 
--   Allocation des ressources: l'Etat réalise des dépenses pour entretenir son administration et financer les biens collectifs (défense, infrastructures ...)
+#### 3. Plan du cours
 
--   Redistribution: Vers l'égalité d'accès des citoyens à certaines ressources
+-   Grands principes de la science économique (rareté et allocation des ressources; arbitrages; approche positive et normative)
 
--   Régulation: Soutenir l'activité économique
-:::
+-   La croissance en débat
 
-:::::::::::::::: slide
-## Les objectifs de la politique économique de l'Etat:
+-   Éléments sur la dette publique
 
-```{r}
-# Étape 1 : Préparer les données
-data_france <- data.frame(
-  periode = c("2000", "2005", "2010", "2015", "2020"),
-  croissance = c(3.0, 2.5, 1.2, 1.8, -0.5),  # Croissance économique (%)
-  emploi = c(93, 91, 89, 87, 85),           # Taux d'emploi (%)
-  prix = c(1.5, 2.0, 1.8, 1.6, 0.5),        # Inflation (%)
-  commerce = c(0.2, -0.5, -1.0, -1.5, -2.0) # Balance commerciale (% du PIB)
-)
+-   Chômage, Emploi et politiques publiques
 
-# Étape 2 : Normaliser les données
-normalize <- function(x) {
-  (x - min(x)) / (max(x) - min(x))
-}
+-   Économie internationale
 
-data_normalized <- data_france
-data_normalized[, -1] <- as.data.frame(lapply(data_france[, -1], normalize))
+#### 4. Compétences visées
 
-# Étape 3 : Préparer les données pour le graphique radar
-# Installer et charger le package fmsb si nécessaire
+-   Interpréter des données et différents documents économiques
 
-library(fmsb)
+-   Construire et développer une argumentation avec esprit critique
 
-# Ajouter les lignes pour les max et min (requis pour le package fmsb)
-radar_data <- rbind(
-  rep(1, 4),  # Valeurs maximales après normalisation
-  rep(0, 4),  # Valeurs minimales après normalisation
-  data_normalized[, -1]  # Données normalisées
-)
+#### 5. Modalités pédagogiques
 
-# Nommer les colonnes pour le graphique radar
-colnames(radar_data) <- c("Croissance", "Emploi", "Prix", "Commerce")
-rownames(radar_data) <- c("Max", "Min", data_france$periode)
+**Mode d'enseignement :** Présentiel
 
-# Étape 4 : Tracer le carré magique
-radarchart(
-  radar_data,
-  axistype = 1,
-  pcol = rainbow(nrow(data_france)),  # Couleurs pour chaque période
-  pfcol = rainbow(nrow(data_france), alpha = 0.4),  # Couleurs remplies
-  plwd = 2,  # Épaisseur des lignes
-  cglcol = "grey", cglty = 1, axislabcol = "black", caxislabels = seq(0, 1, 0.2),
-  title = "Carré magique de Kaldor - France à différentes périodes"
-)
+**Langue(s) utilisée(s) :** français
 
-# Ajouter une légende
-legend(
-  "topright",
-  legend = data_france$periode,
-  col = rainbow(nrow(data_france)),
-  lty = 1, lwd = 2
-)
+**Méthodes pédagogiques :** Cours magistral, Exposé présenté par les étudiants
 
-```
+#### 6. Modalités d'évaluation
 
-::: slide
-## Justifications de l'Etat minimal : les Classiques
+Examen écrit sur table
 
-Les Classiques prônent une intervention minimale de l'Etat dans l'économie [@saberan_notion_2008]
+#### 7. Bibliographie
 
-## Citation
+-   Questions économiques contemporaines, Guerrero N., 2013
 
-« Le troisième et dernier devoir du souverain ou de la république est celui d’élever et d’entretenir ces ouvrages et ces établissements publics dont une grande société retire d’immense avantages, mais qui sont néanmoins de nature à ne pouvoir être entrepris ou entretenus par un ou par quelques particuliers, attendu que pour ceux-ci, le profit ne saurait jamais leur en rembourser la dépense. Ce devoir exige aussi, pour le remplir, des dépenses dont l’étendue varie selon les divers degrés de la société. Après les travaux et les établissements publics nécessaires pour la défense de la société et pour l’administration de la justice, deux objets dont nous avons parlé, les autres travaux et établissements de ce genre sont principalement ceux pour faciliter le commerce de la société, et ceux destinés à étendre l’instruction parmi le peuple ».
+-   DCG5: Économie contemporaine, Castaing S. ; Charles L.; Coquet J.; Kurowska C.
 
-***A Smith « Recherches sur la nature et les causes de la richesse des nations », 1776, livre V, chapitre I.***
-:::
+-   Economix: la première histoire de l'économie en BD (Goodwin M. )
 
-::: slide
-## Remédier aux défaillances de marché
+-   Supports audio et vidéo :
 
-### Les Externalités
+    \- France Culture (l'économie en questions)
 
-Définition: Situation dans laquelle la consommation ou la production d'un agent influe positivement ou négativement sur l'utilité d'un autre agent, sans que cette intéraction ne transite par le marché, c'est à dire par le mécanisme des prix.
+-   Presse:
 
-L'origine des externalités réside dans l'imperfection des droits de propriété.
-
-Dans le cas d'une externalité négative, le coût marginal privé est inférier au coût marginal social .
-:::
-
-::: slide
-## Les Biens Publics
-
-|   | Excluabilité | Non Excluabilité |
-|----|----|----|
-| **Rivalité** | Biens Privatifs (ex: aliments, vêtements ...) | Biens Communs (ex: Ressources marines...) |
-| **Non Rivalité** | Biens de Club (ex: autoroute) | Biens Collectifs (ex: Radio, défense nationale ...) |
-:::
-
-::: slide
-## Biens collectifs et comportements de Free Rider
-
-Un des problèmes des biens collectifs est que le libre jeu du marché peut conduire à une situation non-optimale car les individus sont tentés de se comporter en *Free Rider.*
-
-|              |          |              |
-|:------------:|:--------:|:------------:|
-|              |  payer   | ne pas payer |
-|    payer     | (10, 10) |    (2,15)    |
-| ne pas payer |  (15,2)  |    (5,5)     |
-
-: Bien collectif et dilemme du prisonnier
-:::
-
-::: slide
-## Veiller au fonctionnement concurrentiel des marchés
-
-### Les lois anti-trust:
-
-politique de concurrence: contrôle des concentrations d'entreprises, abus de position dominante, ententes anti-concurrentielles .
-
-### Régulation des monopoles
-
-Lorsque le monopole est justifié, l'Etat doit en surveiller le fonctionnement:
-
--   Taxation du monopole naturel
-
--   Obligation de tarification au coût moyen
-
--   Prix plafond
-:::
-
-::: slide
-## Justifications d'une intervention prononcée de l'Etat: l'analyse keynésienne
-
-## Le modèle IS-LM
-
-Il s'agit d'un modèle d'inspiration keynésienne qui met en lumière le rôle des politiques budgétaires et monétaires.
-
-Le modèle IS-LM décrit les équilibres sur deux marchés: le marché des biens et services et le marché de la monnaie, et comment ensemble ils déterminent l'équilibre général dans une économie.
-
-L'équilibre général est atteint lorsque le marché des biens et services ainsi que le marché de la monnaie sont à l'équilibre pour un niveau particulier de taux d'intéret (i*)* et de revenu *(Y*).
-:::
-
-::: slide
-## Le marché de la monnaie
-
-## *La demande de monnaie:*
-
-Plusieurs facteurs déterminent la quantité de monnaie que je souhaite détenir :
-
--   Revenu : Plus mon revenu est élevé, plus mes dépenses augmentent, ce qui accroît ma nécessité de disposer de liquidités ou d'argent sur mon compte courant.
-
--   Prix : Si les biens et services deviennent plus chers, j'ai besoin d'une quantité d'argent plus importante pour les acheter.
-:::
-
-::: slide
-## Mais également ...
-
--   Taux d'intérêt : Si le taux d'intérêt est élevé, j'ai tendance à préférer mettre davantage d'argent de côté en le plaçant dans des investissements, car cela peut me rapporter des intérêts. Cela réduit donc la quantité de monnaie que je souhaite détenir immédiatement.
-
--   Arbitrage entre titres et monnaie : Le taux d'intérêt influence ma décision quant à la répartition de mes actifs entre les titres financiers (investissements) et la monnaie. Si les taux d'intérêt augmentent, j'ai davantage d'incitation à investir dans des titres qui génèrent des intérêts, ce qui diminue ma demande de monnaie.
-:::
-
-::: slide
-## Résumé
-
-En résumé, mon niveau de revenu, les prix des biens, le taux d'intérêt et la possibilité de réaliser un arbitrage entre les investissements et la détention de monnaie sont des déterminants importants de la quantité de monnaie que je souhaite détenir.
-
-Soit formellement :
-
-$Md=PY*L(i)$
-
-Graphiquement, la fonction de demande de monnaie est décroissante, la fonction d'offre est une droite verticale. On considère que l'offre de monnaie est **exogène,** fixée par la banque centrale.
-:::
-
-::: slide
-## Le marché des biens
-
-En économie fermée, la demande totale de biens est la somme de la consommation des ménages, de l’investissement des ménages et des entreprises, et des dépenses publiques. Soit:
-
-$Z = C+I+G$
-:::
-
-::: slide
-## *Les déterminants de la consommation:*
-
-Le ménage doit arbitrer entre la consommation du bien agrégé aujourd’hui et la consommation du bien dans le futur. Il choisit entre la consommation et l’épargne.
-
-La fonction de consommation peut s’écrire : $C = C (Y_D, i)$
-
-$Y_{D}$ est le revenu disponible des ménages, c’est-à-dire le revenu qui leur reste après qu’ils aient payé les impôts et perçu les transferts publics.
-:::
-
-::: slide
-## *Les déterminants de l'Investissement* :
-
-Lorsque la demande augmente, alors les entreprises investissent pour répondre à cette demande. Lorsque le taux d’intérêt augmente, le coût pour investir augmente (coût du crédit et/ou coût d’opportunité).
-
-$I = I (Y, i)$
-:::
-
-::: slide
-## *Les dépenses publiques:*
-
-Les dépenses gouvernementales, G, sont la troisième composante de la demande globale. Avec les impôts, T, elles représentent les variables de la politique budgétaire (les choix d’impôts et de dépenses du gouvernement). Elles sont considérées comme exogènes (elles ne dépendent pas du modèle.)
-:::
-::::::::::::::::
-
-## Le budget de l'Etat
-
-Pour présenter le budget de l'Etat, nous nous référons au site [suivant](https://www.haut-rhin.gouv.fr/Actions-de-l-Etat/Economie-et-emploi/Comment-fonctionne-le-budget-de-l-Etat)
-
-### Les recettes
-
-Les impôts et les taxes (dont TVA)
-
-```{r}
-# Charger les bibliothèques 
-library(readxl)  
-library(ggplot2)
-library(plotly) 
- 
-donnees <- read_excel("donnees.xls") 
-
-donnees <- donnees[-1,] 
-donnees$Valeur<- donnees$`Évaluations 2024 révisées`  # Ajouter une colonne pour le pourcentage 
-donnees$Pourcentage <- round(donnees$Valeur / sum(donnees$Valeur) * 100, 1) 
-
-p_interactif <- plot_ly(donnees, labels = ~Recette, values = ~Valeur, type = "pie",                         textinfo = "label+percent", hoverinfo = "label+percent+value",                         marker = list(line = list(color = "#FFFFFF", width = 1))) %>%   layout(title = "Répartition des Recettes")  
-
-p_interactif
-```
-
-Source: Ministère de l'Economie, des Finances et de l'Industrie, projet de loi de finances 2025
-
-### Les Dépenses
-
-```{r}
-library(readxl)
-library(plotly)
-depenses <- read_excel("depenses.xlsx") 
-depenses$depenses<-depenses$`Dépenses publiques`  
-# Création du camembert interactif avec plotly 
-p_interactif2 <- plot_ly(depenses, labels = ~Structure, values = ~depenses, type = "pie",textinfo = "label+percent", hoverinfo = "label+percent+value",  marker = list(line = list(color = "#FFFFFF", width = 1))) %>%  
-  layout(title = "Répartition des Dépenses")  # Afficher le graphique interactif p_interactif2  
-
-p_interactif2
-```
-
-### Evolution du solde budgétaire
-
-```{r}
-dette <- read_excel("dette.xls") 
-dette$year<-dette$Année
-dette$deficit<-dette$`Déficit public notifié`
-ggplot(dette, aes(x =year, y = deficit)) +   geom_line(color = "blue", size = 1) +  geom_hline(yintercept = -3, linetype = "dashed", color = "orange", size = 1) +     scale_y_continuous(limits = c(-10, 2), name = "en % du PIB") +    labs(title = "Solde des finances Publiques",        x = "Année") +   theme_minimal()  
-```
-
-### Evolution des dépenses et recettes
-
-```{r}
-recettes <- read_excel("recettes.xls") # Création du graphique avec ggplot2 
-ggplot(recettes, aes(x = year)) +    geom_line(aes(y = Depenses, color = "Dépenses Publiques"), size = 1.2) +    geom_line(aes(y = Recettes, color = "Recettes"), size = 1.2) +     scale_color_manual(values = c("Dépenses Publiques" = "blue", "Recettes" = "orange")) +   labs(title = "Évolution des Dépenses et Recettes Publiques",        x = "Année",        y = "Valeurs (% du PIB)",        color = "Légende") +   theme_minimal() +    theme(text = element_text(size = 12))
-```
-
-```{r}
-library(readxl)
-deficit_europe <- read_excel("deficit_europe.xls")
-
-deficit_europe$deficit <- deficit_europe$`Solde des finances publiques
-(en % du PIB)`
-
-ggplot(deficit_europe, aes(x = reorder(Pays, deficit), y = deficit)) +  
-  geom_bar(stat = "identity", fill = "steelblue") + 
-  coord_flip() +   
-  labs(title = "Déficit par pays", x = "Pays", y = "Déficit (%)") + 
-  theme_minimal()
-```
-
-## Les règles qui régissent le budget de l'Etat
-
-### Les principes budgétaires
-
-## Citation
-
-le budget doit répondre à plusieurs principes budgétaires comme **l'universalité, l'unité, la spécialité et l'annualité.**
-
--   **L’universalité budgétaire** de l’État, signifie que, normalement — sauf pour quelques exceptions —, toutes les recettes doivent alimenter le budget de l’État sans être affectées à une dépense précise. C’est un grand pot commun qui permet d’alimenter toutes les politiques publiques sans distinction.
-
--   Le budget de l’État doit aussi être présenté dans un **document unique** avec toutes les dépenses et toutes les recettes. Ce document doit être le plus exhaustif possible. C’est un enjeu de lisibilité et de transparence pour les citoyens et pour permettre au Parlement, qui va ensuite voter ce texte, de travailler efficacement.
-
--   Le budget doit également détailler l’autorisation des crédits par **destination**, c’est-à-dire qu’une dépense va être prévue dans un but défini, c’est le principe de **spécialité**.
-
--   Le dernier principe, c’est **l’annualité**. Chaque année, on détermine les recettes et les dépenses pour une année. Le budget tient compte, bien sûr, du fait que certaines politiques publiques sont pluriannuelles. Mais on fait en sorte que chaque année, on puisse faire de la justification au premier euro, c’est-à-dire que chaque dépense puisse être justifiée annuellement.
-
-### Les règles européennes
-
-Le traité de Maastricht prévoit deux critères de convergence:
-
--   Une limitation du déficit public \< 3% du PIB
-
--   Un plafonnement de la dette publique, qui ne doit pas excéder 60% du PIB
-
-## Débat
-
-Donnez des arguments Pour et Contre une discipline budgétaire suivant ces critères définis.
+-   Les Echos, Alternatives économiques, Courrier International
