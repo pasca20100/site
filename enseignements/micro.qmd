@@ -18,6 +18,64 @@ format:
     toc: false
 ---
 
+# Présentation du cours
+
+#### 1. Objectifs du cours
+
+Ce cours propose une introduction à la Microéconomie\
+Il vise à acquérir les outils nécessaires pour le cours de Microéconomie.
+
+#### 2. Description du cours
+
+Ce cours est une introduction au cours de microéconomie dispensé au second semestre. \
+Il aborde les principes fondamentaux de la microéconomie : définition de la discipline et méthode de raisonnement, pré-requis mathématiques, programmes du consommateur et du producteur.
+
+#### 3. Plan du cours
+
+-   • Introduction
+
+-   – Définitions et méthodologies, pré-requis mathématiques.
+
+-   • Chapitre 1 : le Marché
+
+-   – Offre, demande et équilibre, surplus, généralités sur les élasticités
+
+-   • Chapitre 2 : le Programme du consommateur
+
+-   – Préférences, contraintes, optimisation et TMS, demande individuelle,
+
+-   type de biens et Slutsky.
+
+-   • Chapitre 3 : le Programme du producteur
+
+-   – Fonction de production, productivité du travail, profit et coûts de
+
+-   production, isoquantes, TMST, rendements d’échelle, isocoûts et chemin
+
+-   d’expansion, fonction d’offre individuelle
+
+#### 4. Compétences visées
+
+-   Acquérir les intuitions, analyse graphique et formalisation pour l'étude des choix individuels
+
+#### 5. Modalités d'évaluation
+
+Examen écrit sur table
+
+#### 6. Bibliographie
+
+-   P.Krugman & R. Wells, « Microéconomie », 4e
+
+-   édition, DeBoeck Supérieur.
+
+-   R. Pyndick & D. Rubinfeld, « Microéconomie », 9e édition,
+
+-   Pearson Education.
+
+-   H. R. Varian, « Introduction à la microéconomie »,
+
+-   8e édition, DeBoeck Supérieur.
+
 # Qu'est-ce que la microéconomie ?
 
 # Le marché: Offre et Demande

@@ -3,3 +3,60 @@ title: "HE"
 format: html
 ---
 
+# Présentation du cours
+
+#### 1. Objectifs du cours
+
+Ce cours vise à fournir aux étudiants une solide culture générale en économie. Il permet de se questionner sur les fondements de la discipline, de comprendre ce qu’est un économiste, comment s’est formée la discipline, autour de quels questionnements ?
+
+#### 2. Description du cours
+
+Ce cours aborde à la fois les grands évènements historiques et les courants de pensée en économie. Chaque séance de cours se déroule en trois temps :\
+-	Le contexte historique\
+-	Les auteurs\
+-	Les principaux thèmes\
+Il permet de faire le lien avec d’autres UE (macroéconomie, microéconomie)\
+
+#### 3. Plan du cours
+
+-   Chapitre 1 : Les prémices : La pensée antique et médiévale
+
+-   Chapitre 2 : Naissance de l’économie politique
+
+-   Chapitre 3 : Les physiocrates
+
+-   Chapitre 4 : Les classiques (I)
+
+-   Chapitre 5 : Les classiques (II)
+
+-   Chapitre 6 : Marx et le socialisme
+
+-   Chapitre 7 : Le marginalisme et les néoclassiques
+
+-   Chapitre 8 : L’affirmation des néoclassiques
+
+-   Chapitre 9 : La révolution keynésienne
+
+-   Chapitre 10 : La synthèse selon Samuelson
+
+-   Chapitre 11 : Le monétarisme
+
+-   Chapitre 12 : Etat des lieux
+
+#### 4. Compétences visées
+
+-   Connaître les courants de pensée en économie
+
+-   Développer une argumentation avec esprit critique.
+
+#### 5. Bibliographie
+
+-   •	Bairoch P. Mythes et paradoxes de l’Histoire économique, La d́ecouverte, Paris, 1994
+
+-   •	Brasseul J. Petite histoire des faits économiques. Des origines à nos jours, Armand Colin, 2016, Paris
+
+-   •	Daniel J.M. Histoire vivante de la pensée économique: des crises et des hommes, Pearson, 2010
+
+-   •	Deleplace G. Lavialle C. Histoire de la pensée économique, Dunod, 2008
+
+-   •	Goodwin M. Economix (BD), 2019
