@@ -599,7 +599,7 @@
     "href": "blog/index.html",
     "title": "Pascaline Vincent",
     "section": "",
-    "text": "Economie Contemporaine\n\n\n\n\n\n\n\n\n\nSep 19, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nEconomie Contemporaine\n\n\n\n\n\n\n\n\n\nSep 28, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Economie Contemporaine\n\n\n\n\n\n\n\n\n\nSep 19, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nEconomie Contemporaine\n\n\n\n\n\n\n\n\n\nSep 28, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nFiche d’analyse d’actualité économique\n\n\n\n\n\n\n\n\n\nOct 14, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/article_1.html",
@@ -1748,5 +1748,33 @@
     "title": "Introduction à la microéconomie",
     "section": "Bien indésirable",
     "text": "Bien indésirable\n\n\nShow the code\ndf_bad &lt;- data.frame(\n  x1 = rep(seq(0, 10, by = 0.5), each = 21),\n  x2 = rep(seq(0, 10, by = 0.5), times = 21)\n)\ndf_bad$U &lt;- df_bad$x1 - df_bad$x2\n\nggplot(df_bad, aes(x = x1, y = x2, z = U)) +\n  geom_contour(breaks = c(-5, -2, 0, 2, 4, 6)) +\n  labs(title = \"Bien indésirable (U = x1 - x2)\",\n       x = \"Bien désirable (x1)\", y = \"Bien indésirable (x2)\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExercices\n\n\n\nSam adore manger des frites… mais uniquement s’il a exactement une dose de ketchup par frite.\nReprésentez 4 courbes d’indifférence pour des niveaux d’utilité différents de Sam, où \\(x_1\\) représentent les portions de frites et \\(x_2\\) les sachets de ketchup"
+  },
+  {
+    "objectID": "fiche_eco_co.html",
+    "href": "fiche_eco_co.html",
+    "title": "Fiche d’analyse d’actualité économique",
+    "section": "",
+    "text": "Groupe n° :\nNoms :\nTitre ou source de l’article :\nDate de publication :\n\n\n\n\nQue s’est-il passé ? Quels faits ou chiffres clés sont mentionnés ?\n\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n\n\n\n\n\nEn lien avec quels thèmes ou concepts du cours ?\n\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n\n\n\n\n\nQui est impliqué ou touché par ce sujet ? (ménages, entreprises, État, banques, etc.)\n\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n\n\n\n\n\nQuel est le problème, le risque ou l’opportunité mis en avant ?\n\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n\n\n\n\n\nNotez les données clés mentionnées dans l’article.\n\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n\n\n\n\n\nFormulez une question ouverte qui pourrait lancer une discussion dans la classe :\n\n………………………………………………………………………………..\n………………………………………………………………………………….\n\n\n\n\n\nStyle “presse grand public”\n\n…………………………………………………………………………………."
+  },
+  {
+    "objectID": "fiche_eco_co.html#informations-générales",
+    "href": "fiche_eco_co.html#informations-générales",
+    "title": "Fiche d’analyse d’actualité économique",
+    "section": "",
+    "text": "Groupe n° :\nNoms :\nTitre ou source de l’article :\nDate de publication :\n\n\n\n\nQue s’est-il passé ? Quels faits ou chiffres clés sont mentionnés ?\n\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n\n\n\n\n\nEn lien avec quels thèmes ou concepts du cours ?\n\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n\n\n\n\n\nQui est impliqué ou touché par ce sujet ? (ménages, entreprises, État, banques, etc.)\n\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n\n\n\n\n\nQuel est le problème, le risque ou l’opportunité mis en avant ?\n\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n\n\n\n\n\nNotez les données clés mentionnées dans l’article.\n\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n\n\n\n\n\nFormulez une question ouverte qui pourrait lancer une discussion dans la classe :\n\n………………………………………………………………………………..\n………………………………………………………………………………….\n\n\n\n\n\nStyle “presse grand public”\n\n…………………………………………………………………………………."
+  },
+  {
+    "objectID": "blog/fiche_eco_co.html",
+    "href": "blog/fiche_eco_co.html",
+    "title": "Fiche d’analyse d’actualité économique",
+    "section": "",
+    "text": "Groupe n° :\nNoms :\nTitre ou source de l’article :\nDate de publication :\n\n\n\n\nQue s’est-il passé ? Quels faits ou chiffres clés sont mentionnés ?\n\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n\n\n\n\n\nEn lien avec quels thèmes ou concepts du cours ?\n\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n\n\n\n\n\nQui est impliqué ou touché par ce sujet ? (ménages, entreprises, État, banques, etc.)\n\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n\n\n\n\n\nQuel est le problème, le risque ou l’opportunité mis en avant ?\n\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n\n\n\n\n\nNotez les données clés mentionnées dans l’article.\n\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n\n\n\n\n\nFormulez une question ouverte qui pourrait lancer une discussion dans la classe :\n\n………………………………………………………………………………..\n………………………………………………………………………………….\n\n\n\n\n\nStyle “presse grand public”\n\n…………………………………………………………………………………."
+  },
+  {
+    "objectID": "blog/fiche_eco_co.html#informations-générales",
+    "href": "blog/fiche_eco_co.html#informations-générales",
+    "title": "Fiche d’analyse d’actualité économique",
+    "section": "",
+    "text": "Groupe n° :\nNoms :\nTitre ou source de l’article :\nDate de publication :\n\n\n\n\nQue s’est-il passé ? Quels faits ou chiffres clés sont mentionnés ?\n\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n\n\n\n\n\nEn lien avec quels thèmes ou concepts du cours ?\n\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n\n\n\n\n\nQui est impliqué ou touché par ce sujet ? (ménages, entreprises, État, banques, etc.)\n\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n\n\n\n\n\nQuel est le problème, le risque ou l’opportunité mis en avant ?\n\n………………………………………………………………………………….\n………………………………………………………………………………….\n………………………………………………………………………………….\n\n\n\n\n\nNotez les données clés mentionnées dans l’article.\n\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n……………………………………………………………………………..\n\n\n\n\n\n\nFormulez une question ouverte qui pourrait lancer une discussion dans la classe :\n\n………………………………………………………………………………..\n………………………………………………………………………………….\n\n\n\n\n\nStyle “presse grand public”\n\n…………………………………………………………………………………."
   }
 ]

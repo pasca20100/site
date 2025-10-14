@@ -92,7 +92,7 @@ Dans le cas d'une externalité négative, le coût marginal privé est inférier
 ## Les Biens Publics
 
 |   | Excluabilité | Non Excluabilité |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | **Rivalité** | Biens Privatifs (ex: aliments, vêtements ...) | Biens Communs (ex: Ressources marines...) |
 | **Non Rivalité** | Biens de Club (ex: autoroute) | Biens Collectifs (ex: Radio, défense nationale ...) |
 :::

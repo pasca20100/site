@@ -37,3 +37,21 @@
   background-color: #18BC9C;
   border-color: #18BC9C;
 }
+.blog-post {
+  border: 1px solid #DEE2E6;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #F8F9FA;
+}
+
+.blog-post-title {
+  color: #2C3E50;
+}
+
+.blog-post a.btn {
+  background-color: #18BC9C;
+  border-color: #18BC9C;
+  color: #fff;
+}
+
