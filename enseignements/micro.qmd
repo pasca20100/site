@@ -27,22 +27,22 @@ Il vise à acquérir les outils nécessaires pour le cours de Microéconomie.
 
 #### 2. Description du cours
 
-Ce cours est une introduction au cours de microéconomie dispensé au second semestre. \
+Ce cours est une introduction au cours de microéconomie dispensé au second semestre.\
 Il aborde les principes fondamentaux de la microéconomie : définition de la discipline et méthode de raisonnement, pré-requis mathématiques, programmes du consommateur et du producteur.
 
 #### 3. Plan du cours
 
 -   • Introduction
 
--   – Définitions et méthodologies, pré-requis mathématiques.
+-   Définitions et méthodologies, pré-requis mathématiques.
 
--   • Chapitre 1 : le Marché
+-   Chapitre 1 : le Marché
 
--   – Offre, demande et équilibre, surplus, généralités sur les élasticités
+-   Offre, demande et équilibre, surplus, généralités sur les élasticités
 
--   • Chapitre 2 : le Programme du consommateur
+-   Chapitre 2 : le Programme du consommateur
 
--   – Préférences, contraintes, optimisation et TMS, demande individuelle,
+-   Préférences, contraintes, optimisation et TMS, demande individuelle,
 
 -   type de biens et Slutsky.
 
@@ -130,6 +130,45 @@ legend(
 
 $Q_s=Q_s(P)$
 
+## L'équilibre de marché
+
+::: callout-note
+## Exercices
+
+La demande d’un bien est donnée par :\
+$Q_D = 80 - 2P$\
+L’offre est donnée par :\
+$Q_O = 10 + 3P$
+
+1.  Trouver le prix d’équilibre.\
+2.  En déduire la quantité échangée à l’équilibre.
+
+Exercice 2 – Demande décroissante, offre proportionnelle
+
+La fonction de demande est :
+
+$Q_D= 120-4P$\
+La fonction d’offre est :
+
+$Q_O=2P$
+
+1.  Calculer le prix et la quantité d’équilibre.\
+2.  Vérifier que la quantité offerte et demandée sont égales à ce prix.
+
+Exercice 3: Choc de demande
+
+Dans une économie, on observe les fonctions suivantes :
+
+Demande initiale : $Q_D=200-5P$
+
+Offre initiale : $Q_0 = 20+P$
+
+1.  Déterminer l’équilibre initial (prix et quantité).\
+2.  La demande augmente et devient : $Q_D' = 230 - 5P$\
+    Calculer le nouvel équilibre.
+3.  Faites une représentation graphique
+:::
+
 ## Surplus
 
 ```{r}
@@ -198,6 +237,26 @@ ggplot(df_all, aes(x = Q)) +
 
 ```
 
+::: callout-note
+## Exercices
+
+On considère un marché où :
+
+-   Fonction de demande : $Q_D = 100 - 2P$
+
+-   Fonction d’offre : $Q_O = 20 + 2P$
+
+1.  Déterminer le **prix** et la **quantité d’équilibre**.
+
+2.  Quel est le prix de réserve des consommateurs ?
+
+3.  En déduire le **surplus du consommateur**.
+
+4.  Quel est le prix minimum de vente ?
+
+5.  Calculer le **surplus du producteur**.
+:::
+
 # Le consommateur
 
 ## La contrainte budgétaire
@@ -225,8 +284,8 @@ px <- 10
 py <- 20
 
 # Intersections
-x_max <- R / px
-y_max <- R / py
+x_max <- R / px   # R/px
+y_max <- R / py   # R/py
 
 # Points pour tracer la droite budgétaire
 df_bc <- data.frame(
@@ -238,12 +297,24 @@ ggplot(df_bc, aes(x = x, y = y)) +
   geom_line(linewidth = 1.2) +
   geom_point(aes(x = 0, y = y_max), size = 3) +
   geom_point(aes(x = x_max, y = 0), size = 3) +
-  annotate("text", x = x_max, y = -0.5,
-           label = paste0("x_max = ", x_max)) +
-  annotate("text", x = -0.5, y = y_max,
-           label = paste0("y_max = ", y_max)) +
+  annotate(
+    "text",
+    x = x_max,
+    y = 0,
+    label = paste0("R/px = ", x_max),
+    color = "red",
+    vjust = -1
+  ) +
+  annotate(
+    "text",
+    x = 0,
+    y = y_max,
+    label = paste0("R/py = ", y_max),
+    color = "red",
+    hjust = -0.1
+  ) +
   labs(
-    title = "Contrainte budgétaire :  px·x + py·y = R",
+    title = "Contrainte budgétaire : px·x + py·y = R",
     subtitle = paste0(px, "·x + ", py, "·y = ", R),
     x = "Bien x",
     y = "Bien y"
@@ -251,9 +322,90 @@ ggplot(df_bc, aes(x = x, y = y)) +
   coord_cartesian(xlim = c(0, x_max), ylim = c(0, y_max)) +
   theme_minimal(base_size = 13)
 
+
+
+
 ```
 
 ## Des préférences du consommateur à la fonction d'utilité
+
+L'utilité est une façon de décrire les préférences du consommateur
+
+une fonction d'utilité est une façon d'attribuer une valeur aux différents paniers de consommation de telle sorte que les paniers les plus désirables reçoivent des valeurs supérieures à ceux qui le sont moins .
+
+$u(x_1,x_2) \succ (y_1,y_2) \quad \text{si}  U(x_1,x_2)>U(y_1,y_2)$
+
+::: callout-note
+## Exercices
+
+On considère un consommateur dont les préférences sur les paniers (x1,x2)(x_1,x_2) $(x_1,x_2)$ sont représentées par la fonction d’utilité :
+
+$U(x_1,x_2)=x_1^{0,5}* x_2^{0,5}$
+
+Compare les paniers suivants et détermine, à chaque fois, lequel est **préféré** (au sens de $\succ$)
+
+-   a\) A=(4,1) et B=(2,2)
+
+-   b\) C=(3,3) et D=(2,5)
+
+-   c\) E=(1,9) et F=(3,2)
+:::
+
+## Biens complémentaires
+
+```{r}
+library(ggplot2)
+
+df_comp <- data.frame(
+  x1 = rep(seq(0, 10, by = 1), each = 11),
+  x2 = rep(seq(0, 10, by = 1), times = 11)
+)
+df_comp$U <- pmin(df_comp$x1, df_comp$x2)
+
+ggplot(df_comp, aes(x = x1, y = x2, z = U)) +
+  geom_contour(breaks = c(1, 2, 3, 4, 5)) +
+  labs(title = "Compléments parfaits (U = min(x1, x2))",
+       x = "Bien 1", y = "Bien 2")
+
+```
+
+## Biens substituables
+
+```{r}
+df_subs <- data.frame(
+  x1 = rep(seq(0, 10, by = 0.5), each = 21),
+  x2 = rep(seq(0, 10, by = 0.5), times = 21)
+)
+df_subs$U <- df_subs$x1 + df_subs$x2  # Par exemple U(x1,x2)=x1 + x2
+
+ggplot(df_subs, aes(x = x1, y = x2, z = U)) +
+  geom_contour(breaks = c(4, 6, 8, 10, 12)) +
+  labs(title = "Substituts parfaits (U = x1 + x2)",
+       x = "Bien 1", y = "Bien 2")
+```
+
+## Bien indésirable
+
+```{r}
+df_bad <- data.frame(
+  x1 = rep(seq(0, 10, by = 0.5), each = 21),
+  x2 = rep(seq(0, 10, by = 0.5), times = 21)
+)
+df_bad$U <- df_bad$x1 - df_bad$x2
+
+ggplot(df_bad, aes(x = x1, y = x2, z = U)) +
+  geom_contour(breaks = c(-5, -2, 0, 2, 4, 6)) +
+  labs(title = "Bien indésirable (U = x1 - x2)",
+       x = "Bien désirable (x1)", y = "Bien indésirable (x2)")
+```
+
+::: callout-note
+## Exercices
+
+Sam adore manger des frites… mais uniquement s’il a exactement **une dose de ketchup par frite**.
+
+Représentez 4 courbes d'indifférence pour des niveaux d'utilité différents de Sam, où $x_1$ représentent les portions de frites et $x_2$ les sachets de ketchup
+:::
 
 ## Le panier Optimal
 

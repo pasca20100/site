@@ -1,6 +1,16 @@
 ---
-title: "HE"
-format: html
+title: "Histoire Economique"
+citeproc: true
+toc: true
+code-fold: true
+warning: false
+code-summary: "Show the code"
+theme: flatly
+css: custom.css
+editor: visual
+format:
+  html:
+    theme: flatly
 ---
 
 # Présentation du cours
@@ -12,9 +22,9 @@ Ce cours vise à fournir aux étudiants une solide culture générale en économ
 #### 2. Description du cours
 
 Ce cours aborde à la fois les grands évènements historiques et les courants de pensée en économie. Chaque séance de cours se déroule en trois temps :\
--	Le contexte historique\
--	Les auteurs\
--	Les principaux thèmes\
+- Le contexte historique\
+- Les auteurs\
+- Les principaux thèmes\
 Il permet de faire le lien avec d’autres UE (macroéconomie, microéconomie)\
 
 #### 3. Plan du cours
@@ -51,12 +61,12 @@ Il permet de faire le lien avec d’autres UE (macroéconomie, microéconomie)\
 
 #### 5. Bibliographie
 
--   •	Bairoch P. Mythes et paradoxes de l’Histoire économique, La d́ecouverte, Paris, 1994
+-   • Bairoch P. Mythes et paradoxes de l’Histoire économique, La d́ecouverte, Paris, 1994
 
--   •	Brasseul J. Petite histoire des faits économiques. Des origines à nos jours, Armand Colin, 2016, Paris
+-   • Brasseul J. Petite histoire des faits économiques. Des origines à nos jours, Armand Colin, 2016, Paris
 
--   •	Daniel J.M. Histoire vivante de la pensée économique: des crises et des hommes, Pearson, 2010
+-   • Daniel J.M. Histoire vivante de la pensée économique: des crises et des hommes, Pearson, 2010
 
--   •	Deleplace G. Lavialle C. Histoire de la pensée économique, Dunod, 2008
+-   • Deleplace G. Lavialle C. Histoire de la pensée économique, Dunod, 2008
 
--   •	Goodwin M. Economix (BD), 2019
+-   • Goodwin M. Economix (BD), 2019
