@@ -1909,5 +1909,33 @@
     "title": "Economie du travail",
     "section": "Construction de la courbe d’offre de travail",
     "text": "Construction de la courbe d’offre de travail\n\n\nShow the code\nlibrary(ggplot2)\nlibrary(patchwork)\n\n# Paramètres\nH &lt;- 16\nw &lt;- 1\nR &lt;- 5\np &lt;- 1\n\n# Différents nouveaux salaires\nw_primes &lt;- c(2, 3, 4) # plusieurs scénarios\n\n# Contrainte initiale\nF_vals &lt;- seq(0, H, length.out = 200)\nC_vals &lt;- (w*H + R - w*F_vals)/p\ndf_constr &lt;- data.frame(F = F_vals, C = C_vals)\n\n# Segment vertical pour dotation\ndf_vert &lt;- data.frame(F = H, C = seq(0, R, length.out = 50))\n\n# Fonction pour calculer optimum et courbe d'indifférence\ncalc_opt_CI &lt;- function(w_new){\n  F_star &lt;- min(0.7*(w_new*H + R)/w_new, H)\n  C_star &lt;- 0.3*(w_new*H + R)/p\n  U_star &lt;- C_star^0.3 * F_star^0.7\n  \n  delta &lt;- 5\n  F_CI &lt;- seq(max(0,F_star-delta), min(H,F_star+delta), length.out=100)\n  C_CI &lt;- (U_star / F_CI^0.7)^(1/0.3)\n  df_CI &lt;- data.frame(F=F_CI, C=C_CI, w_new=w_new, F_star=F_star, C_star=C_star)\n  \n  # Contrainte\n  C_vals_new &lt;- (w_new*H + R - w_new*F_vals)/p\n  df_constr_new &lt;- data.frame(F=F_vals, C=C_vals_new, w_new=w_new)\n  \n  return(list(df_CI=df_CI, df_constr=df_constr_new))\n}\n\n# Boucle sur les nouveaux salaires\nlist_CI &lt;- list()\nlist_constr &lt;- list()\ndf_opt &lt;- data.frame() # pour les points optimums\nfor(wp in w_primes){\n  res &lt;- calc_opt_CI(wp)\n  list_CI[[as.character(wp)]] &lt;- res$df_CI\n  list_constr[[as.character(wp)]] &lt;- res$df_constr\n  \n  df_opt &lt;- rbind(df_opt, data.frame(F_star=res$df_CI$F_star[1], \n                                     C_star=res$df_CI$C_star[1], w_new=wp))\n}\n\ndf_CI_all &lt;- do.call(rbind, list_CI)\ndf_constr_all &lt;- do.call(rbind, list_constr)\n\n# Graphe principal : F vs C\ng1 &lt;- ggplot() +\n  geom_line(data=df_constr, aes(F,C), color=\"black\", size=1.2) +\n  geom_line(data=df_vert, aes(F,C), color=\"black\", size=1.2) +\n  geom_line(data=df_constr_all, aes(F,C, linetype=factor(w_new)), color=\"black\", size=1.2) +\n  geom_line(data=df_CI_all, aes(F,C, linetype=factor(w_new)), color=\"blue\", size=1.2) +\n  geom_point(data=df_opt, aes(F_star,C_star), color=\"red\", size=3) +\n  annotate(\"text\", x=14, y=15, label=\"Effet de revenu &gt; effet de substitution\", hjust=0, size=4) +\n  annotate(\"text\", x=14, y=13, label=\"Effet de substitution &gt; effet de revenu\", hjust=0, size=4) +\n  labs(title=\"Effet augmentation du salaire\", x=\"Loisirs F\", y=\"Consommation C\", linetype=\"w'\") +\n  theme_minimal()\n\n# Graphe secondaire : Offre de travail (L horizontal, w/p vertical)\ndf_opt$L &lt;- H - df_opt$F_star\ng2 &lt;- ggplot(df_opt, aes(x=L, y=w_new/p)) +\n  geom_point(size=3, color=\"red\") +\n  geom_line(group=1, color=\"red\") +\n  labs(title=\"Offre de travail\", x=\"Travail L\", y=\"Salaire réel w/p\") +\n  theme_minimal()\n\n# Combiner les deux graphes\ng1 + g2 + plot_layout(ncol=2)"
+  },
+  {
+    "objectID": "commerce_inter.html",
+    "href": "commerce_inter.html",
+    "title": "Commerce international",
+    "section": "",
+    "text": "Le commerce international a évolué avec les révolutions industrielles, les crises économiques et les progrès technologiques\n\n\n\n1ère révolution industrielle (Milieu XIXème siècle)\nPremière guerre mondiale\nCrise de 1929\nSeconde guerre mondiale\nChocs pétroliers\nAccords de Bretton Woods (1944): institutions internationales (FMI, banque mondiale)\nGATT (1947)\nOMC (1995)"
+  },
+  {
+    "objectID": "commerce_inter.html#dates-clés",
+    "href": "commerce_inter.html#dates-clés",
+    "title": "Commerce international",
+    "section": "",
+    "text": "1ère révolution industrielle (Milieu XIXème siècle)\nPremière guerre mondiale\nCrise de 1929\nSeconde guerre mondiale\nChocs pétroliers\nAccords de Bretton Woods (1944): institutions internationales (FMI, banque mondiale)\nGATT (1947)\nOMC (1995)"
+  },
+  {
+    "objectID": "commerce_inter.html#la-théorie-des-avantages-absolus-adam-smith-1776",
+    "href": "commerce_inter.html#la-théorie-des-avantages-absolus-adam-smith-1776",
+    "title": "Commerce international",
+    "section": "La théorie des avantages absolus (Adam Smith, 1776)",
+    "text": "La théorie des avantages absolus (Adam Smith, 1776)\nSpécialisation dans les biens où un pays est le plus efficace en termes de coûts de production.\nExemples:\n\nAllemagne: production de machines-outils sophistiquées\nBrésil: production de café à moindre coût"
+  },
+  {
+    "objectID": "commerce_inter.html#la-théorie-des-avantages-comparatifs-david-ricardo-1817",
+    "href": "commerce_inter.html#la-théorie-des-avantages-comparatifs-david-ricardo-1817",
+    "title": "Commerce international",
+    "section": "La théorie des avantages comparatifs (David Ricardo, 1817)",
+    "text": "La théorie des avantages comparatifs (David Ricardo, 1817)\nSpécialisation là où le pays a le plus grand avantage ou le plus petit désavantage. Spécialisation selon le coût d’opportunité le plus faible, même si un pays est plus productif dans plusieurs secteurs.\nExemples :\n\nEtats-Unis: production de logiciels\nMexique: production de composants automobiles\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPays\nHeures pour 1 unité (Vin)\nHeures pour 1 unité (Drap)\nPrix relatifs (a/b)\nTaux d’échange (1 vin = 1 drap)\nGain en heures\nCoût relatif vs Angleterre (Vin)\nCoût relatif vs Angleterre (Drap)\n\n\n\n\n\n\n\n\nPortugal\n80\n90\n0.89\n1 vin = 1 drap\n10\n67%\n90%\n\n\n\n\n\n\nAngleterre\n120\n100\n1.20\n1 vin = 1 drap\n20\n100%\n100%\n\n\n\nSource: L’économie mondiale 2002, p.90-104,Bernard Lassudrie-Duchêne et Deniz Ünal-Kesenci"
   }
 ]
