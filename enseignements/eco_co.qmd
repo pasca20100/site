@@ -1,5 +1,0 @@
----
-title: "eco_co"
-format: html
----
-
