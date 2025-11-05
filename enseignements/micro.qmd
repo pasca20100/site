@@ -407,6 +407,75 @@ Sam adore manger des frites… mais uniquement s’il a exactement **une dose de
 Représentez 4 courbes d'indifférence pour des niveaux d'utilité différents de Sam, où $x_1$ représentent les portions de frites et $x_2$ les sachets de ketchup
 :::
 
+## Le taux marginal de substitution
+
+La pente de la courbe d'indifférence en un point porte un nom: **Le taux Marginal de Substitution (TMS)**
+
+Il mesure le taux auquel le consommateur est disposé à substituer un bien à un autre.
+
+Il mesure la quantité de bien 2 que vous êtes disposés à payer pour une augmentation marginale de bien 1.
+
+$TMS=\Delta X_2/\Delta X_1=-Um_1/Um_2$
+
+où $U_m$ correspond à l'utilité marginale, c'est à dire la variation de l'utilité entraînée par la consommation d'une unité supplémentaire du bien .
+
+```{r}
+library(ggplot2)
+
+# Paramètres Cobb-Douglas
+alpha <- 0.5
+beta  <- 0.5
+u0 <- 5   # niveau d'utilité
+
+# Courbe d'indifférence
+x1 <- seq(0.1, 10, length.out = 300)
+x2 <- (u0 / (x1^alpha))^(1/beta)
+df <- data.frame(x1, x2)
+
+# ---- Point où tracer la tangente (plus haut sur la courbe) ----
+x1_0 <- 2   # <-- point choisi plus à gauche donc plus haut visuellement
+x2_0 <- (u0 / (x1_0^alpha))^(1/beta)
+
+# TMS au point (pente de la tangente)
+TMS <- - (alpha / beta) * (x2_0 / x1_0)
+
+# Droite tangente
+x_tan <- seq(x1_0 - 2, x1_0 + 2, length.out = 80)
+y_tan <- x2_0 + TMS * (x_tan - x1_0)
+df_tan <- data.frame(x_tan, y_tan)
+
+# ---- Graphique ----
+ggplot() +
+  geom_line(data = df, aes(x = x1, y = x2), size = 1.2, colour = "blue") +
+  geom_point(aes(x = x1_0, y = x2_0), size = 4, colour = "red") +
+  geom_line(data = df_tan, aes(x = x_tan, y = y_tan), linetype = "dashed") +
+  annotate(
+    "text",
+    x = x1_0 + 2, y = x2_0 + 3,     # <-- position centrale et visible
+    label = "paste(frac(Delta * x[2], Delta * x[1]), '   =   -', frac(UM[1], UM[2]))",
+    parse = TRUE,
+    size = 5
+  ) +
+  labs(
+    title = "Courbe d'indifférence (Cobb-Douglas) et tangente (TMS)",
+    x = expression(x[1]),
+    y = expression(x[2])
+  ) +
+  theme_minimal(base_size = 14)
+
+```
+
+::: callout-note
+## Exercices
+
+Fonction d’utilité $U(x,y) = x^{0.4} y^{0.6}$
+
+**Questions :**\
+1. Calcule $U_x$ et $U_y$\
+2. Calcule le TMS .\
+3. Évalue le TMS au point ((x,y) = (2,3))
+:::
+
 ## Le panier Optimal
 
 ```{r}
