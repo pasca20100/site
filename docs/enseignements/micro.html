@@ -179,7 +179,7 @@ window.Quarto = {
  <span class="dropdown-text">Intro à la Microéconomie L1 (TD)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../enseignements/eco_w.html">
+    <a class="dropdown-item" href="../enseignements/eco_travail.html">
  <span class="dropdown-text">Economie du travail L3 (TD)</span></a>
   </li>  
         <li>
@@ -232,6 +232,7 @@ window.Quarto = {
   <li><a href="#biens-complémentaires" id="toc-biens-complémentaires" class="nav-link" data-scroll-target="#biens-complémentaires">Biens complémentaires</a></li>
   <li><a href="#biens-substituables" id="toc-biens-substituables" class="nav-link" data-scroll-target="#biens-substituables">Biens substituables</a></li>
   <li><a href="#bien-indésirable" id="toc-bien-indésirable" class="nav-link" data-scroll-target="#bien-indésirable">Bien indésirable</a></li>
+  <li><a href="#le-taux-marginal-de-substitution" id="toc-le-taux-marginal-de-substitution" class="nav-link" data-scroll-target="#le-taux-marginal-de-substitution">Le taux marginal de substitution</a></li>
   <li><a href="#le-panier-optimal" id="toc-le-panier-optimal" class="nav-link" data-scroll-target="#le-panier-optimal">Le panier Optimal</a></li>
   </ul></li>
   </ul>
@@ -698,65 +699,144 @@ Exercices
 </div>
 </div>
 </section>
-<section id="le-panier-optimal" class="level2">
-<h2 class="anchored" data-anchor-id="le-panier-optimal">Le panier Optimal</h2>
+<section id="le-taux-marginal-de-substitution" class="level2">
+<h2 class="anchored" data-anchor-id="le-taux-marginal-de-substitution">Le taux marginal de substitution</h2>
+<p>La pente de la courbe d’indifférence en un point porte un nom: <strong>Le taux Marginal de Substitution (TMS)</strong></p>
+<p>Il mesure le taux auquel le consommateur est disposé à substituer un bien à un autre.</p>
+<p>Il mesure la quantité de bien 2 que vous êtes disposés à payer pour une augmentation marginale de bien 1.</p>
+<p><span class="math inline">\(TMS=\Delta X_2/\Delta X_1=-Um_1/Um_2\)</span></p>
+<p>où <span class="math inline">\(U_m\)</span> correspond à l’utilité marginale, c’est à dire la variation de l’utilité entraînée par la consommation d’une unité supplémentaire du bien .</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fonction d'utilité Cobb-Douglas U(x,y)=sqrt(xy)</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>U  <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) <span class="fu">sqrt</span>(x<span class="sc">*</span>y)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Niveau d'utilité de la courbe (modifiable)</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>U0 <span class="ot">&lt;-</span> <span class="dv">6</span>   <span class="co"># alors xy = U0^2 = 36  =&gt; y = 36/x</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Point illustratif sur la courbe (modifiable, doit vérifier x0*y0=36)</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> (U0<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>x0  <span class="co"># 9</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Paramètres Cobb-Douglas</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>beta  <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>u0 <span class="ot">&lt;-</span> <span class="dv">5</span>   <span class="co"># niveau d'utilité</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Courbe d'indifférence</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">300</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> (u0 <span class="sc">/</span> (x1<span class="sc">^</span>alpha))<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>beta)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x1, x2)</span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># TMS au point (x0,y0) : -MUx/MUy = -y/x</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>TMS <span class="ot">&lt;-</span> <span class="sc">-</span> y0<span class="sc">/</span>x0   <span class="co"># -2.25</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Données pour la courbe d'indifférence U=U0  (hyperbole y=36/x)</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>xs  <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">1.5</span>, <span class="dv">20</span>, <span class="at">length.out =</span> <span class="dv">400</span>)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>ys  <span class="ot">&lt;-</span> (U0<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> xs</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>indif <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> xs, <span class="at">y =</span> ys)</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Droite tangente en (x0,y0): y = y0 + TMS*(x - x0)</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>xt  <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">1.5</span>, <span class="dv">20</span>, <span class="at">length.out =</span> <span class="dv">200</span>)</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>yt  <span class="ot">&lt;-</span> y0 <span class="sc">+</span> TMS <span class="sc">*</span> (xt <span class="sc">-</span> x0)</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>tangent <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> xt, <span class="at">y =</span> yt)</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Petite flèche montrant la pente (TMS)</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co"># On prend un court segment autour de x0</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>seg_dx <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>seg <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">x  =</span> <span class="fu">c</span>(x0, x0 <span class="sc">+</span> seg_dx),</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">y  =</span> <span class="fu">c</span>(y0, y0 <span class="sc">+</span> TMS<span class="sc">*</span>seg_dx)</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Courbe d'indifférence</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> indif, <span class="fu">aes</span>(x, y), <span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Tangente au point choisi</span></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> tangent, <span class="fu">aes</span>(x, y), <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Point (x0,y0)</span></span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(x0, y0), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Segment/flèche pour la pente (TMS)</span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> seg, <span class="fu">aes</span>(<span class="at">x =</span> x[<span class="dv">1</span>], <span class="at">y =</span> y[<span class="dv">1</span>], <span class="at">xend =</span> x[<span class="dv">2</span>], <span class="at">yend =</span> y[<span class="dv">2</span>]),</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">6</span>, <span class="st">"pt"</span>))) <span class="sc">+</span></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Annotations</span></span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"label"</span>, <span class="at">x =</span> x0, <span class="at">y =</span> y0 <span class="sc">+</span> <span class="dv">2</span>,</span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"Point (x0="</span>, x0, <span class="st">", y0="</span>, <span class="fu">round</span>(y0,<span class="dv">2</span>), <span class="st">")"</span>)) <span class="sc">+</span></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"label"</span>, <span class="at">x =</span> x0 <span class="sc">+</span> <span class="dv">4</span>, <span class="at">y =</span> y0 <span class="sc">-</span> <span class="dv">2</span>,</span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"Tangente : pente = TMS = -y0/x0 = "</span>, <span class="fu">round</span>(TMS, <span class="dv">2</span>))) <span class="sc">+</span></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Bien x"</span>, <span class="at">y =</span> <span class="st">"Bien y"</span>,</span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Taux marginal de substitution (TMS)"</span>,</span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"Courbe d'indifférence  "</span>, <span class="fu">U</span>(x,y)<span class="sc">==</span><span class="fu">sqrt</span>(xy),</span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"  avec  "</span>, U<span class="sc">==</span>U[<span class="dv">0</span>], <span class="st">"  et  TMS== -y/x"</span>))) <span class="sc">+</span></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(ys, yt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">+</span></span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Point où tracer la tangente (plus haut sur la courbe) ----</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>x1_0 <span class="ot">&lt;-</span> <span class="dv">2</span>   <span class="co"># &lt;-- point choisi plus à gauche donc plus haut visuellement</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>x2_0 <span class="ot">&lt;-</span> (u0 <span class="sc">/</span> (x1_0<span class="sc">^</span>alpha))<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>beta)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># TMS au point (pente de la tangente)</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>TMS <span class="ot">&lt;-</span> <span class="sc">-</span> (alpha <span class="sc">/</span> beta) <span class="sc">*</span> (x2_0 <span class="sc">/</span> x1_0)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Droite tangente</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>x_tan <span class="ot">&lt;-</span> <span class="fu">seq</span>(x1_0 <span class="sc">-</span> <span class="dv">2</span>, x1_0 <span class="sc">+</span> <span class="dv">2</span>, <span class="at">length.out =</span> <span class="dv">80</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>y_tan <span class="ot">&lt;-</span> x2_0 <span class="sc">+</span> TMS <span class="sc">*</span> (x_tan <span class="sc">-</span> x1_0)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>df_tan <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x_tan, y_tan)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Graphique ----</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> df, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> x2), <span class="at">size =</span> <span class="fl">1.2</span>, <span class="at">colour =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> x1_0, <span class="at">y =</span> x2_0), <span class="at">size =</span> <span class="dv">4</span>, <span class="at">colour =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> df_tan, <span class="fu">aes</span>(<span class="at">x =</span> x_tan, <span class="at">y =</span> y_tan), <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"text"</span>,</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> x1_0 <span class="sc">+</span> <span class="dv">2</span>, <span class="at">y =</span> x2_0 <span class="sc">+</span> <span class="dv">3</span>,     <span class="co"># &lt;-- position centrale et visible</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"paste(frac(Delta * x[2], Delta * x[1]), '   =   -', frac(UM[1], UM[2]))"</span>,</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">parse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">5</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Courbe d'indifférence (Cobb-Douglas) et tangente (TMS)"</span>,</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(x[<span class="dv">1</span>]),</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">expression</span>(x[<span class="dv">2</span>])</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="micro_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercices
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Fonction d’utilité <span class="math inline">\(U(x,y) = x^{0.4} y^{0.6}\)</span></p>
+<p><strong>Questions :</strong><br>
+1. Calcule <span class="math inline">\(U_x\)</span> et <span class="math inline">\(U_y\)</span><br>
+2. Calcule le TMS .<br>
+3. Évalue le TMS au point ((x,y) = (2,3))</p>
+</div>
+</div>
+</section>
+<section id="le-panier-optimal" class="level2">
+<h2 class="anchored" data-anchor-id="le-panier-optimal">Le panier Optimal</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fonction d'utilité Cobb-Douglas U(x,y)=sqrt(xy)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>U  <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) <span class="fu">sqrt</span>(x<span class="sc">*</span>y)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Niveau d'utilité de la courbe (modifiable)</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>U0 <span class="ot">&lt;-</span> <span class="dv">6</span>   <span class="co"># alors xy = U0^2 = 36  =&gt; y = 36/x</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Point illustratif sur la courbe (modifiable, doit vérifier x0*y0=36)</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>y0 <span class="ot">&lt;-</span> (U0<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>x0  <span class="co"># 9</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># TMS au point (x0,y0) : -MUx/MUy = -y/x</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>TMS <span class="ot">&lt;-</span> <span class="sc">-</span> y0<span class="sc">/</span>x0   <span class="co"># -2.25</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Données pour la courbe d'indifférence U=U0  (hyperbole y=36/x)</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>xs  <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">1.5</span>, <span class="dv">20</span>, <span class="at">length.out =</span> <span class="dv">400</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>ys  <span class="ot">&lt;-</span> (U0<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> xs</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>indif <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> xs, <span class="at">y =</span> ys)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Droite tangente en (x0,y0): y = y0 + TMS*(x - x0)</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>xt  <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">1.5</span>, <span class="dv">20</span>, <span class="at">length.out =</span> <span class="dv">200</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>yt  <span class="ot">&lt;-</span> y0 <span class="sc">+</span> TMS <span class="sc">*</span> (xt <span class="sc">-</span> x0)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>tangent <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> xt, <span class="at">y =</span> yt)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Petite flèche montrant la pente (TMS)</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co"># On prend un court segment autour de x0</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>seg_dx <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>seg <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">x  =</span> <span class="fu">c</span>(x0, x0 <span class="sc">+</span> seg_dx),</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">y  =</span> <span class="fu">c</span>(y0, y0 <span class="sc">+</span> TMS<span class="sc">*</span>seg_dx)</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Courbe d'indifférence</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> indif, <span class="fu">aes</span>(x, y), <span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Tangente au point choisi</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> tangent, <span class="fu">aes</span>(x, y), <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Point (x0,y0)</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(x0, y0), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Segment/flèche pour la pente (TMS)</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> seg, <span class="fu">aes</span>(<span class="at">x =</span> x[<span class="dv">1</span>], <span class="at">y =</span> y[<span class="dv">1</span>], <span class="at">xend =</span> x[<span class="dv">2</span>], <span class="at">yend =</span> y[<span class="dv">2</span>]),</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">6</span>, <span class="st">"pt"</span>))) <span class="sc">+</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Annotations</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"label"</span>, <span class="at">x =</span> x0, <span class="at">y =</span> y0 <span class="sc">+</span> <span class="dv">2</span>,</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"Point (x0="</span>, x0, <span class="st">", y0="</span>, <span class="fu">round</span>(y0,<span class="dv">2</span>), <span class="st">")"</span>)) <span class="sc">+</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"label"</span>, <span class="at">x =</span> x0 <span class="sc">+</span> <span class="dv">4</span>, <span class="at">y =</span> y0 <span class="sc">-</span> <span class="dv">2</span>,</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"Tangente : pente = TMS = -y0/x0 = "</span>, <span class="fu">round</span>(TMS, <span class="dv">2</span>))) <span class="sc">+</span></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Bien x"</span>, <span class="at">y =</span> <span class="st">"Bien y"</span>,</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Taux marginal de substitution (TMS)"</span>,</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"Courbe d'indifférence  "</span>, <span class="fu">U</span>(x,y)<span class="sc">==</span><span class="fu">sqrt</span>(xy),</span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"  avec  "</span>, U<span class="sc">==</span>U[<span class="dv">0</span>], <span class="st">"  et  TMS== -y/x"</span>))) <span class="sc">+</span></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(ys, yt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">+</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
