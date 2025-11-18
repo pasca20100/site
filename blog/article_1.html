@@ -22,7 +22,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -69,6 +124,24 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="../site_libs/plotly-binding-4.10.4/plotly.js"></script>
+
+<script src="../site_libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="../site_libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+<link href="../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
 
 
 <link rel="stylesheet" href="custom.css">
@@ -114,11 +187,15 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../enseignements/micro.html">
- <span class="dropdown-text">Microéconomie L2 (TD)</span></a>
+ <span class="dropdown-text">Intro à la Microéconomie L1 (TD)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../enseignements/eco_w.qmd">
+    <a class="dropdown-item" href="../enseignements/eco_travail.html">
  <span class="dropdown-text">Economie du travail L3 (TD)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../enseignements/engagement_asso.html">
+ <span class="dropdown-text">Engagement Associatif (TD)</span></a>
   </li>  
     </ul>
   </li>
@@ -128,33 +205,10 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-recherche">    
         <li>
-    <a class="dropdown-item" href="../normes_identite/index.html">
- <span class="dropdown-text">Introduction</span></a>
+    <a class="dropdown-item" href="../recherche/recherche_presentation.html">
+ <span class="dropdown-text">Présentation</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../normes_identite/mesure.html">
- <span class="dropdown-text">Mesure</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../normes_identite/CGNI.html">
- <span class="dropdown-text">CGNI</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../normes_identite/construction_indice.html">
- <span class="dropdown-text">Construction indice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../normes_identite/socio.html">
- <span class="dropdown-text">Socio</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../normes_identite/conclusion.html">
- <span class="dropdown-text">Conclusion</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../normes_identite/references.html">
- <span class="dropdown-text">Références</span></a>
-  </li>  
+        <li class="dropdown-header"><a href="https://PascalineVincent.github.io/gender_identity/">Projet en cours</a></li>
     </ul>
   </li>
 </ul>
@@ -201,13 +255,307 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="test-des-actualités" class="level1">
-<h1>Test des actualités</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mots clés
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Intervention économique de l’Etat - Déficit - Dette</p>
+</div>
+</div>
+<section id="politique-économique-de-letat" class="level1">
+<h1>Politique économique de l’Etat</h1>
+<section id="les-trois-fonctions-de-letat" class="level2 slide">
+<h2 class="anchored" data-anchor-id="les-trois-fonctions-de-letat">Les trois fonctions de l’Etat:</h2>
+<ul>
+<li><p>Allocation des ressources: l’Etat réalise des dépenses pour entretenir son administration et financer les biens collectifs (défense, infrastructures …)</p></li>
+<li><p>Redistribution: Vers l’égalité d’accès des citoyens à certaines ressources</p></li>
+<li><p>Régulation: Soutenir l’activité économique</p></li>
+</ul>
+</section>
+<div class="slide">
+<section id="les-objectifs-de-la-politique-économique-de-letat" class="level2">
+<h2 class="anchored" data-anchor-id="les-objectifs-de-la-politique-économique-de-letat">Les objectifs de la politique économique de l’Etat:</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Étape 1 : Préparer les données </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data_france <span class="ot">&lt;-</span> <span class="fu">data.frame</span>( <span class="at">periode =</span> <span class="fu">c</span>(<span class="st">"2000"</span>, <span class="st">"2005"</span>, <span class="st">"2010"</span>, <span class="st">"2015"</span>, <span class="st">"2020"</span>), </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">croissance =</span> <span class="fu">c</span>(<span class="fl">3.0</span>, <span class="fl">2.5</span>, <span class="fl">1.2</span>, <span class="fl">1.8</span>, <span class="sc">-</span><span class="fl">0.5</span>),  <span class="co"># Croissance économique (%)  </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">emploi =</span> <span class="fu">c</span>(<span class="dv">93</span>, <span class="dv">91</span>, <span class="dv">89</span>, <span class="dv">87</span>, <span class="dv">85</span>),           <span class="co"># Taux d'emploi (%)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">prix =</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">2.0</span>, <span class="fl">1.8</span>, <span class="fl">1.6</span>, <span class="fl">0.5</span>),        <span class="co"># Inflation (%) </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">commerce =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">1.0</span>, <span class="sc">-</span><span class="fl">1.5</span>, <span class="sc">-</span><span class="fl">2.0</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Balance commerciale (% du PIB) ) </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Étape 2 : Normaliser les données</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>normalize <span class="ot">&lt;-</span> <span class="cf">function</span>(x) </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  {   (x <span class="sc">-</span> <span class="fu">min</span>(x)) <span class="sc">/</span> (<span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x)) } </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>data_normalized <span class="ot">&lt;-</span> data_france </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>data_normalized[, <span class="sc">-</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">lapply</span>(data_france[, <span class="sc">-</span><span class="dv">1</span>], normalize))  <span class="co"># Étape 3 : Préparer les données pour le graphique radar # Installer et charger le package fmsb si nécessaire  </span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fmsb)  </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>radar_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(   <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">4</span>),  <span class="co"># Valeurs maximales après normalisation </span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">4</span>),  <span class="co"># Valeurs minimales après normalisation </span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>data_normalized[, <span class="sc">-</span><span class="dv">1</span>] ) <span class="co"># Données normalisées ) </span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Nommer les colonnes pour le graphique radar </span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(radar_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Croissance"</span>, <span class="st">"Emploi"</span>, <span class="st">"Prix"</span>, <span class="st">"Commerce"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(radar_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Max"</span>, <span class="st">"Min"</span>, data_france<span class="sc">$</span>periode)  <span class="co"># Étape 4 : Tracer le carré magique </span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">radarchart</span>(   radar_data,   <span class="at">axistype =</span> <span class="dv">1</span>,   <span class="at">pcol =</span> <span class="fu">rainbow</span>(<span class="fu">nrow</span>(data_france)),  <span class="co"># Couleurs pour chaque période  </span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>              <span class="at">pfcol =</span> <span class="fu">rainbow</span>(<span class="fu">nrow</span>(data_france), <span class="at">alpha =</span> <span class="fl">0.4</span>),  <span class="co"># Couleurs remplies  </span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">plwd =</span> <span class="dv">2</span>,  <span class="co"># Épaisseur des lignes  </span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>              <span class="at">cglcol =</span> <span class="st">"grey"</span>, <span class="at">cglty =</span> <span class="dv">1</span>, <span class="at">axislabcol =</span> <span class="st">"black"</span>, <span class="at">caxislabels =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.2</span>),   <span class="at">title =</span> <span class="st">"Carré magique de Kaldor - France à différentes périodes"</span> )  <span class="co"># Ajouter une légende </span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>,   </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend =</span> data_france<span class="sc">$</span>periode, </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="fu">nrow</span>(data_france)),  </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">2</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="article_1_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<div class="slide">
+<section id="justifications-de-letat-minimal-les-classiques" class="level2">
+<h2 class="anchored" data-anchor-id="justifications-de-letat-minimal-les-classiques">Justifications de l’Etat minimal : les Classiques</h2>
+<p>Les Classiques prônent une intervention minimale de l’Etat dans l’économie <span class="citation" data-cites="saberan_notion_2008">(<a href="#ref-saberan_notion_2008" role="doc-biblioref">Sabéran 2008</a>)</span></p>
+</section>
+<section id="citation" class="level2">
+<h2 class="anchored" data-anchor-id="citation">Citation</h2>
+<p>« Le troisième et dernier devoir du souverain ou de la république est celui d’élever et d’entretenir ces ouvrages et ces établissements publics dont une grande société retire d’immense avantages, mais qui sont néanmoins de nature à ne pouvoir être entrepris ou entretenus par un ou par quelques particuliers, attendu que pour ceux-ci, le profit ne saurait jamais leur en rembourser la dépense. Ce devoir exige aussi, pour le remplir, des dépenses dont l’étendue varie selon les divers degrés de la société. Après les travaux et les établissements publics nécessaires pour la défense de la société et pour l’administration de la justice, deux objets dont nous avons parlé, les autres travaux et établissements de ce genre sont principalement ceux pour faciliter le commerce de la société, et ceux destinés à étendre l’instruction parmi le peuple ».</p>
+<p><strong><em>A Smith « Recherches sur la nature et les causes de la richesse des nations », 1776, livre V, chapitre I.</em></strong></p>
+</section>
+</div>
+<section id="remédier-aux-défaillances-de-marché" class="level2 slide">
+<h2 class="anchored" data-anchor-id="remédier-aux-défaillances-de-marché">Remédier aux défaillances de marché</h2>
+<section id="les-externalités" class="level3">
+<h3 class="anchored" data-anchor-id="les-externalités">Les Externalités</h3>
+<p>Définition: Situation dans laquelle la consommation ou la production d’un agent influe positivement ou négativement sur l’utilité d’un autre agent, sans que cette intéraction ne transite par le marché, c’est à dire par le mécanisme des prix.</p>
+<p>L’origine des externalités réside dans l’imperfection des droits de propriété.</p>
+<p>Dans le cas d’une externalité négative, le coût marginal privé est inférier au coût marginal social .</p>
+</section>
+</section>
+<section id="les-biens-publics" class="level2 slide">
+<h2 class="anchored" data-anchor-id="les-biens-publics">Les Biens Publics</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Excluabilité</th>
+<th>Non Excluabilité</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Rivalité</strong></td>
+<td>Biens Privatifs (ex: aliments, vêtements …)</td>
+<td>Biens Communs (ex: Ressources marines…)</td>
+</tr>
+<tr class="even">
+<td><strong>Non Rivalité</strong></td>
+<td>Biens de Club (ex: autoroute)</td>
+<td>Biens Collectifs (ex: Radio, défense nationale …)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="biens-collectifs-et-comportements-de-free-rider" class="level2 slide">
+<h2 class="anchored" data-anchor-id="biens-collectifs-et-comportements-de-free-rider">Biens collectifs et comportements de Free Rider</h2>
+<p>Un des problèmes des biens collectifs est que le libre jeu du marché peut conduire à une situation non-optimale car les individus sont tentés de se comporter en <em>Free Rider.</em></p>
+<table class="caption-top table">
+<caption>Bien collectif et dilemme du prisonnier</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">payer</td>
+<td style="text-align: center;">ne pas payer</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">payer</td>
+<td style="text-align: center;">(10, 10)</td>
+<td style="text-align: center;">(2,15)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">ne pas payer</td>
+<td style="text-align: center;">(15,2)</td>
+<td style="text-align: center;">(5,5)</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+<div class="slide">
+<div class="slide">
+<section id="justifications-dune-intervention-prononcée-de-letat-lanalyse-keynésienne" class="level2">
+<h2 class="anchored" data-anchor-id="justifications-dune-intervention-prononcée-de-letat-lanalyse-keynésienne">Justifications d’une intervention prononcée de l’Etat: l’analyse keynésienne</h2>
+</section>
+<section id="le-modèle-is-lm" class="level2">
+<h2 class="anchored" data-anchor-id="le-modèle-is-lm">Le modèle IS-LM</h2>
+</section>
+</div>
+</div>
+</section>
+<section id="faits-stylisés" class="level1">
+<h1>Faits stylisés</h1>
+<section id="le-budget-de-letat" class="level2">
+<h2 class="anchored" data-anchor-id="le-budget-de-letat">Le budget de l’Etat</h2>
+<p>Pour présenter le budget de l’Etat, nous nous référons au site <a href="https://www.haut-rhin.gouv.fr/Actions-de-l-Etat/Economie-et-emploi/Comment-fonctionne-le-budget-de-l-Etat">suivant</a></p>
+</section>
+<section id="capacités-ou-besoin-de-financement-des-administrations-publiques-en-2024" class="level2">
+<h2 class="anchored" data-anchor-id="capacités-ou-besoin-de-financement-des-administrations-publiques-en-2024">Capacités ou besoin de financement des Administrations Publiques en 2024</h2>
+<p><img src="images/clipboard-2155328549.png" class="img-fluid"></p>
+<section id="les-recettes" class="level3">
+<h3 class="anchored" data-anchor-id="les-recettes">Les recettes</h3>
+<p>Les impôts et les taxes (dont TVA)</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Charger les bibliothèques  </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)   </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)   </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>donnees <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"donnees.xls"</span>)   </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>donnees <span class="ot">&lt;-</span> donnees[<span class="sc">-</span><span class="dv">1</span>,]  </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>donnees<span class="sc">$</span>Valeur<span class="ot">&lt;-</span> donnees<span class="sc">$</span><span class="st">`</span><span class="at">Évaluations 2024 révisées</span><span class="st">`</span>  <span class="co"># Ajouter une colonne pour le pourcentage  </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>donnees<span class="sc">$</span>Pourcentage <span class="ot">&lt;-</span> <span class="fu">round</span>(donnees<span class="sc">$</span>Valeur <span class="sc">/</span> <span class="fu">sum</span>(donnees<span class="sc">$</span>Valeur) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)  </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>p_interactif <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(donnees, <span class="at">labels =</span> <span class="sc">~</span>Recette, <span class="at">values =</span> <span class="sc">~</span>Valeur, <span class="at">type =</span> <span class="st">"pie"</span>,                         <span class="at">textinfo =</span> <span class="st">"label+percent"</span>, <span class="at">hoverinfo =</span> <span class="st">"label+percent+value"</span>,                         <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">line =</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="st">"#FFFFFF"</span>, <span class="at">width =</span> <span class="dv">1</span>))) <span class="sc">%&gt;%</span>   <span class="fu">layout</span>(<span class="at">title =</span> <span class="st">"Répartition des Recettes"</span>)   </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>p_interactif</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-9e3471304feae70069f1" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-9e3471304feae70069f1">{"x":{"visdat":{"55d4db31079":["function () ","plotlyVisDat"]},"cur_data":"55d4db31079","attrs":{"55d4db31079":{"labels":{},"values":{},"textinfo":"label+percent","hoverinfo":"label+percent+value","marker":{"line":{"color":"#FFFFFF","width":1}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Répartition des Recettes","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["   Impôt sur le revenu","   Autres impôts directs perçus par voie d'émission de rôles","   Impôt sur les sociétés","   Contribution sociale sur les bénéfices","   Contribution de la CDC¹ représentative de l'impôt sur les sociétés","   Autres impôts directs et taxes assimilées","   Taxe intérieure de consommation sur les produits énergétiques","   Taxe sur la valeur ajoutée","   Enregistrement, timbre, autres contributions et taxes indirectes"],"values":[113.694,2.8479999999999999,84.060000000000002,1.591,0.58599999999999997,30.683,17.582999999999998,176.93899999999999,39.603999999999999],"textinfo":"label+percent","hoverinfo":["label+percent+value","label+percent+value","label+percent+value","label+percent+value","label+percent+value","label+percent+value","label+percent+value","label+percent+value","label+percent+value"],"marker":{"color":"rgba(31,119,180,1)","line":{"color":"#FFFFFF","width":1}},"type":"pie","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Source: Ministère de l’Economie, des Finances et de l’Industrie, projet de loi de finances 2025</p>
+</section>
+<section id="les-dépenses" class="level3">
+<h3 class="anchored" data-anchor-id="les-dépenses">Les Dépenses</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly) </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>depenses <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"depenses.xlsx"</span>) </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>depenses<span class="sc">$</span>depenses<span class="ot">&lt;-</span>depenses<span class="sc">$</span><span class="st">`</span><span class="at">Dépenses publiques</span><span class="st">`</span>   <span class="co"># Création du camembert interactif avec plotly</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>p_interactif2 <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(depenses, <span class="at">labels =</span> <span class="sc">~</span>Structure, <span class="at">values =</span> <span class="sc">~</span>depenses, <span class="at">type =</span> <span class="st">"pie"</span>,<span class="at">textinfo =</span> <span class="st">"label+percent"</span>, <span class="at">hoverinfo =</span> <span class="st">"label+percent+value"</span>,  <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">line =</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="st">"#FFFFFF"</span>, <span class="at">width =</span> <span class="dv">1</span>))) <span class="sc">%&gt;%</span>     <span class="fu">layout</span>(<span class="at">title =</span> <span class="st">"Répartition des Dépenses"</span>)  <span class="co"># Afficher le graphique interactif p_interactif2 </span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>p_interactif2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-d07341e09b6e81fcedef" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-d07341e09b6e81fcedef">{"x":{"visdat":{"55d415583c6b":["function () ","plotlyVisDat"]},"cur_data":"55d415583c6b","attrs":{"55d415583c6b":{"labels":{},"values":{},"textinfo":"label+percent","hoverinfo":"label+percent+value","marker":{"line":{"color":"#FFFFFF","width":1}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Répartition des Dépenses","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Protection sociale","Santé","Affaires économiques","Services publics généraux","Autres","Enseignement","Défense"],"values":[40.7924268869426,15.5520956932078,11.5465541373874,10.629676175078901,9.3801619059625008,8.9581121281315905,3.1409730732891599],"textinfo":"label+percent","hoverinfo":["label+percent+value","label+percent+value","label+percent+value","label+percent+value","label+percent+value","label+percent+value","label+percent+value"],"marker":{"color":"rgba(31,119,180,1)","line":{"color":"#FFFFFF","width":1}},"type":"pie","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Source: Insee, comptes nationaux - base&nbsp;2020.</p>
+</section>
+<section id="evolution-du-solde-budgétaire" class="level3">
+<h3 class="anchored" data-anchor-id="evolution-du-solde-budgétaire">Evolution du solde budgétaire</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dette <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dette.xls"</span>) </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>dette<span class="sc">$</span>year<span class="ot">&lt;-</span>dette<span class="sc">$</span>Année </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dette<span class="sc">$</span>deficit<span class="ot">&lt;-</span>dette<span class="sc">$</span><span class="st">`</span><span class="at">Déficit public notifié</span><span class="st">`</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dette, <span class="fu">aes</span>(<span class="at">x =</span>year, <span class="at">y =</span> deficit)) <span class="sc">+</span>   <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"orange"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span>     <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">2</span>), <span class="at">name =</span> <span class="st">"en % du PIB"</span>) <span class="sc">+</span>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Solde des finances Publiques"</span>,        <span class="at">x =</span> <span class="st">"Année"</span>) <span class="sc">+</span>   <span class="fu">theme_minimal</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="article_1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Source: Insee, Comptes nationaux, base 2020</p>
+</section>
+<section id="evolution-des-dépenses-et-recettes" class="level3">
+<h3 class="anchored" data-anchor-id="evolution-des-dépenses-et-recettes">Evolution des dépenses et recettes</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>recettes <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"recettes.xls"</span>) <span class="co"># Création du graphique avec ggplot2  </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(recettes, <span class="fu">aes</span>(<span class="at">x =</span> year)) <span class="sc">+</span>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Depenses, <span class="at">color =</span> <span class="st">"Dépenses Publiques"</span>), <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Recettes, <span class="at">color =</span> <span class="st">"Recettes"</span>), <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span>     <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Dépenses Publiques"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"Recettes"</span> <span class="ot">=</span> <span class="st">"orange"</span>)) <span class="sc">+</span>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Évolution des Dépenses et Recettes Publiques"</span>,        <span class="at">x =</span> <span class="st">"Année"</span>,        <span class="at">y =</span> <span class="st">"Valeurs (% du PIB)"</span>,        <span class="at">color =</span> <span class="st">"Légende"</span>) <span class="sc">+</span>   <span class="fu">theme_minimal</span>() <span class="sc">+</span>    <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="article_1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Source: Insee comptes nationaux -base 2020</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>deficit_europe <span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"deficit_europe.xls"</span>) </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>deficit_europe<span class="sc">$</span>deficit <span class="ot">&lt;-</span> deficit_europe<span class="sc">$</span><span class="st">`</span><span class="at">Solde des finances publiques</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">(en % du PIB)</span><span class="st">`</span>  </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(deficit_europe, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Pays, deficit), <span class="at">y =</span> deficit)) <span class="sc">+</span>   </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span>    <span class="fu">coord_flip</span>() <span class="sc">+</span>    </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Déficit par pays"</span>, <span class="at">x =</span> <span class="st">"Pays"</span>, <span class="at">y =</span> <span class="st">"Déficit (% du PIB)"</span>) <span class="sc">+</span>   </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="article_1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Source: Banque centrale européenne&nbsp;; Eurostat</p>
+</section>
+</section>
+<section id="les-règles-qui-régissent-le-budget-de-letat" class="level2">
+<h2 class="anchored" data-anchor-id="les-règles-qui-régissent-le-budget-de-letat">Les règles qui régissent le budget de l’Etat</h2>
+<section id="les-principes-budgétaires" class="level3">
+<h3 class="anchored" data-anchor-id="les-principes-budgétaires">Les principes budgétaires</h3>
+<p>le budget doit répondre à plusieurs principes budgétaires comme <strong>l’universalité, l’unité, la spécialité et l’annualité.</strong></p>
+<ul>
+<li><p><strong>L’universalité budgétaire</strong> de l’État, signifie que, normalement&nbsp;— sauf pour quelques exceptions —, toutes les recettes doivent alimenter le budget de l’État sans être affectées à une dépense précise. C’est un grand pot commun qui permet d’alimenter toutes les politiques publiques sans distinction.</p></li>
+<li><p>Le budget de l’État doit aussi être présenté dans un <strong>document unique</strong> avec toutes les dépenses et toutes les recettes. Ce document doit être le plus exhaustif possible. C’est un enjeu de lisibilité et de transparence pour les citoyens et pour permettre au Parlement, qui va ensuite voter ce texte, de travailler efficacement.</p></li>
+<li><p>Le budget doit également détailler l’autorisation des crédits par <strong>destination</strong>, c’est-à-dire qu’une dépense va être prévue dans un but défini, c’est le principe de <strong>spécialité</strong>.</p></li>
+<li><p>Le dernier principe, c’est <strong>l’annualité</strong>. Chaque année, on détermine les recettes et les dépenses pour une année. Le budget tient compte,&nbsp;bien sûr, du fait que certaines politiques publiques sont pluriannuelles. Mais on fait en sorte que chaque année, on puisse faire de la justification au premier euro, c’est-à-dire que chaque dépense puisse être justifiée annuellement.</p></li>
+</ul>
+</section>
+<section id="les-règles-européennes" class="level3">
+<h3 class="anchored" data-anchor-id="les-règles-européennes">Les règles européennes</h3>
+<p>Le traité de Maastricht prévoit deux critères de convergence:</p>
+<ul>
+<li><p>Une limitation du déficit public &lt; 3% du PIB</p></li>
+<li><p>Un plafonnement de la dette publique, qui ne doit pas excéder 60% du PIB</p></li>
+</ul>
+</section>
+</section>
+<section id="débat" class="level2">
+<h2 class="anchored" data-anchor-id="débat">Débat</h2>
+<p>Donnez des arguments Pour et Contre une discipline budgétaire suivant ces critères définis.</p>
+
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-saberan_notion_2008" class="csl-entry" role="listitem">
+Sabéran, Shirine. 2008. <span>“La notion d’intérêt général chez Adam Smith : de la richesse des nations à la puissance des nations:”</span> <em>Géoéconomie</em> n° 45 (2): 55–71. <a href="https://doi.org/10.3917/geoec.045.0055">https://doi.org/10.3917/geoec.045.0055</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
