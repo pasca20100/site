@@ -206,88 +206,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggwordcloud)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stopwords)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Lecture fichier ---</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>raw_lines <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="st">"questions_titres.csv"</span>, <span class="at">encoding =</span> <span class="st">"Latin1"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>raw_lines <span class="ot">&lt;-</span> <span class="fu">iconv</span>(raw_lines, <span class="at">from =</span> <span class="st">"Latin1"</span>, <span class="at">to =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>tmp_file <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".csv"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(raw_lines, tmp_file)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(tmp_file, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Nettoyage TITRES COMPLETS (df) ---</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Titre =</span> Titre_simplifie) <span class="sc">%&gt;%</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">Titre =</span> <span class="fu">str_trim</span>(Titre),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Normalisation des apostrophes (toutes -&gt; ')</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">Titre =</span> <span class="fu">str_replace_all</span>(Titre, <span class="st">"’"</span>, <span class="st">"'"</span>),</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">Titre =</span> <span class="fu">str_replace_all</span>(Titre, <span class="st">"‘"</span>, <span class="st">"'"</span>),</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">Titre =</span> <span class="fu">str_replace_all</span>(Titre, <span class="st">"´"</span>, <span class="st">"'"</span>),</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">Titre =</span> <span class="fu">str_replace_all</span>(Titre, <span class="st">"`"</span>, <span class="st">"'"</span>),</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">Titre =</span> <span class="fu">str_replace_all</span>(Titre, <span class="st">"ˊ"</span>, <span class="st">"'"</span>),</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">Titre =</span> <span class="fu">str_replace_all</span>(Titre, <span class="st">"ˋ"</span>, <span class="st">"'"</span>),</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Suppression des caractères de contrôle (dont \u0092)</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">Titre =</span> <span class="fu">str_replace_all</span>(Titre, <span class="st">"[[:cntrl:]]"</span>, <span class="st">""</span>),</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Normalisation espaces</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">Titre =</span> <span class="fu">str_squish</span>(Titre)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Titre), Titre <span class="sc">!=</span> <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Titre)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Injection JSON dans la page HTML ---</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"&lt;script&gt;const titres = %s;&lt;/script&gt;"</span>,</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>            <span class="fu">toJSON</span>(df, <span class="at">dataframe =</span> <span class="st">"rows"</span>, <span class="at">pretty =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attachement du package : 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Les objets suivants sont masqués depuis 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Les objets suivants sont masqués depuis 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: le package 'jsonlite' a été compilé avec la version R 4.4.3</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: le package 'tidytext' a été compilé avec la version R 4.4.3</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: le package 'ggplot2' a été compilé avec la version R 4.4.3</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggwordcloud)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: le package 'ggwordcloud' a été compilé avec la version R 4.4.3</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stopwords)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: le package 'stopwords' a été compilé avec la version R 4.4.3</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Lecture fichier ---</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>raw_lines <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="st">"questions_titres.csv"</span>, <span class="at">encoding =</span> <span class="st">"Latin1"</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>raw_lines <span class="ot">&lt;-</span> <span class="fu">iconv</span>(raw_lines, <span class="at">from =</span> <span class="st">"Latin1"</span>, <span class="at">to =</span> <span class="st">"UTF-8"</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>tmp_file <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".csv"</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(raw_lines, tmp_file)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(tmp_file, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Nettoyage ---</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Titre =</span> Titre_simplifie) <span class="sc">%&gt;%</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Titre =</span> <span class="fu">str_trim</span>(Titre)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Titre), Titre <span class="sc">!=</span> <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Titre)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Injection JSON dans la page HTML ---</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"&lt;script&gt;const titres = %s;&lt;/script&gt;"</span>,</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>           <span class="fu">toJSON</span>(df, <span class="at">dataframe =</span> <span class="st">"rows"</span>, <span class="at">pretty =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;script&gt;const titres = [
+<script>const titres = [
   {
     "Etudiant": 7,
-    "Titre": "3 300 milliards deuros : jusquoù ira la dette française ?",
+    "Titre": "3 300 milliards deuros : jusquoù ira la dette française ?",
     "debat": "La France doit elle réduire la dette publique rapidement au risque de freiner la croissance économique ou bien privilégier linvestissement pour lavenir en sendettant davantage ?"
   },
   {
@@ -297,8 +266,13 @@ Attachement du package : 'dplyr'</code></pre>
   },
   {
     "Etudiant": 32,
-    "Titre": "Budget 2026&nbsp;: les pistes du Sénat pour éviter daugmenter les impôts.",
-    "debat": "La commission des finances invite à sinterroger sur les niches fiscales pour augmenter les recettes. En quoi cela est-il préférable par rapport à laugmentation des impôts&nbsp;? Quel serait limpact sur les entreprises en matière dinvestissement et de production&nbsp;?"
+    "Titre": "Budget 2026 : les pistes du Sénat pour éviter daugmenter les impôts.",
+    "debat": "La commission des finances invite à sinterroger sur les niches fiscales pour augmenter les recettes. En quoi cela est-il préférable par rapport à laugmentation des impôts ? Quel serait limpact sur les entreprises en matière dinvestissement et de production ?"
+  },
+  {
+    "Etudiant": 56,
+    "Titre": "Chômage : La réforme qui inquiète les plus démunis",
+    "debat": "Comment peut-on diminuer les dépenses de lEtat tout en conservant la protection social des chomeurs, notamment jeune et travailleurs précaires ?"
   },
   {
     "Etudiant": 24,
@@ -306,18 +280,13 @@ Attachement du package : 'dplyr'</code></pre>
     "debat": "La France peut-elle vraiment atteindre le plein emploi si léconomie ralentit ?"
   },
   {
-    "Etudiant": 56,
-    "Titre": "Chômage&nbsp;: La réforme qui inquiète les plus démunis",
-    "debat": "Comment peut-on diminuer les dépenses de lEtat tout en conservant la protection social des chomeurs, notamment jeune et travailleurs précaires&nbsp;?"
-  },
-  {
     "Etudiant": 21,
-    "Titre": "Comment tenir la promesse dun futur sans voitures à essence&nbsp;?",
-    "debat": "Doit-on maintenir ce cap de linterdiction des voitures thermiques dici 2035 ou doit-on le reporter (voir le supprimer) malgré les conséquences écologiques que ça peut avoir&nbsp;?"
+    "Titre": "Comment tenir la promesse dun futur sans voitures à essence ?",
+    "debat": "Doit-on maintenir ce cap de linterdiction des voitures thermiques dici 2035 ou doit-on le reporter (voir le supprimer) malgré les conséquences écologiques que ça peut avoir ?"
   },
   {
     "Etudiant": 31,
-    "Titre": "Commerce Mondial: le miracle de la prospérité économique à til atteint sa fin?",
+    "Titre": "Commerce Mondial: le miracle de la prospérité économique à til atteint sa fin?",
     "debat": "Le commerce international doit-il être repensé pour redevenir un facteur de prospérité partagé ?"
   },
   {
@@ -332,13 +301,13 @@ Attachement du package : 'dplyr'</code></pre>
   },
   {
     "Etudiant": 50,
-    "Titre": "Dette record pour la France : 114% du PIB et un défi pour lavenir",
+    "Titre": "Dette record pour la France : 114% du PIB et un défi pour lavenir",
     "debat": "La France doit-elle prioriser aujourdhui la réduction de sa dette publique ou continuer à investir massivement dans lavenir meme au prix dun endettement élevé ?"
   },
   {
     "Etudiant": 2,
-    "Titre": "Diplômes sans travail convenable&nbsp;!",
-    "debat": "Comment améliorer linsertion professionnelle des jeunes les moins diplômés et réduire la précarité de lemploi chez cette population&nbsp;?"
+    "Titre": "Diplômes sans travail convenable !",
+    "debat": "Comment améliorer linsertion professionnelle des jeunes les moins diplômés et réduire la précarité de lemploi chez cette population ?"
   },
   {
     "Etudiant": 36,
@@ -352,12 +321,12 @@ Attachement du package : 'dplyr'</code></pre>
   },
   {
     "Etudiant": 6,
-    "Titre": "France : combien coûte la protection de lenvironnement ?",
+    "Titre": "France : combien coûte la protection de lenvironnement ?",
     "debat": "Qui doit financer en priorité la transition écologique en France : lÉtat, les entreprises ou les citoyens??"
   },
   {
     "Etudiant": 59,
-    "Titre": "Hausse du chômage : un signal dalerte pour léconomie française.",
+    "Titre": "Hausse du chômage : un signal dalerte pour léconomie française.",
     "debat": "Comment peut-on mieux insérer les jeunes dans le marché du travail face à la montée du chômage des moins de 25 ans ? Faut-il privilégier la compétitivité des entreprises ou la protection des salariés pour relancer lemploi ?"
   },
   {
@@ -370,6 +339,21 @@ Attachement du package : 'dplyr'</code></pre>
     "debat": "Linnovation responsable peut-elle réellement concilier rentabilité économique et protection de lenvironnement ?"
   },
   {
+    "Etudiant": 8,
+    "Titre": "LIA : un progrès technologique à rendre plus vert",
+    "debat": "Lintelligence artificielle peut-elle réellement devenir compatible avec les objectifs environnementaux , ou restera-t-elle une entrave à la transition écologique ?"
+  },
+  {
+    "Etudiant": 17,
+    "Titre": "LInsee veut calculer la richesse en tenant compte du climat",
+    "debat": "Est-ce quon peut encore parler de croissance positive si elle abîme le climat ?"
+  },
+  {
+    "Etudiant": 54,
+    "Titre": "LIrlande face au défi du vieillissement et de la dette publique",
+    "debat": "Comment un vieillissement de la population peut-il influencer léconomie dun pays ?"
+  },
+  {
     "Etudiant": 20,
     "Titre": "La France peine à reprendre le contrôle de sa dette",
     "debat": "Comment concilier la réduction de la dette publique avec le maintien dune croissance économique suffisante ?"
@@ -377,7 +361,7 @@ Attachement du package : 'dplyr'</code></pre>
   {
     "Etudiant": 38,
     "Titre": "La France sous pression des agences de notations",
-    "debat": "Dans quelles mesures faut-il prioriser la maîtrise des dépenses publiques plutôt que laugmentation des reçettes publiques pour freiner laccroissement de la dette publique Françaises&nbsp;?"
+    "debat": "Dans quelles mesures faut-il prioriser la maîtrise des dépenses publiques plutôt que laugmentation des reçettes publiques pour freiner laccroissement de la dette publique Françaises ?"
   },
   {
     "Etudiant": 10,
@@ -391,17 +375,17 @@ Attachement du package : 'dplyr'</code></pre>
   },
   {
     "Etudiant": 25,
-    "Titre": "La dette publique : un outil pour relancer léconomie et réduire les inégalités ?",
+    "Titre": "La dette publique : un outil pour relancer léconomie et réduire les inégalités ?",
     "debat": "La dette publique peut-elle être un instrument efficace de redistribution et de relance, ou risque-t elle daggraver les déséquilibres économiques à long terme ?"
   },
   {
     "Etudiant": 45,
-    "Titre": "La dette publique a un point critique : léconomie française peut-elle y faire face ?",
+    "Titre": "La dette publique a un point critique : léconomie française peut-elle y faire face ?",
     "debat": "Faut-il privilégier la réduction de la dette publique même si cela freine la croissance économique ainsi que lemploi ?"
   },
   {
     "Etudiant": 42,
-    "Titre": "La dette publique française franchit un nouveau cap : faut-il sinquiéter pour lavenir ?",
+    "Titre": "La dette publique française franchit un nouveau cap : faut-il sinquiéter pour lavenir ?",
     "debat": "La forte augmentation de la dette publique française est-elle soutenable à long terme, et quelles devraient être les priorités budgétaires de lÉtat : soutenir la croissance, réduire la dette, ou renforcer les politiques de redistribution ?"
   },
   {
@@ -410,8 +394,13 @@ Attachement du package : 'dplyr'</code></pre>
     "debat": "Comment lÉtat peut-il réduire sa dette publique sans affaiblir les politiques de redistribution et la protection sociale ?"
   },
   {
+    "Etudiant": 23,
+    "Titre": "Laccord de lUnion européenne à pour objectif de réduire de 90% ses émissions de gaz à effets de serres dici 2040.",
+    "debat": "Pensez-vous que cet objectif est trop ambitieux avec lampleur du défis des crédits carbones à financer hors de lEurope ?"
+  },
+  {
     "Etudiant": 34,
-    "Titre": "Le Covid et léconomie Française",
+    "Titre": "Le Covid et léconomie Française",
     "debat": "Pensez vous que les problèmes économiques de La France sont la cause du Covid ou le Covid n'a fait qu'amplifier le problème"
   },
   {
@@ -444,6 +433,10 @@ Attachement du package : 'dplyr'</code></pre>
     "debat": "Dans quelle mesure les politiques commerciales (droits de douane, ajustements aux frontières) peuvent-elles réellement devenir des outils efficaces de la transition écologique, sans compromettre la croissance et la compétitivité ?"
   },
   {
+    "Etudiant": 11,
+    "Titre": "Lemploi en recul : les jeunes particulièrement touchés."
+  },
+  {
     "Etudiant": 19,
     "Titre": "Les coûts des activités économiques nuisibles pour la nature",
     "debat": "comment léconomie environnementale pourrait elle devenir un accélérateur léconomie elle même."
@@ -460,7 +453,7 @@ Attachement du package : 'dplyr'</code></pre>
   },
   {
     "Etudiant": 47,
-    "Titre": "Les jeunes diplômés sous pression : pourquoi les embauches de cadres débutants séffondrent.",
+    "Titre": "Les jeunes diplômés sous pression : pourquoi les embauches de cadres débutants séffondrent.",
     "debat": "Comment expliquer la baisse des embauches de jeunes diplômés alors que la population active va bientôt diminuer ?"
   },
   {
@@ -469,37 +462,13 @@ Attachement du package : 'dplyr'</code></pre>
     "debat": "-La politique de baisse du taux dintérêt est-elle toujours la meilleure solution pour soutenir léconomie ?"
   },
   {
-    "Etudiant": 8,
-    "Titre": "LIA : un progrès technologique à rendre plus vert",
-    "debat": "Lintelligence artificielle peut-elle réellement devenir compatible avec les objectifs environnementaux , ou restera-t-elle une entrave à la transition écologique ?"
-  },
-  {
-    "Etudiant": 17,
-    "Titre": "LInsee veut calculer la richesse en tenant compte du climat",
-    "debat": "Est-ce quon peut encore parler de croissance positive si elle abîme le climat ?"
-  },
-  {
-    "Etudiant": 54,
-    "Titre": "LIrlande face au défi du vieillissement et de la dette publique",
-    "debat": "Comment un vieillissement de la population peut-il influencer léconomie dun pays ?"
-  },
-  {
-    "Etudiant": 23,
-    "Titre": "Laccord de lUnion européenne à pour objectif de réduire de 90% ses émissions de gaz à effets de serres dici 2040.",
-    "debat": "Pensez-vous que cet objectif est trop ambitieux avec lampleur du défis des crédits carbones à financer hors de lEurope ?"
-  },
-  {
-    "Etudiant": 11,
-    "Titre": "Lemploi en recul : les jeunes particulièrement touchés."
-  },
-  {
     "Etudiant": 18,
-    "Titre": "Linflation en France : Ou en est on aujourdhui ?",
+    "Titre": "Linflation en France : Ou en est on aujourdhui ?",
     "debat": "En quoi les hausses de prix non compensées par les salaires affectent-elles le pouvoir dachat des ménages ?"
   },
   {
     "Etudiant": 44,
-    "Titre": "Létat de la transition écologique française",
+    "Titre": "Létat de la transition écologique française",
     "debat": "La France peut-elle respecter ses objectifs climatiques sans remettre en cause sa croissance économique ?"
   },
   {
@@ -513,7 +482,7 @@ Attachement du package : 'dplyr'</code></pre>
   },
   {
     "Etudiant": 40,
-    "Titre": "Moins dinflation, mais toujours trop de chômage ?",
+    "Titre": "Moins dinflation, mais toujours trop de chômage ?",
     "debat": "Comment lutter contre linflation sans aggraver le chômage ?"
   },
   {
@@ -528,7 +497,7 @@ Attachement du package : 'dplyr'</code></pre>
   },
   {
     "Etudiant": 39,
-    "Titre": "Prévisions des dépenses publiques de lÉtat pour 2026"
+    "Titre": "Prévisions des dépenses publiques de lÉtat pour 2026"
   },
   {
     "Etudiant": 9,
@@ -538,17 +507,17 @@ Attachement du package : 'dplyr'</code></pre>
   {
     "Etudiant": 30,
     "Titre": "SHEIN une entreprise qui fait débat",
-    "debat": "Est-ce que des marques comme H&amp;M, Zara \r\ndevraient être plus contrôlé sur la production ?"
+    "debat": "Est-ce que des marques comme H&M, Zara \r\ndevraient être plus contrôlé sur la production ?"
   },
   {
     "Etudiant": 4,
-    "Titre": "Stopper la course nos sols sont en danger&nbsp;!",
-    "debat": "Faut-il arreter la course à lurbanisation afin de préserver les sols francais&nbsp;?"
+    "Titre": "Stopper la course nos sols sont en danger !",
+    "debat": "Faut-il arreter la course à lurbanisation afin de préserver les sols francais ?"
   },
   {
     "Etudiant": 27,
-    "Titre": "Transition écologique&nbsp;: les entreprises en pâtissent",
-    "debat": "Pensez - vous que les entreprises polluantes sont suffisamment taxé, ou trop taxé en France&nbsp;?"
+    "Titre": "Transition écologique : les entreprises en pâtissent",
+    "debat": "Pensez - vous que les entreprises polluantes sont suffisamment taxé, ou trop taxé en France ?"
   },
   {
     "Etudiant": 3,
@@ -557,95 +526,108 @@ Attachement du package : 'dplyr'</code></pre>
   },
   {
     "Etudiant": 57,
-    "Titre": "UE&nbsp;: Un accord malgré tout sur les réductions démissions, mais à quel prix&nbsp;?"
+    "Titre": "UE : Un accord malgré tout sur les réductions démissions, mais à quel prix ?"
   },
   {
     "Etudiant": 12,
-    "Titre": "Une augmentation de la CSG, une taxe sur les revenus du capital destiné au financement de la protection sociale adoptée par lAssemblée Nationale.",
+    "Titre": "Une augmentation de la CSG, une taxe sur les revenus du capital destiné au financement de la protection sociale adoptée par lAssemblée Nationale.",
     "debat": "Cette décision de rehausser la CSG est-elle nécessaire à financer le coût du modèle social ou un abus de fiscalité progressive qui retombe sur la classe populaire ?"
   },
   {
     "Etudiant": 41,
-    "Titre": "Voitures électriques : lEurope accélère, les industriels sinquiètent",
+    "Titre": "Voitures électriques : lEurope accélère, les industriels sinquiètent",
     "debat": "Comment concilier transition écologique et maintien de la compétitivité industrielle en Europe ?"
   },
   {
     "Etudiant": 58,
-    "Titre": "«&nbsp;Opportunité ouverte&nbsp;»",
+    "Titre": "« Opportunité ouverte »",
     "debat": "Quelles politiques économiques et sociales pourraient inverser durablement cette tendance et soutenir lemploi des jeunes générations ?"
   }
-];&lt;/script&gt;</code></pre>
-</div>
+];</script>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Tokenisation ---</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mots <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">unnest_tokens</span>(word, Titre)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>stopwords_fr <span class="ot">&lt;-</span> <span class="fu">stopwords</span>(<span class="at">language =</span> <span class="st">"fr"</span>, <span class="at">source =</span> <span class="st">"snowball"</span>)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>stopwords_perso <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"cest"</span>,<span class="st">"plus"</span>,<span class="st">"sans"</span>,<span class="st">"faire"</span>,<span class="st">"france"</span>,<span class="st">"etre"</span>,<span class="st">"peut"</span>,<span class="st">"le"</span>,<span class="st">"la"</span>)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>mots_clean <span class="ot">&lt;-</span> mots <span class="sc">%&gt;%</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>word <span class="sc">%in%</span> stopwords_fr,</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>word <span class="sc">%in%</span> stopwords_perso,</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(word, <span class="st">"^[</span><span class="sc">\\</span><span class="st">p{L}’']+$"</span>)</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>freq <span class="ot">&lt;-</span> mots_clean <span class="sc">%&gt;%</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">50</span>)</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Nuage de mots ---</span></span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(</span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(freq, <span class="fu">aes</span>(</span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> word,</span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> n,</span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">factor</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">nrow</span>(freq), <span class="at">replace =</span> <span class="cn">TRUE</span>)),</span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">45</span>, <span class="dv">90</span>, <span class="sc">-</span><span class="dv">45</span>), <span class="fu">nrow</span>(freq), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text_wordcloud</span>(<span class="at">area_corr =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">15</span>)) <span class="sc">+</span></span>
-<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#1F77B4"</span>,<span class="st">"#FF7F0E"</span>,<span class="st">"#2CA02C"</span>,<span class="st">"#D62728"</span>,<span class="st">"#9467BD"</span>,<span class="st">"#8C564B"</span>)) <span class="sc">+</span></span>
-<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
-<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Nuage de mots des titres les plus fréquents"</span>)</span>
-<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">###########################################################</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#            TOKENISATION + NETTOYAGE DES MOTS            #</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="do">###########################################################</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Tokenisation regex — conserve les apostrophes</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>mots <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    word,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    Titre,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">token =</span> <span class="st">"regex"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">pattern =</span> <span class="st">"[^</span><span class="sc">\\</span><span class="st">p{L}']+"</span>     <span class="co"># ON GARDE LETTRES + APOSTROPHE</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Séparation des élisions françaises</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>mots <span class="ot">&lt;-</span> mots <span class="sc">%&gt;%</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">word =</span> <span class="fu">str_replace</span>(word, <span class="st">"^([ldncsjtmq])'(.*)$"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1' </span><span class="sc">\\</span><span class="st">2"</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_rows</span>(word, <span class="at">sep =</span> <span class="st">" "</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Listes de mots à supprimer</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>particles <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"d"</span>, <span class="st">"j"</span>, <span class="st">"t"</span>, <span class="st">"c"</span>, <span class="st">"s"</span>, <span class="st">"n"</span>, <span class="st">"m"</span>, <span class="st">"qu"</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>artefacts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"eme"</span>, <span class="st">"ème"</span>, <span class="st">"ere"</span>, <span class="st">"ère"</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>stopwords_fr <span class="ot">&lt;-</span> <span class="fu">stopwords</span>(<span class="at">language =</span> <span class="st">"fr"</span>, <span class="at">source =</span> <span class="st">"snowball"</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>stopwords_perso <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"cest"</span>,<span class="st">"plus"</span>,<span class="st">"sans"</span>,<span class="st">"faire"</span>,<span class="st">"france"</span>,<span class="st">"etre"</span>,<span class="st">"peut"</span>,<span class="st">"le"</span>,<span class="st">"la"</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Nettoyage final</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>mots_clean <span class="ot">&lt;-</span> mots <span class="sc">%&gt;%</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>word <span class="sc">%in%</span> particles,</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>word <span class="sc">%in%</span> artefacts,</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>word <span class="sc">%in%</span> stopwords_fr,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span>word <span class="sc">%in%</span> stopwords_perso,</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(word, <span class="st">"^[</span><span class="sc">\\</span><span class="st">p{L}']+$"</span>)   <span class="co"># lettres + apostrophes</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcul fréquence</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>freq <span class="ot">&lt;-</span> mots_clean <span class="sc">%&gt;%</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">50</span>)</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="do">###########################################################</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co">#                         NUAGE                           #</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="do">###########################################################</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(freq, <span class="fu">aes</span>(</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> word,</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> n,</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="fu">factor</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">nrow</span>(freq), <span class="at">replace =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">45</span>, <span class="dv">90</span>, <span class="sc">-</span><span class="dv">45</span>), <span class="fu">nrow</span>(freq), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text_wordcloud</span>(<span class="at">area_corr =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#1F77B4"</span>,<span class="st">"#FF7F0E"</span>,<span class="st">"#2CA02C"</span>,<span class="st">"#D62728"</span>,<span class="st">"#9467BD"</span>,<span class="st">"#8C564B"</span>)) <span class="sc">+</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Titres les plus fréquents"</span>)</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="synthese_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<h2 class="anchored">
-🔍 Rechercher un titre proposé par les étudiants
-</h2>
-<p><input id="search" type="text" placeholder="Tape un mot pour filtrer les titres..." style="width:100%; padding:8px; font-size:16px;"> <br><br></p>
-<p><select id="selectTitre" size="8" style="width:100%; font-size:16px;"></select></p>
-<h3 class="anchored">
-Filtrer par mots du nuage :
-</h3>
-<div id="motsBoutons" style="margin-bottom:20px;">
+<p><img src="synthese_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<h2 class="anchored">🔍 Rechercher un titre proposé par les étudiants</h2>
 
-</div>
-<div id="affichage" style="margin-top:20px;">
+<input id="search" type="text" placeholder="Tape un mot pour filtrer les titres..." style="width:100%; padding:8px; font-size:16px;">
+<br><br>
+<select id="selectTitre" size="8" style="width:100%; font-size:16px;"></select>
 
-</div>
+<div id="affichage" style="margin-top:20px; padding:15px; border:1px solid #ccc; border-radius:8px;"></div>
+
+
+
 <script>
-// -----------------------------
-// Fonction pour afficher les titres
-// -----------------------------
+// Fonction pour remplir la liste déroulante
 function afficherTitres(filtre = "") {
   const select = document.getElementById("selectTitre");
   select.innerHTML = "";
-  
   titres.forEach((item, index) => {
     if (!filtre || item.Titre.toLowerCase().includes(filtre.toLowerCase())) {
       const option = document.createElement("option");
@@ -656,17 +638,16 @@ function afficherTitres(filtre = "") {
   });
 }
 
-// -----------------------------
-// Barre de recherche
-// -----------------------------
-document.getElementById("search").addEventListener("input", e => {
+// Initialisation
+afficherTitres();
+
+// Filtrage dynamique via le champ recherche
+document.getElementById("search").addEventListener("input", (e) => {
   afficherTitres(e.target.value);
 });
 
-// -----------------------------
-// Affichage titre sélectionné
-// -----------------------------
-document.getElementById("selectTitre").addEventListener("change", e => {
+// Affichage du titre sélectionné
+document.getElementById("selectTitre").addEventListener("change", (e) => {
   const t = titres[e.target.value];
   document.getElementById("affichage").innerHTML = `
       <h3>${t.Titre}</h3>
@@ -675,36 +656,7 @@ document.getElementById("selectTitre").addEventListener("change", e => {
   `;
 });
 
-// -----------------------------
-// Construction des boutons du nuage
-// -----------------------------
-const motsUnique = [...new Set(titres.flatMap(t => 
-  t.Titre.toLowerCase().split(/[\s,;:.!?()]+/)
-))];
 
-const divBtns = document.getElementById("motsBoutons");
-
-motsUnique.forEach(m => {
-  if (m.length < 3) return; // évite les tout petits mots
-  
-  const btn = document.createElement("button");
-  btn.textContent = m;
-  btn.style.margin = "2px";
-  btn.style.padding = "4px 8px";
-  btn.style.cursor = "pointer";
-  
-  btn.addEventListener("click", () => {
-    document.getElementById("search").value = m;
-    document.getElementById("search").dispatchEvent(new Event("input"));
-  });
-  
-  divBtns.appendChild(btn);
-});
-
-// -----------------------------
-// Initialisation 
-// -----------------------------
-afficherTitres();
 </script>
 
 
