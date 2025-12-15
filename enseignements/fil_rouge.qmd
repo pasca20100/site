@@ -1,0 +1,71 @@
+---
+title: "Grains d'Histoire : Activités pédagogiques"
+format: html
+theme: flatly
+execute:
+  echo: true
+---
+
+![](ble_pic.jpg){fig-align="center" width="360"}
+
+# Introduction
+
+Cette page accompagne l'application [**Grains d'Histoire**](https://pascalinev.shinyapps.io/gdhistoire/) et propose des activités pédagogiques pour explorer la production de blé, ses tendances historiques, et son impact économique et social.
+
+L'objectif est de combiner **analyse de données**, **recherche documentaire** et **visualisation interactive** pour mieux comprendre l'histoire économique à travers l'analyse d'une ressource: le blé.
+
+# Activité 1 : Exploration de l'application Shiny
+
+1.  Ouvrez l'application [Grains d'Histoire](https://pascalinev.shinyapps.io/gdhistoire/) et explorez les cartes et graphiques.\
+2.  Sélectionnez différents pays et observez :
+    -   L'évolution historique de la production totale.
+    -   La production par habitant.
+    -   L'indice de dépendance au blé.
+3.  Notez les différences entre les pays et les périodes historiques.
+
+# Activité 2 : Recherche de données complémentaires
+
+Pour enrichir votre analyse, recherchez des données supplémentaires sur le blé :
+
+-   **Prix du blé** : consulter FAO, World Bank ou Our World in Data pour les séries historiques de prix.\
+-   **Consommation mondiale** : données par pays et par an.\
+-   **Articles de presse** : identifier des événements historiques ou économiques liés au blé (famines, guerres, crises alimentaires, innovations agricoles).
+
+## Exercice pratique
+
+Créez un tableau comparatif avec les données suivantes pour 3 pays de votre choix :
+
+| Pays | Production (t) | Consommation (t) | Prix (USD/t) | Année |
+|------|----------------|------------------|--------------|-------|
+
+# Activité 3 : Visualisation et analyse
+
+1.  Importez vos données dans un logiciel statistique (Excel par exemple)\
+2.  Reproduisez des graphiques similaires à l’application :
+    -   Courbes de production historique.\
+    -   Production vs consommation.\
+    -   Indice de dépendance.\
+3.  Analysez vos résultats et comparez-les avec les cartes et graphiques de l'application.
+
+# Activité 4 : Recherche d'articles et mise en contexte
+
+-   Trouvez au moins **deux articles de presse historiques ou contemporains** sur le blé dans le monde.\
+-   Résumez :
+    -   L'événement décrit.
+    -   Le pays ou la région concernée.
+    -   L'impact sur la production ou la consommation de blé.
+
+# Ressources utiles
+
+-   [FAOSTAT – Production de blé](http://www.fao.org/faostat/en/#data/QC)\
+-   [Our World in Data – Agriculture](https://ourworldindata.org/agriculture)\
+-   [World Bank Data – Wheat Prices](https://data.worldbank.org/)\
+-   [ShinyApp Grains d'Histoire](https://pascalinev.shinyapps.io/gdhistoire/)
+
+# Conclusion
+
+Ces activités permettent de :
+
+-   Comprendre la production et la consommation mondiale de blé.
+-   Analyser les tendances historiques et les crises alimentaires.
+-   Développer des compétences en **recherche de données**, **analyse statistique** et **visualisation interactive**.

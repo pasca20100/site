@@ -1,0 +1,12 @@
+name: gdhistoire
+title: gdhistoire
+username: pascalinev
+account: pascalinev
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16311970
+bundleId: 11327248
+url: https://pascalinev.shinyapps.io/gdhistoire/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
