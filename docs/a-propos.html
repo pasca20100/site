@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Économiste — Identité, Genre &amp; Normes Sociales">
 
-<title>Pascaline Vincent</title>
+<title>a-propos – Pascaline Vincent</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Pascaline Vincent</span></a>
   </li>  
 </ul>
@@ -119,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./a-propos.html"> 
+    <a class="nav-link active" href="./a-propos.html" aria-current="page"> 
 <span class="menu-text">A propos</span></a>
   </li>  
 </ul>
@@ -140,83 +139,65 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="pv-hero">
-<canvas id="hero-canvas" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.18;pointer-events:none;z-index:0;"></canvas>
-  <div class="pv-name">
-    Pascaline <span class="pv-name-last">Vincent</span>
+<div style="max-width:860px;margin:0 auto;padding:4rem 2rem;">
+
+  <!-- En-tête -->
+  <div class="pv-eyebrow">À propos</div>
+  <h2 class="anchored">Pascaline <em>Vincent</em></h2>
+
+  <!-- Affiliation -->
+  <div style="display:flex;gap:2rem;flex-wrap:wrap;margin:2rem 0;border-top:1px solid rgba(200,185,122,0.18);border-bottom:1px solid rgba(200,185,122,0.18);padding:1.5rem 0;">
+    <div>
+      <div style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#D4C27A;margin-bottom:0.4rem;">Affiliation</div>
+      <div style="font-size:0.95rem;color:#F0F6FF;">Membre associée au LEMNA</div>
+    </div>
+    <div>
+      <div style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#D4C27A;margin-bottom:0.4rem;">Poste</div>
+      <div style="font-size:0.95rem;color:#F0F6FF;">Enseignante à l'IAE Nantes Economie et Management, Nantes Université</div>
+    </div>
+    <div>
+      <div style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#D4C27A;margin-bottom:0.4rem;">Diplôme</div>
+      <div style="font-size:0.95rem;color:#F0F6FF;">Docteure en économie</div>
+    </div>
   </div>
-  <div class="pv-discipline">Enseignante . Économiste</div>
-  <p class="pv-bio">
-    Mes travaux portent sur l'intégration des normes de genre et de l'identité 
-    dans les modèles économiques — Mesures continues de l'Identité, écarts aux normes, et économie de l'identité (Akerlof &amp; Kranton).
-  </p>
-  <div class="pv-photo">
-    <img src="photo.jpg" alt="Pascaline Vincent">
+
+
+  <!-- Axes de recherche -->
+  <div class="pv-eyebrow" style="margin-top:2.5rem;">Axes de recherche</div>
+
+  <div class="pv-card-grid" style="margin-top:1rem;">
+
+    <div class="pv-card">
+      <div class="pv-card-level">Axe 1</div>
+      <div class="pv-card-title">Mesure continue de l'identité de genre</div>
+      <p class="pv-card-desc">
+        Construction d'indices continus d'identité de genre à partir des 
+        pratiques culturelles. Alternative aux approches catégorielles binaires.
+      </p>
+    </div>
+
+    <div class="pv-card">
+      <div class="pv-card-level">Axe 2</div>
+      <div class="pv-card-title">Identité dans les modèles économiques</div>
+      <p class="pv-card-desc">
+        Intégration des normes de genre dans les fonctions d'utilité standard. 
+        Extension du cadre Akerlof &amp; Kranton aux identités plurielles.
+      </p>
+    </div>
+
   </div>
-  <div class="pv-links">
-    <a href="./recherche.html" class="pv-primary">Recherche</a>
-    <a href="./enseignements.html">Enseignements</a>
-    <a href="mailto:Pascaline.Vincent@univ-nantes.fr">Contact</a>
-    <a href="https://github.com/" target="_blank">GitHub ↗</a>
+
+  <!-- Contact -->
+  <div style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(200,185,122,0.18);">
+    <div class="pv-eyebrow">Contact</div>
+    <p>
+      <a href="mailto:Pascaline.Vincent@univ-nantes.fr">Pascaline.Vincent@univ-nantes.fr</a>
+      &nbsp;·&nbsp;
+      <a href="https://pascalinevincent.github.io/site/" target="_blank">GitHub Page↗</a>
+    </p>
   </div>
-  <script>
-(function() {
-  const canvas = document.getElementById('hero-canvas');
-  const ctx = canvas.getContext('2d');
-  function resize() {
-    canvas.width  = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-  function gauss(x, mu, sigma) {
-    return Math.exp(-0.5 * Math.pow((x - mu) / sigma, 2));
-  }
-  let t = 0;
-  function draw() {
-    const W = canvas.width, H = canvas.height;
-    ctx.clearRect(0, 0, W, H);
-    t += 0.004;
-    const shift = Math.sin(t) * 0.04;
-    const mu1 = 0.38 + shift, mu2 = 0.62 - shift, sigma = 0.14;
-    const amp = H * 0.55;
-    [[mu1,'rgba(212,194,122,0.55)','rgba(212,194,122,0.7)'],[mu2,'rgba(74,143,192,0.55)','rgba(74,143,192,0.7)']].forEach(([mu,fill,stroke]) => {
-      ctx.beginPath();
-      for (let px = 0; px <= W; px++) {
-        const y = H - gauss(px/W, mu, sigma) * amp;
-        px === 0 ? ctx.moveTo(px, y) : ctx.lineTo(px, y);
-      }
-      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
-      const g = ctx.createLinearGradient(0,0,0,H);
-      g.addColorStop(0, fill); g.addColorStop(1, fill.replace('0.55','0.02'));
-      ctx.fillStyle = g; ctx.fill();
-      ctx.beginPath();
-      for (let px = 0; px <= W; px++) {
-        const y = H - gauss(px/W, mu, sigma) * amp;
-        px === 0 ? ctx.moveTo(px, y) : ctx.lineTo(px, y);
-      }
-      ctx.strokeStyle = stroke; ctx.lineWidth = 1.5; ctx.stroke();
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-</script>
+
 </div>
-<div class="pv-eyebrow">
-<p>Thèmes de recherche</p>
-</div>
-<p><strong>Économie de l’identité</strong> · Mesures continues de l’identité · discrimination statistique · modèles d’utilité avec normes sociales · méthodes quantitatives en R.</p>
-<hr>
-<div class="pv-eyebrow">
-<p>Actualités</p>
-</div>
-<ul>
-<li><strong>Juin 2026</strong> — Participation au workshop dans le cadre du projet Wellmobe, Florence</li>
-<li><strong>2026</strong> — Développement d’un site pédagogique associé au cours <em>Économie Contemporaine </em> L1 EG.<br>
-→ <a href="https://pascalinevincent.github.io/eco_co/">Site pédagogique</a></li>
-</ul>
-<!-- Ajoutez vos actualités ici en Markdown -->
 
 
 
