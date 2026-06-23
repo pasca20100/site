@@ -137,6 +137,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div class="pv-hero">
+<canvas id="hero-canvas" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.18;pointer-events:none;z-index:0;"></canvas>
   <div class="pv-name">
     Pascaline <span class="pv-name-last">Vincent</span>
   </div>
@@ -154,6 +155,49 @@ ul.task-list li input[type="checkbox"] {
     <a href="mailto:Pascaline.Vincent@univ-nantes.fr">Contact</a>
     <a href="https://github.com/" target="_blank">GitHub ↗</a>
   </div>
+  <script>
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  function gauss(x, mu, sigma) {
+    return Math.exp(-0.5 * Math.pow((x - mu) / sigma, 2));
+  }
+  let t = 0;
+  function draw() {
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+    t += 0.004;
+    const shift = Math.sin(t) * 0.04;
+    const mu1 = 0.38 + shift, mu2 = 0.62 - shift, sigma = 0.14;
+    const amp = H * 0.55;
+    [[mu1,'rgba(212,194,122,0.55)','rgba(212,194,122,0.7)'],[mu2,'rgba(74,143,192,0.55)','rgba(74,143,192,0.7)']].forEach(([mu,fill,stroke]) => {
+      ctx.beginPath();
+      for (let px = 0; px <= W; px++) {
+        const y = H - gauss(px/W, mu, sigma) * amp;
+        px === 0 ? ctx.moveTo(px, y) : ctx.lineTo(px, y);
+      }
+      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+      const g = ctx.createLinearGradient(0,0,0,H);
+      g.addColorStop(0, fill); g.addColorStop(1, fill.replace('0.55','0.02'));
+      ctx.fillStyle = g; ctx.fill();
+      ctx.beginPath();
+      for (let px = 0; px <= W; px++) {
+        const y = H - gauss(px/W, mu, sigma) * amp;
+        px === 0 ? ctx.moveTo(px, y) : ctx.lineTo(px, y);
+      }
+      ctx.strokeStyle = stroke; ctx.lineWidth = 1.5; ctx.stroke();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
 </div>
 <div class="pv-eyebrow">
 <p>Thèmes de recherche</p>
