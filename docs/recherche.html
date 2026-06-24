@@ -75,6 +75,15 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Pascaline Vincent — Économiste">
+<meta property="og:description" content="Travaux sur l’identité de genre, la ségrégation et la mesure empirique des normes sociales.">
+<meta property="og:image" content="https://pascalinevincent.github.io/site/photo.jpg">
+<meta property="og:site_name" content="Pascaline Vincent">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:title" content="Pascaline Vincent — Économiste">
+<meta name="twitter:description" content="Travaux sur l’identité de genre, la ségrégation et la mesure empirique des normes sociales.">
+<meta name="twitter:image" content="https://pascalinevincent.github.io/site/photo.jpg">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -100,6 +109,10 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
+    <a class="nav-link" href="./a-propos.html"> 
+<span class="menu-text">À propos</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./enseignements.html"> 
 <span class="menu-text">Enseignements</span></a>
   </li>  
@@ -107,17 +120,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./recherche.html" aria-current="page"> 
 <span class="menu-text">Recherche</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cv" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">CV</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-cv">    
-        <li>
-    <a class="dropdown-item" href="./cv-fr.html">
- <span class="dropdown-text">CV (français)</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./cv-fr.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
-    </ul>
-  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -255,7 +261,36 @@ national identity (almost total commitment) or assimilation
     </div>
     <div class="pv-pub-journal">En cours de soumission.</div>
   </li>
+<li>
+  <div class="pv-pub-year">En cours</div>
+  <div class="pv-pub-title">
+    Qui tricote, qui pêche ? Mesurer la ségrégation des pratiques culturelles par l'identité de genre
+    <span class="pv-badge badge-prog">En cours</span>
+  </div>
+  <div class="pv-pub-journal">
+    <em>Enquête sur les Pratiques Culturelles</em> · Indice continu de ségrégation · Comparaison ACM / LASSO
+  </div>
 
+  <details style="margin-top:0.5rem;">
+    <summary style="font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:#4A8FC0;cursor:pointer;list-style:none;">
+      Abstract ↓
+    </summary>
+    <p style="font-size:0.85rem;color:#7A9DBF;margin-top:0.6rem;line-height:1.7;max-width:580px;">
+      Les mesures standard de ségrégation de genre reposent sur une classification binaire des individus.
+      Ce papier propose une généralisation continue de l'indice de Duncan dans laquelle la variable de genre
+      est remplacée par un indice d'identité continu construit par ACM. Pour chaque pratique culturelle,
+      l'indice β mesure l'association entre position identitaire et participation. Appliqué à 24 pratiques
+      de l'Enquête sur les Pratiques Culturelles, l'indice continu révèle une ségrégation identitaire
+      invisible pour l'approche binaire — notamment pour les pratiques rares comme la pêche ou le montage vidéo.
+    </p>
+  </details>
+
+  <div class="pv-pub-links">
+    <a href="https://pascalinevincent.github.io/segreg/" target="_blank">Site du projet</a>
+    <a href="https://github.com/pascalinevincent/segreg" target="_blank">GitHub</a>
+    <a href="mailto:Pascaline.Vincent@univ-nantes.fr">Demander le draft</a>
+  </div>
+</li>
 </ul>
 
 
@@ -364,7 +399,7 @@ national identity (almost total commitment) or assimilation
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/pascalinevincent\.github\.io\/site\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
